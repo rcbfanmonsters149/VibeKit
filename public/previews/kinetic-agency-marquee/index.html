@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperKinetic Creative Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#0a0a0c',
+                            accent: '#f97316',
+                            text: '#ffffff',
+                            muted: '#a1a1aa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee-left': 'marqueeLeft 30s linear infinite',
+                        'marquee-right': 'marqueeRight 25s linear infinite',
+                    },
+                    keyframes: {
+                        marqueeLeft: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        marqueeRight: {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Space Grotesk', sans-serif; }
+        body { background-color: #0a0a0c; color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .font-heading { font-family: var(--font-primary); }
+        
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text-hover:hover {
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .project-card:hover .project-img { transform: scale(1.05); }
+        .project-card:hover .project-arrow { transform: translate(8px, -8px); color: #f97316; }
+        
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease;
+        }
+        .accordion-content.open { grid-template-rows: 1fr; }
+        .accordion-inner { overflow: hidden; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="w-full px-6 py-6 flex justify-between items-center fixed top-0 z-50 mix-blend-difference text-white">
+        <a href="#" class="font-heading font-bold text-xl tracking-[0.1em] uppercase">HyperKinetic</a>
+        <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+            <a href="#" class="hover:text-brand-accent transition-colors">Work</a>
+            <a href="#" class="hover:text-brand-accent transition-colors">About</a>
+            <a href="#" class="hover:text-brand-accent transition-colors">Careers</a>
+        </div>
+        <button class="md:hidden"><i data-lucide="menu" class="w-6 h-6"></i></button>
+    </nav>
+
+    <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="w-full min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 lg:px-12 relative">
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-accent/10 rounded-full blur-[120px] -z-10 pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+            
+            <h1 class="font-heading text-6xl md:text-[100px] lg:text-[130px] font-bold leading-[0.9] tracking-tight max-w-6xl uppercase">
+                We Design <br> Digital <br>
+                <span class="text-brand-accent inline-block gradient-text-hover transition-all duration-300">Experiences</span> <br>
+                That Matter.
+            </h1>
+            
+            <div class="mt-20 max-w-md ml-auto mr-12 text-lg text-brand-muted border-l border-brand-accent pl-6">
+                An award-winning creative agency bridging the gap between aesthetics and functionality for the world's most ambitious brands.
+            </div>
+        </section>
+
+        <!-- Marquee 1: Clients -->
+        <section class="w-full py-12 border-y border-white/10 overflow-hidden bg-white/5 backdrop-blur-sm relative flex items-center">
+            <div class="flex whitespace-nowrap animate-marquee-left w-max items-center font-heading font-bold text-4xl md:text-6xl text-outline uppercase tracking-wider gap-24 px-12">
+                <span>Google</span>
+                <span>Nike</span>
+                <span>Apple</span>
+                <span>Spotify</span>
+                <span>Netflix</span>
+                <span>Airbnb</span>
+                <span>Meta</span>
+                <span>Tesla</span>
+                <!-- Duplicate for loop -->
+                <span>Google</span>
+                <span>Nike</span>
+                <span>Apple</span>
+                <span>Spotify</span>
+                <span>Netflix</span>
+                <span>Airbnb</span>
+                <span>Meta</span>
+                <span>Tesla</span>
+            </div>
+        </section>
+
+        <!-- Selected Work -->
+        <section class="w-full py-32 px-6 lg:px-12">
+            <div class="flex justify-between items-end mb-20">
+                <h2 class="font-heading text-4xl md:text-6xl font-bold uppercase tracking-tight">Selected Work <span class="text-brand-accent">_</span></h2>
+                <a href="#" class="text-brand-muted hover:text-white uppercase tracking-widest text-sm flex items-center gap-2 pb-2">View All <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+
+            <div class="flex flex-col gap-12">
+                <!-- Case Study 1 -->
+                <article class="group project-card cursor-pointer">
+                    <div class="w-full h-[60vh] md:h-[70vh] rounded-3xl overflow-hidden relative mb-6">
+                        <div class="project-img w-full h-full bg-gradient-to-br from-orange-500 to-red-600 transition-transform duration-700 ease-out flex items-center justify-center opacity-80 group-hover:opacity-100">
+                            <span class="font-heading text-8xl font-black text-white/20 uppercase transform -rotate-12">Nike</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="font-heading text-3xl md:text-5xl font-bold uppercase mb-4">Nike Air Max Reimagined</h3>
+                            <div class="flex gap-3">
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">Branding</span>
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">Digital</span>
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">2026</span>
+                            </div>
+                        </div>
+                        <div class="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent transition-colors">
+                            <i data-lucide="arrow-up-right" class="w-8 h-8 project-arrow transition-all duration-300"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 2 -->
+                <article class="group project-card cursor-pointer mt-12">
+                    <div class="w-full h-[60vh] md:h-[70vh] rounded-3xl overflow-hidden relative mb-6">
+                        <div class="project-img w-full h-full bg-gradient-to-br from-green-400 to-emerald-700 transition-transform duration-700 ease-out flex items-center justify-center opacity-80 group-hover:opacity-100">
+                            <span class="font-heading text-8xl font-black text-white/20 uppercase transform -rotate-12">Spotify</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="font-heading text-3xl md:text-5xl font-bold uppercase mb-4">Spotify Wrapped 2026</h3>
+                            <div class="flex gap-3">
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">Campaign</span>
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">Motion</span>
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">2026</span>
+                            </div>
+                        </div>
+                        <div class="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent transition-colors">
+                            <i data-lucide="arrow-up-right" class="w-8 h-8 project-arrow transition-all duration-300"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 3 -->
+                <article class="group project-card cursor-pointer mt-12">
+                    <div class="w-full h-[60vh] md:h-[70vh] rounded-3xl overflow-hidden relative mb-6">
+                        <div class="project-img w-full h-full bg-gradient-to-br from-zinc-700 to-black transition-transform duration-700 ease-out flex items-center justify-center opacity-80 group-hover:opacity-100">
+                             <span class="font-heading text-8xl font-black text-white/10 uppercase transform -rotate-12">Tesla</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="font-heading text-3xl md:text-5xl font-bold uppercase mb-4">Tesla Cybertruck Launch</h3>
+                            <div class="flex gap-3">
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">Web Design</span>
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">3D</span>
+                                <span class="px-4 py-1.5 rounded-full border border-white/20 text-sm tracking-wide bg-white/5">2025</span>
+                            </div>
+                        </div>
+                        <div class="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent transition-colors">
+                            <i data-lucide="arrow-up-right" class="w-8 h-8 project-arrow transition-all duration-300"></i>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Services Accordion -->
+        <section class="w-full py-32 px-6 lg:px-12 bg-white/5">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6">Our Capabilities</h2>
+                    <p class="text-brand-muted text-lg">We deliver end-to-end solutions that elevate brands and drive meaningful engagement.</p>
+                </div>
+                
+                <div class="lg:col-span-8 flex flex-col border-t border-white/20">
+                    <!-- Row 1 -->
+                    <div class="border-b border-white/20 py-8 cursor-pointer group" onclick="toggleAccordion(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-heading text-3xl uppercase group-hover:text-brand-accent transition-colors">01. Brand Strategy</h3>
+                            <div class="icon-container w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent text-brand-accent transform transition-transform">
+                                <i data-lucide="minus" class="w-5 h-5 hidden-icon"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-content open mt-6">
+                            <div class="accordion-inner text-brand-muted text-lg max-w-2xl">
+                                We dive deep into market research, positioning, and narrative to build resilient brand foundations that resonate with modern audiences and stand the test of time.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <div class="border-b border-white/20 py-8 cursor-pointer group" onclick="toggleAccordion(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-heading text-3xl uppercase group-hover:text-brand-accent transition-colors">02. Digital Design</h3>
+                            <div class="icon-container w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent transform transition-transform">
+                                <i data-lucide="plus" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-content mt-0">
+                            <div class="accordion-inner text-brand-muted text-lg max-w-2xl py-6">
+                                Crafting intuitive, beautiful user interfaces and seamless user experiences across web, mobile, and emerging digital platforms.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="border-b border-white/20 py-8 cursor-pointer group" onclick="toggleAccordion(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-heading text-3xl uppercase group-hover:text-brand-accent transition-colors">03. Motion & 3D</h3>
+                            <div class="icon-container w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent transform transition-transform">
+                                <i data-lucide="plus" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-content mt-0">
+                            <div class="accordion-inner text-brand-muted text-lg max-w-2xl py-6">
+                                Bringing static concepts to life through dynamic motion graphics, immersive 3D environments, and interactive storytelling.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="border-b border-white/20 py-8 cursor-pointer group" onclick="toggleAccordion(this)">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-heading text-3xl uppercase group-hover:text-brand-accent transition-colors">04. Development</h3>
+                            <div class="icon-container w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent transform transition-transform">
+                                <i data-lucide="plus" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-content mt-0">
+                            <div class="accordion-inner text-brand-muted text-lg max-w-2xl py-6">
+                                Robust frontend and backend engineering, ensuring high performance, accessibility, and pixel-perfect implementation of complex designs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee 2: Awards -->
+        <section class="w-full py-8 border-y border-white/10 overflow-hidden bg-brand-accent text-brand-bg relative flex items-center">
+            <div class="flex whitespace-nowrap animate-marquee-right w-max items-center font-heading font-bold text-3xl uppercase tracking-wider gap-12 px-6">
+                <span>Awwwards SOTD ★</span>
+                <span>FWA Winner ★</span>
+                <span>CSS Design Awards ★</span>
+                <span>Red Dot 2026 ★</span>
+                <span>Awwwards SOTD ★</span>
+                <span>FWA Winner ★</span>
+                <span>CSS Design Awards ★</span>
+                <span>Red Dot 2026 ★</span>
+                 <span>Awwwards SOTD ★</span>
+                <span>FWA Winner ★</span>
+                <span>CSS Design Awards ★</span>
+                <span>Red Dot 2026 ★</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-32 px-6 lg:px-12 flex flex-col items-center text-center relative overflow-hidden">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-brand-accent/20 rounded-t-full blur-[100px] -z-10"></div>
+        <h2 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tight max-w-4xl mb-12">Let's create something extraordinary.</h2>
+        <button class="bg-brand-accent text-brand-bg font-heading font-bold uppercase tracking-widest px-12 py-6 rounded-full text-lg hover:bg-white transition-colors duration-300 flex items-center gap-4">
+            Book a Call <i data-lucide="arrow-right" class="w-6 h-6"></i>
+        </button>
+        
+        <div class="w-full mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-brand-muted text-sm uppercase tracking-widest gap-6">
+            <span>© 2026 HyperKinetic Studio</span>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-brand-accent">Instagram</a>
+                <a href="#" class="hover:text-brand-accent">Twitter</a>
+                <a href="#" class="hover:text-brand-accent">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                document.querySelectorAll('.font-heading, h1, h2, h3').forEach(el => {
+                    el.style.fontFamily = '"' + font + '", sans-serif';
+                });
+            }
+        });
+
+        function toggleAccordion(el) {
+            const content = el.querySelector('.accordion-content');
+            const icon = el.querySelector('.icon-container i');
+            const isOpen = content.classList.contains('open');
+            
+            // Close all
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                c.classList.remove('open');
+                c.classList.remove('mt-6');
+            });
+            document.querySelectorAll('.icon-container i').forEach(i => {
+                i.setAttribute('data-lucide', 'plus');
+            });
+            
+            if (!isOpen) {
+                content.classList.add('open');
+                content.classList.add('mt-6');
+                icon.setAttribute('data-lucide', 'minus');
+            }
+            lucide.createIcons();
+        }
+        
+        // initialize first accordion icon
+        document.querySelector('.icon-container i.hidden-icon').setAttribute('data-lucide', 'minus');
+        lucide.createIcons();
+    </script>
+</body>
+</html>

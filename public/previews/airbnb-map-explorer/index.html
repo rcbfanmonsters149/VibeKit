@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haven Luxury Villa Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#0f1117',
+                            accent: '#ff385c',
+                            text: '#f3f4f6',
+                            muted: '#9ca3af',
+                            card: '#1f2937'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Outfit', sans-serif; }
+        body { background-color: #0f1117; color: #f3f4f6; font-family: 'DM Sans', sans-serif; }
+        .font-heading { font-family: var(--font-primary); }
+        
+        /* Custom scrollbar for listing area */
+        .listing-scroll::-webkit-scrollbar { width: 8px; }
+        .listing-scroll::-webkit-scrollbar-track { background: transparent; }
+        .listing-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .listing-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+        .map-bg {
+            background-color: #1a1c23;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .price-marker {
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+        .price-marker:hover {
+            transform: scale(1.1);
+            background-color: #ff385c;
+            color: white;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body class="antialiased h-screen flex flex-col overflow-hidden">
+
+    <!-- Top Navbar -->
+    <header class="w-full px-6 lg:px-8 py-4 border-b border-white/10 bg-brand-bg flex items-center justify-between shrink-0 z-50">
+        <div class="flex items-center gap-2 text-brand-accent">
+            <i data-lucide="tent" class="w-8 h-8"></i>
+            <span class="font-heading font-bold text-2xl tracking-tight hidden sm:block">Haven</span>
+        </div>
+        
+        <div class="flex-1 max-w-xl mx-4">
+            <div class="bg-brand-card border border-white/10 rounded-full flex items-center px-4 py-2 hover:bg-white/5 transition-colors shadow-lg cursor-pointer">
+                <div class="flex-1 px-4 border-r border-white/10">
+                    <div class="text-xs font-semibold">Where</div>
+                    <input type="text" placeholder="Search destinations" class="bg-transparent text-sm outline-none text-white w-full placeholder-brand-muted">
+                </div>
+                <div class="flex-1 px-4 hidden md:block border-r border-white/10">
+                    <div class="text-xs font-semibold">Dates</div>
+                    <div class="text-sm text-brand-muted">Add dates</div>
+                </div>
+                <div class="flex-1 px-4 hidden sm:block">
+                    <div class="text-xs font-semibold">Guests</div>
+                    <div class="text-sm text-brand-muted">Add guests</div>
+                </div>
+                <button class="bg-brand-accent p-2.5 rounded-full text-white ml-2 hover:bg-rose-600 transition-colors">
+                    <i data-lucide="search" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <button class="font-semibold text-sm hover:bg-white/5 px-4 py-2 rounded-full hidden lg:block">Haven your home</button>
+            <button class="p-2 hover:bg-white/5 rounded-full hidden sm:block"><i data-lucide="globe" class="w-5 h-5"></i></button>
+            <div class="flex items-center gap-2 border border-white/10 p-1 pl-3 pr-1 rounded-full bg-brand-card hover:shadow-md cursor-pointer">
+                <i data-lucide="menu" class="w-4 h-4"></i>
+                <div class="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center overflow-hidden">
+                    <img src="https://i.pravatar.cc/100" alt="User">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filters Row -->
+    <div class="w-full px-6 lg:px-8 py-4 border-b border-white/10 bg-brand-bg flex items-center gap-3 overflow-x-auto whitespace-nowrap shrink-0">
+        <button class="border border-white/20 rounded-full px-4 py-2 text-sm font-medium hover:border-white transition-colors flex items-center gap-2">
+            Price <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </button>
+        <button class="border border-white/20 rounded-full px-4 py-2 text-sm font-medium hover:border-white transition-colors flex items-center gap-2">
+            Bedrooms <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </button>
+        
+        <div class="w-px h-6 bg-white/20 mx-2"></div>
+        
+        <button class="bg-white/10 border border-transparent rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2">
+            <i data-lucide="home" class="w-4 h-4"></i> Villa
+        </button>
+        <button class="border border-white/20 rounded-full px-4 py-2 text-sm font-medium hover:border-white transition-colors flex items-center gap-2">
+            <i data-lucide="waves" class="w-4 h-4"></i> Beachfront
+        </button>
+        <button class="border border-white/20 rounded-full px-4 py-2 text-sm font-medium hover:border-white transition-colors flex items-center gap-2">
+            <i data-lucide="droplets" class="w-4 h-4"></i> Pool
+        </button>
+        <button class="border border-white/20 rounded-full px-4 py-2 text-sm font-medium hover:border-white transition-colors flex items-center gap-2">
+            <i data-lucide="mountain-snow" class="w-4 h-4"></i> Amazing Views
+        </button>
+
+        <div class="ml-auto flex items-center gap-3 border border-white/20 rounded-full px-4 py-2 cursor-pointer hover:border-white transition-colors">
+            <span class="text-sm font-medium">Instant Book</span>
+            <div class="w-8 h-5 bg-white/20 rounded-full relative">
+                <div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Split Layout -->
+    <main class="flex-1 flex overflow-hidden relative">
+        
+        <!-- Left: Listing Cards (~55%) -->
+        <div class="w-full lg:w-[55%] p-6 listing-scroll overflow-y-auto pb-32">
+            <p class="text-sm text-brand-muted font-semibold mb-6">Over 1,000 places in Santorini, Greece</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="group cursor-pointer">
+                    <div class="relative aspect-square rounded-2xl overflow-hidden mb-3 bg-gradient-to-br from-blue-400 to-indigo-600">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover mix-blend-overlay group-hover:scale-105 transition-transform duration-500" alt="Villa">
+                        <div class="absolute top-3 right-3 text-white/80 hover:text-white transition-colors z-10 drop-shadow-md">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-white/90 text-black text-xs font-bold px-2 py-1 rounded shadow-sm">
+                            Superhost
+                        </div>
+                        <!-- Pagination Dots -->
+                        <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-10">
+                            <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-heading font-semibold text-lg truncate pr-4">Seaside Modern Villa</h3>
+                            <p class="text-brand-muted text-sm">Santorini, Greece</p>
+                            <p class="text-brand-muted text-sm mt-1">4 beds · Infinity Pool</p>
+                            <div class="mt-2 flex items-center gap-1 text-sm">
+                                <span class="font-bold text-white">$340</span> <span class="text-brand-muted">night</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm font-semibold shrink-0">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current text-white"></i> 4.97
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative aspect-square rounded-2xl overflow-hidden mb-3 bg-gradient-to-br from-orange-300 to-rose-500">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover mix-blend-overlay group-hover:scale-105 transition-transform duration-500" alt="Villa">
+                        <div class="absolute top-3 right-3 text-white/80 hover:text-white transition-colors z-10 drop-shadow-md">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                        <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-10">
+                            <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                            <div class="w-1.5 h-1.5 rounded-full bg-white/50"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-heading font-semibold text-lg truncate pr-4">Cliffside Aegean Retreat</h3>
+                            <p class="text-brand-muted text-sm">Oia, Santorini</p>
+                            <p class="text-brand-muted text-sm mt-1">2 beds · Ocean View</p>
+                            <div class="mt-2 flex items-center gap-1 text-sm">
+                                <span class="font-bold text-white">$520</span> <span class="text-brand-muted">night</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm font-semibold shrink-0">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current text-white"></i> 5.0
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group cursor-pointer">
+                    <div class="relative aspect-square rounded-2xl overflow-hidden mb-3 bg-gradient-to-br from-teal-400 to-emerald-600">
+                         <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover mix-blend-overlay group-hover:scale-105 transition-transform duration-500" alt="Villa">
+                        <div class="absolute top-3 right-3 text-white/80 hover:text-white transition-colors z-10 drop-shadow-md">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-heading font-semibold text-lg truncate pr-4">Minimalist Cave House</h3>
+                            <p class="text-brand-muted text-sm">Fira, Santorini</p>
+                            <p class="text-brand-muted text-sm mt-1">1 bed · Hot tub</p>
+                            <div class="mt-2 flex items-center gap-1 text-sm">
+                                <span class="font-bold text-white">$280</span> <span class="text-brand-muted">night</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm font-semibold shrink-0">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current text-white"></i> 4.85
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Card 4 -->
+                 <div class="group cursor-pointer">
+                    <div class="relative aspect-square rounded-2xl overflow-hidden mb-3 bg-gradient-to-br from-purple-400 to-fuchsia-600">
+                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover mix-blend-overlay group-hover:scale-105 transition-transform duration-500" alt="Villa">
+                        <div class="absolute top-3 right-3 text-white/80 hover:text-white transition-colors z-10 drop-shadow-md">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-white/90 text-black text-xs font-bold px-2 py-1 rounded shadow-sm">
+                            Superhost
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-heading font-semibold text-lg truncate pr-4">Historic Windmill Stay</h3>
+                            <p class="text-brand-muted text-sm">Santorini, Greece</p>
+                            <p class="text-brand-muted text-sm mt-1">3 beds · Unique</p>
+                            <div class="mt-2 flex items-center gap-1 text-sm">
+                                <span class="font-bold text-white">$195</span> <span class="text-brand-muted">night</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm font-semibold shrink-0">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-current text-white"></i> 4.92
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-12">
+                <button class="bg-brand-card hover:bg-white/10 border border-white/20 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                    Show more
+                </button>
+            </div>
+        </div>
+
+        <!-- Right: Map Area (~45%) -->
+        <div class="hidden lg:block w-[45%] h-full map-bg relative border-l border-white/10">
+            <!-- Simulated map UI elements -->
+            <div class="absolute top-4 right-4 flex flex-col gap-2">
+                <button class="w-10 h-10 bg-brand-card border border-white/10 rounded-lg flex items-center justify-center hover:bg-white/10 shadow-lg text-white">
+                    <i data-lucide="plus" class="w-5 h-5"></i>
+                </button>
+                <button class="w-10 h-10 bg-brand-card border border-white/10 rounded-lg flex items-center justify-center hover:bg-white/10 shadow-lg text-white">
+                    <i data-lucide="minus" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Price Markers -->
+            <!-- $340 marker (selected style) -->
+            <button class="price-marker absolute top-[30%] left-[45%] bg-brand-accent text-white font-bold text-sm px-3 py-1.5 rounded-full shadow-xl flex items-center gap-1 z-20 scale-110">
+                $340
+            </button>
+            
+            <!-- Other markers -->
+            <button class="price-marker absolute top-[25%] left-[25%] bg-white text-black font-bold text-sm px-3 py-1.5 rounded-full shadow-lg">
+                $520
+            </button>
+            <button class="price-marker absolute top-[45%] left-[60%] bg-white text-black font-bold text-sm px-3 py-1.5 rounded-full shadow-lg">
+                $280
+            </button>
+            <button class="price-marker absolute top-[60%] left-[35%] bg-white text-black font-bold text-sm px-3 py-1.5 rounded-full shadow-lg">
+                $195
+            </button>
+            <button class="price-marker absolute top-[55%] left-[75%] bg-white text-black font-bold text-sm px-3 py-1.5 rounded-full shadow-lg">
+                $175
+            </button>
+            <button class="price-marker absolute top-[15%] left-[55%] bg-white text-black font-bold text-sm px-3 py-1.5 rounded-full shadow-lg">
+                $410
+            </button>
+            <button class="price-marker absolute top-[75%] left-[50%] bg-white text-black font-bold text-sm px-3 py-1.5 rounded-full shadow-lg">
+                $225
+            </button>
+        </div>
+
+        <!-- Mobile Map Toggle Floating Button -->
+        <div class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+            <button class="bg-brand-card text-white font-semibold px-5 py-3 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-white/10 flex items-center gap-2 hover:scale-105 transition-transform">
+                Map <i data-lucide="map" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                document.querySelectorAll('.font-heading, h1, h2, h3').forEach(el => {
+                    el.style.fontFamily = '"' + font + '", sans-serif';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

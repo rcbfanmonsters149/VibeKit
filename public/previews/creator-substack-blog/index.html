@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mindstream - Editorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#111115',
+                        accent: '#f59e0b',
+                        text: '#f0f0f2'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Newsreader', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Newsreader', serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #111115; color: #f0f0f2; }
+        .font-serif-custom { font-family: var(--font-primary); }
+        
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #f59e0b;
+            z-index: 100;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative">
+    <div id="progress-bar"></div>
+
+    <!-- Floating Actions Ribbon -->
+    <div class="fixed left-8 top-1/3 hidden lg:flex flex-col gap-6 z-40 bg-white/5 border border-white/10 p-3 rounded-full backdrop-blur-sm">
+        <button class="group flex flex-col items-center gap-1 text-white/50 hover:text-accent transition-colors">
+            <i data-lucide="heart" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">284</span>
+        </button>
+        <button class="group flex flex-col items-center gap-1 text-white/50 hover:text-white transition-colors">
+            <i data-lucide="message-square" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">47</span>
+        </button>
+        <button class="text-white/50 hover:text-white transition-colors mt-2">
+            <i data-lucide="bookmark" class="w-5 h-5"></i>
+        </button>
+        <button class="text-white/50 hover:text-white transition-colors">
+            <i data-lucide="share" class="w-5 h-5"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="py-6 px-6 md:px-12 flex items-center justify-between border-b border-white/5 sticky top-0 bg-background/95 backdrop-blur z-30">
+        <div class="text-2xl font-serif-custom font-semibold tracking-tight italic">The Mindstream</div>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
+            <a href="#" class="hover:text-white transition-colors">Essays</a>
+            <a href="#" class="hover:text-white transition-colors">Archive</a>
+            <a href="#" class="hover:text-white transition-colors">About</a>
+        </nav>
+        <button class="bg-accent hover:bg-amber-400 text-black font-semibold px-5 py-2 rounded-full text-sm transition-colors">
+            Subscribe
+        </button>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 py-16">
+        <!-- Article Header -->
+        <header class="mb-12 text-center md:text-left">
+            <span class="text-accent text-sm font-bold uppercase tracking-widest mb-4 block">Technology & Culture</span>
+            <h1 class="text-4xl md:text-6xl font-serif-custom font-semibold leading-tight mb-8">The Quiet Revolution of Ambient Computing</h1>
+            
+            <div class="flex items-center justify-center md:justify-start gap-4 text-sm text-white/60">
+                <img src="https://i.pravatar.cc/150?img=32" alt="Elena Vasquez" class="w-12 h-12 rounded-full object-cover border border-white/10">
+                <div class="text-left">
+                    <p class="font-medium text-white">By Elena Vasquez</p>
+                    <p>Aug 15, 2026 &bull; 8 min read</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Article Body -->
+        <article class="prose prose-invert prose-lg md:prose-xl font-serif-custom leading-relaxed text-white/80 max-w-none">
+            <p class="text-xl mb-8 leading-loose">We are entering an era where technology is no longer something we actively interface with, but rather an environment we inhabit. The screens that have dominated our attention for the last two decades are beginning to dissolve into the background.</p>
+            
+            <p class="mb-8 leading-loose">Consider the smart home of today. It isn't defined by a central control panel, but by a network of invisible sensors and subtle interactions that anticipate needs before they are articulated.</p>
+
+            <blockquote class="my-12 pl-6 border-l-4 border-accent italic text-2xl md:text-3xl font-medium text-white/90 py-2 leading-snug">
+                "Technology is most powerful when it disappears into the fabric of everyday life."
+            </blockquote>
+
+            <p class="mb-8 leading-loose">To understand how this operates under the hood, we have to look at how systems are moving from imperative commands to declarative states. Developers are writing logic that listens passively rather than polling actively. A simple example in modern contextual systems looks like this:</p>
+
+            <div class="bg-black/50 p-6 rounded-xl border border-white/10 my-8 font-mono text-sm overflow-x-auto">
+<pre class="text-white/70"><code><span class="text-blue-400">const</span> room = <span class="text-accent">ambient</span>.observe({
+  location: <span class="text-green-400">'living_space'</span>,
+  occupants: <span class="text-orange-400">true</span>
+});
+
+room.onStateChange((state) => {
+  <span class="text-blue-400">if</span> (state.intent === <span class="text-green-400">'reading'</span>) {
+    lighting.adjust(scene.focused);
+  }
+});</code></pre>
+            </div>
+
+            <p class="mb-12 leading-loose">This paradigm shift requires a fundamental rethinking of user experience design. We are moving from UI (User Interface) to no-UI, where the system's success is measured by how little the user has to interact with it.</p>
+
+            <!-- Newsletter Capture -->
+            <div class="my-16 bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 text-center font-sans">
+                <i data-lucide="mail" class="w-8 h-8 text-accent mx-auto mb-4"></i>
+                <h3 class="text-2xl font-bold text-white mb-2">Enjoyed this essay?</h3>
+                <p class="text-white/60 mb-6">Join 12,847 readers getting weekly essays on the intersection of technology and human experience.</p>
+                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                    <input type="email" placeholder="Your email address" class="flex-1 bg-black/50 border border-white/20 rounded-lg px-4 py-3 focus:outline-none focus:border-accent text-white placeholder-white/40">
+                    <button type="button" class="bg-accent hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-lg transition-colors whitespace-nowrap">
+                        Subscribe — Free
+                    </button>
+                </form>
+                <p class="text-xs text-white/40 mt-4">No spam. Unsubscribe anytime.</p>
+            </div>
+
+            <p class="mb-8 leading-loose">As we build these invisible systems, the ethical implications become paramount. When technology disappears, so does the user's awareness of data collection. Transparency in an ambient world is the next great design challenge.</p>
+        </article>
+
+        <hr class="border-white/10 my-12">
+
+        <!-- Author Bio -->
+        <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start bg-white/[0.02] p-6 rounded-xl font-sans">
+            <img src="https://i.pravatar.cc/150?img=32" alt="Elena Vasquez" class="w-20 h-20 rounded-full object-cover border-2 border-white/10">
+            <div class="text-center sm:text-left flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-2">
+                    <h4 class="text-xl font-bold text-white">Elena Vasquez</h4>
+                    <button class="px-4 py-1.5 rounded-full border border-white/20 hover:bg-white/10 text-sm font-medium transition-colors">Follow</button>
+                </div>
+                <p class="text-white/60 text-sm mb-3">Former design director exploring how computing shapes culture. Writing about ambient tech, invisible interfaces, and the future of human-computer interaction.</p>
+                <p class="text-xs font-semibold text-accent uppercase tracking-wider">247 posts &bull; 12.8k subscribers</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
+        });
+
+        // Live font switching support
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", serif');
+                document.querySelectorAll('.font-serif-custom').forEach(el => {
+                    el.style.fontFamily = '"' + font + '", serif';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

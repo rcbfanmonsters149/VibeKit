@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalSync Executive Meeting Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0f1117',
+                        accent: '#10b981',
+                        text: '#ffffff',
+                        card: '#181b25',
+                        bordercolor: 'rgba(255,255,255,0.08)'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: var(--font-primary); background-color: #0f1117; color: #ffffff; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')]">
+
+    <!-- Header -->
+    <header class="mb-12 flex flex-col items-center">
+        <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mb-4 border border-accent/30 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+            <i data-lucide="calendar-clock" class="w-6 h-6 text-accent"></i>
+        </div>
+        <h1 class="text-2xl font-bold tracking-tight">CalSync</h1>
+    </header>
+
+    <!-- Main Booking Card -->
+    <main class="w-full max-w-5xl bg-card border border-bordercolor rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10">
+        
+        <!-- Left: Host Profile -->
+        <section class="p-8 md:w-[30%] border-b md:border-b-0 md:border-r border-bordercolor bg-white/[0.02]">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-emerald-400 to-cyan-500 mb-4 shadow-lg"></div>
+            <h2 class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-1">Aria Chen</h2>
+            <h3 class="text-2xl font-bold mb-4">30 Minute Strategy Call</h3>
+            
+            <div class="space-y-4 text-sm text-gray-300">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="clock" class="w-5 h-5 text-gray-500"></i>
+                    <span>30 min</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i data-lucide="video" class="w-5 h-5 text-gray-500"></i>
+                    <span>Google Meet</span>
+                </div>
+            </div>
+            
+            <p class="mt-6 text-sm text-gray-400 leading-relaxed">
+                Book a time for us to discuss your product strategy and architecture. Please come prepared with your current tech stack details.
+            </p>
+        </section>
+
+        <!-- Center: Calendar -->
+        <section class="p-8 md:w-[45%] border-b md:border-b-0 md:border-r border-bordercolor">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold">August 2026</h3>
+                <div class="flex gap-2">
+                    <button class="p-1.5 rounded-md hover:bg-white/10 text-gray-400 transition"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+                    <button class="p-1.5 rounded-md hover:bg-white/10 text-gray-400 transition"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+                </div>
+            </div>
+
+            <div class="calendar-grid mb-2 text-center text-xs font-semibold text-gray-500 uppercase">
+                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+            </div>
+            
+            <div class="calendar-grid text-sm text-center">
+                <!-- Padding days -->
+                <div class="p-2 text-gray-700">26</div><div class="p-2 text-gray-700">27</div><div class="p-2 text-gray-700">28</div><div class="p-2 text-gray-700">29</div><div class="p-2 text-gray-700">30</div><div class="p-2 text-gray-700">31</div>
+                
+                <!-- August Days -->
+                <div class="p-2 rounded-full text-gray-500">1</div>
+                <div class="p-2 rounded-full text-gray-500">2</div>
+                <div class="p-2 rounded-full font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30 cursor-pointer relative">3 <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full"></span></div> <!-- Today -->
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">4</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">5</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">6</div>
+                <div class="p-2 rounded-full text-gray-500">7</div>
+                <div class="p-2 rounded-full text-gray-500">8</div>
+                <div class="p-2 rounded-full text-gray-500">9</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">10</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">11</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">12</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">13</div>
+                <div class="p-2 rounded-full text-gray-500">14</div>
+                <div class="p-2 rounded-full text-gray-500">15</div>
+                <div class="p-2 rounded-full text-gray-500">16</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">17</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">18</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">19</div>
+                <div class="p-2 rounded-full font-bold bg-accent text-white shadow-[0_0_15px_rgba(16,185,129,0.4)] cursor-pointer">20</div> <!-- Selected -->
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">21</div>
+                <div class="p-2 rounded-full text-gray-500">22</div>
+                <div class="p-2 rounded-full text-gray-500">23</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">24</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">25</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">26</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">27</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">28</div>
+                <div class="p-2 rounded-full text-gray-500">29</div>
+                <div class="p-2 rounded-full text-gray-500">30</div>
+                <div class="p-2 rounded-full font-medium hover:bg-white/10 cursor-pointer transition">31</div>
+            </div>
+            
+            <div class="mt-8 flex items-center text-sm text-gray-400 gap-2">
+                <i data-lucide="globe" class="w-4 h-4"></i>
+                <select class="bg-transparent border-none focus:ring-0 cursor-pointer hover:text-white transition">
+                    <option class="bg-card">Asia/Kolkata (GMT+5:30)</option>
+                    <option class="bg-card">America/New_York (GMT-4:00)</option>
+                    <option class="bg-card">Europe/London (GMT+1:00)</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Right: Time Slots -->
+        <section class="p-8 md:w-[25%] flex flex-col h-[500px]">
+            <h3 class="text-lg font-bold mb-6">Thursday, Aug 20</h3>
+            
+            <div class="flex-1 overflow-y-auto pr-2 space-y-3 pb-4">
+                <button class="w-full py-3 px-4 rounded-xl border border-bordercolor text-center font-medium hover:border-gray-400 transition text-sm">9:00 AM</button>
+                <button class="w-full py-3 px-4 rounded-xl border border-bordercolor text-center font-medium hover:border-gray-400 transition text-sm">9:30 AM</button>
+                <button class="w-full py-3 px-4 rounded-xl border border-bordercolor text-center font-medium hover:border-gray-400 transition text-sm">10:00 AM</button>
+                
+                <!-- Selected Slot Expansion -->
+                <div class="flex gap-2 animate-[fadeIn_0.2s_ease-out]">
+                    <button class="w-1/2 py-3 px-4 rounded-xl bg-gray-700 text-white font-bold text-sm">10:30 AM</button>
+                    <button class="w-1/2 py-3 px-4 rounded-xl bg-accent hover:bg-emerald-400 text-white font-bold text-sm transition shadow-lg shadow-accent/20">Next</button>
+                </div>
+                
+                <button class="w-full py-3 px-4 rounded-xl border border-bordercolor text-center font-medium hover:border-gray-400 transition text-sm">11:00 AM</button>
+                <button class="w-full py-3 px-4 rounded-xl border border-bordercolor text-center font-medium hover:border-gray-400 transition text-sm">2:00 PM</button>
+                <button class="w-full py-3 px-4 rounded-xl border border-bordercolor text-center font-medium hover:border-gray-400 transition text-sm">2:30 PM</button>
+                <button class="w-full py-3 px-4 rounded-xl border border-bordercolor text-center font-medium hover:border-gray-400 transition text-sm">3:00 PM</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+            }
+        });
+    </script>
+</body>
+</html>

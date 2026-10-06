@@ -1,0 +1,416 @@
+[
+  {
+    "id": "17",
+    "slug": "crypto-swap-analytics",
+    "title": "Web3 DEX Token Swap & Candlestick",
+    "tagline": "Dynamic candlestick chart, slippage tolerance controls, and one-click token swap modal",
+    "description": "A decentralized finance (DEX) interface inspired by Uniswap and Raydium. Includes interactive candlestick price chart with timeframe toggles (1H, 24H, 7D), token swap card with gas fee estimator, and liquidity pool statistics.",
+    "category": "fintech-banking",
+    "style": "DeFi Neon & Dark Glass",
+    "difficulty": "Advanced",
+    "tags": [
+      "Web3",
+      "DEX",
+      "Crypto Swap",
+      "Candlestick Chart",
+      "DeFi"
+    ],
+    "features": [
+      "Interactive candlestick chart with volume bars and timeframe selector",
+      "Token swap card with instant rate calculation and slippage settings",
+      "Wallet connect modal with multi-chain badges (Ethereum, Solana, Arbitrum)",
+      "Live liquidity pool APY and 24h volume stats",
+      "Recent transactions trade ticker table"
+    ],
+    "colorPalette": {
+      "name": "DeFi Indigo & Hot Pink",
+      "bg": "#0d0e15",
+      "accent": "#f43f5e",
+      "text": "#f8fafc"
+    },
+    "previewUrl": "/previews/crypto-swap-analytics/index.html",
+    "stats": {
+      "likes": 2050,
+      "views": "29.8k",
+      "vibecoders": "4.9k"
+    },
+    "aiPrompt": {
+      "standard": "Build a modern Web3 token swap interface with a dark theme (#0d0e15). On the left, display a candlestick chart with volume bars and 24h stats. On the right, include a token swap widget with 'You Pay' (ETH) and 'You Receive' (USDC), slippage tolerance button, and 'Connect Wallet' CTA.",
+      "cursorPrompt": "Create a DeFi crypto swap interface in React and Tailwind CSS with chart preview, token selector, and wallet connection buttons.",
+      "v0Prompt": "Uniswap style crypto DEX interface with price chart, token swap card, slippage settings, and transaction ticker.",
+      "claudePrompt": "Implement a complete Web3 swap and analytics dashboard with interactive price chart and swap card."
+    },
+    "code": {
+      "react": "export default function CryptoSwap() { return <div className=\"bg-[#0d0e15] text-white min-h-screen p-8\">Crypto Swap</div>; }",
+      "html": "<!-- Crypto Swap HTML -->"
+    }
+  },
+  {
+    "id": "18",
+    "slug": "kinetic-agency-marquee",
+    "title": "Kinetic Typography Design Agency",
+    "tagline": "Infinite logo marquees, giant hover-distorted typography, and interactive case study cards",
+    "description": "A bold, award-winning agency website style. Features infinite scrolling partner marquees, kinetic headline typography that reacts on cursor hover, interactive project case studies, and a high-impact contact banner.",
+    "category": "saas-landings",
+    "style": "Brutalist Kinetic / High Energy",
+    "difficulty": "Beginner",
+    "tags": [
+      "Agency",
+      "Kinetic Typography",
+      "Marquee",
+      "Brutalist",
+      "Case Studies"
+    ],
+    "features": [
+      "Infinite CSS marquee ticker for client logos and awards",
+      "Giant headline typography with gradient hover distortion",
+      "Full-bleed project showcase cards with category tags",
+      "Interactive service accordion with animated plus icons",
+      "Sticky 'Book a Call' floating badge in the bottom corner"
+    ],
+    "colorPalette": {
+      "name": "High-Contrast Solar Orange",
+      "bg": "#0a0a0c",
+      "accent": "#f97316",
+      "text": "#ffffff"
+    },
+    "previewUrl": "/previews/kinetic-agency-marquee/index.html",
+    "stats": {
+      "likes": 1870,
+      "views": "27.4k",
+      "vibecoders": "4.1k"
+    },
+    "aiPrompt": {
+      "standard": "Design a creative digital agency landing page with bold kinetic typography, dark background (#0a0a0c), bright solar orange accents (#f97316), infinite client logo marquee, large full-width project case study cards, and a striking contact footer.",
+      "cursorPrompt": "Build a creative agency portfolio with infinite marquee and bold typography using Tailwind CSS and React.",
+      "v0Prompt": "Digital design agency website with kinetic typography, infinite logo ticker, project case studies, and call CTA.",
+      "claudePrompt": "Create a modern creative agency landing page with bold typography and full-width portfolio showcases."
+    },
+    "code": {
+      "react": "export default function AgencyMarquee() { return <div className=\"bg-[#0a0a0c] text-white min-h-screen p-8\">Agency Marquee</div>; }",
+      "html": "<!-- Agency Marquee HTML -->"
+    }
+  },
+  {
+    "id": "19",
+    "slug": "airbnb-map-explorer",
+    "title": "Airbnb Split Map Explorer",
+    "tagline": "Interactive map pins synchronized with scrollable card grid and multi-image photo carousels",
+    "description": "A premier travel and real estate search layout. Features a split-view screen with scrollable listing cards on the left (with image carousels, pricing, and ratings) and an interactive map canvas on the right with price marker pills.",
+    "category": "apps-tools",
+    "style": "Modern Real Estate / Clean Dark",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Airbnb Style",
+      "Map Explorer",
+      "Real Estate",
+      "Image Carousel",
+      "Split View"
+    ],
+    "features": [
+      "Split layout with scrollable property cards and interactive map",
+      "Property cards with image pagination dots and favorite heart toggle",
+      "Map price badge pills that highlight corresponding listing on hover",
+      "Top filter pill bar (Price, Bedrooms, Amenities, Instant Book)",
+      "Bottom mobile toggle button to switch between Map and List"
+    ],
+    "colorPalette": {
+      "name": "Coral & Dark Slate",
+      "bg": "#0f1117",
+      "accent": "#ff385c",
+      "text": "#f3f4f6"
+    },
+    "previewUrl": "/previews/airbnb-map-explorer/index.html",
+    "stats": {
+      "likes": 1940,
+      "views": "29.1k",
+      "vibecoders": "4.6k"
+    },
+    "aiPrompt": {
+      "standard": "Create an Airbnb-style split-screen explorer with listings on the left and a map on the right. Property cards have image sliders, rating stars, price per night ($280/night), and favorite hearts. Map shows price tag markers ($280, $340, $195) that highlight when cards are hovered.",
+      "cursorPrompt": "Build a split-screen map search UI with property listing cards and map pins in React with Tailwind CSS.",
+      "v0Prompt": "Airbnb style travel search page with split map view, property cards with carousels, and filter chips.",
+      "claudePrompt": "Implement a property explorer with dual map and listing card synchronization."
+    },
+    "code": {
+      "react": "export default function AirbnbExplorer() { return <div className=\"bg-[#0f1117] text-white min-h-screen p-8\">Airbnb Explorer</div>; }",
+      "html": "<!-- Airbnb Explorer HTML -->"
+    }
+  },
+  {
+    "id": "20",
+    "slug": "fitness-activity-rings",
+    "title": "Apple Fitness Activity Rings & Stats",
+    "tagline": "Multi-ring SVG circular progress, weekly heart-rate graph, and personal goal milestones",
+    "description": "A wellness and activity tracker dashboard inspired by Apple Fitness and Whoop. Features triple concentric animated SVG activity rings (Move, Exercise, Stand), weekly calorie burn charts, and workout history feed.",
+    "category": "dashboards",
+    "style": "Neon Activity Rings / Dark Health",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Apple Fitness",
+      "Activity Rings",
+      "Health Dashboard",
+      "Charts",
+      "SVG Animation"
+    ],
+    "features": [
+      "Concentric 3-ring SVG progress visualizer (Move, Exercise, Stand)",
+      "Weekly calorie and heart-rate bar chart with average benchmarks",
+      "Recent workouts list with GPS route thumbnails and pace metrics",
+      "Streak counter with badge awards and milestone celebrations",
+      "Quick workout logger modal with activity type icons"
+    ],
+    "colorPalette": {
+      "name": "Neon Move Red, Green & Cyan",
+      "bg": "#07080a",
+      "accent": "#fa114f",
+      "text": "#ffffff"
+    },
+    "previewUrl": "/previews/fitness-activity-rings/index.html",
+    "stats": {
+      "likes": 1670,
+      "views": "23.8k",
+      "vibecoders": "3.6k"
+    },
+    "aiPrompt": {
+      "standard": "Build an Apple Fitness-style health tracking dashboard in pitch black (#07080a). Centerpiece is 3 concentric circular SVG progress rings (Red: Move 640/700 kcal, Green: Exercise 42/30 min, Cyan: Stand 11/12 hrs). Include a weekly activity bar chart and workout history list.",
+      "cursorPrompt": "Create a health dashboard with concentric SVG circular progress rings and activity charts using Tailwind CSS and React.",
+      "v0Prompt": "Apple Fitness activity rings dashboard with Move/Exercise/Stand rings, weekly chart, and workout list.",
+      "claudePrompt": "Implement an activity tracker interface with animated SVG circular rings and metric cards."
+    },
+    "code": {
+      "react": "export default function FitnessRings() { return <div className=\"bg-[#07080a] text-white min-h-screen p-8\">Fitness Rings</div>; }",
+      "html": "<!-- Fitness Rings HTML -->"
+    }
+  },
+  {
+    "id": "21",
+    "slug": "podcast-stream-player",
+    "title": "Dark Modern Podcast & Audio Streamer",
+    "tagline": "Floating bottom playback bar, interactive audio visualizer, and synchronized episode playlist",
+    "description": "A Spotify/Apple Podcasts inspired streaming platform. Features a persistent floating player dock with volume sliders and scrubbers, interactive audio frequency bars, episode playlist queue, and chapter timestamps.",
+    "category": "apps-tools",
+    "style": "Deep Charcoal & Lime Audio",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Podcast",
+      "Audio Player",
+      "Spotify Style",
+      "Waveform",
+      "Streaming"
+    ],
+    "features": [
+      "Floating bottom player with playback controls, progress bar, and speed toggle (1x, 1.5x, 2x)",
+      "Animated audio frequency equalizer bars for currently playing episode",
+      "Episode playlist queue with drag-reorder handles",
+      "Show notes drawer with clickable chapter timestamps",
+      "Guest speaker badges and sponsor link buttons"
+    ],
+    "colorPalette": {
+      "name": "Spotify Emerald & Pitch Dark",
+      "bg": "#0c0d12",
+      "accent": "#1db954",
+      "text": "#ffffff"
+    },
+    "previewUrl": "/previews/podcast-stream-player/index.html",
+    "stats": {
+      "likes": 1540,
+      "views": "20.1k",
+      "vibecoders": "3.2k"
+    },
+    "aiPrompt": {
+      "standard": "Design a podcast streaming web app with a persistent bottom playback bar. Include episode cover art, title, play/pause buttons, interactive progress seekbar, episode playlist list with durations, and a show notes panel with clickable timestamps.",
+      "cursorPrompt": "Build a podcast player web interface with audio scrubber, playlist drawer, and floating player in React with Tailwind CSS.",
+      "v0Prompt": "Podcast streaming app with dark UI, bottom playback bar, episode list, and audio visualizer.",
+      "claudePrompt": "Create an audio streaming platform interface with persistent player and playlist controls."
+    },
+    "code": {
+      "react": "export default function PodcastPlayer() { return <div className=\"bg-[#0c0d12] text-white min-h-screen p-8\">Podcast Player</div>; }",
+      "html": "<!-- Podcast Player HTML -->"
+    }
+  },
+  {
+    "id": "22",
+    "slug": "multi-step-onboarding",
+    "title": "Multi-Step SaaS Onboarding Wizard",
+    "tagline": "Interactive step progress dots, password strength meter, and visual role-selection cards",
+    "description": "A high-conversion onboarding flow for modern SaaS platforms. Features progressive step indicators, interactive role/team size cards, dynamic password entropy meter, and live workspace URL availability checker.",
+    "category": "apps-tools",
+    "style": "Progressive Wizard / Clean Glass",
+    "difficulty": "Beginner",
+    "tags": [
+      "Onboarding",
+      "Form Wizard",
+      "Auth",
+      "Step Progress",
+      "SaaS Flow"
+    ],
+    "features": [
+      "Numbered step progress indicator with completed checkmarks",
+      "Interactive visual role cards (Founder, Engineer, Designer, PM)",
+      "Live workspace subdomain validation input with instant status indicator",
+      "Password strength meter with real-time feedback pills",
+      "Social single-sign-on (Google, GitHub, SSO) buttons"
+    ],
+    "colorPalette": {
+      "name": "Indigo & Royal Violet",
+      "bg": "#0a0b10",
+      "accent": "#6366f1",
+      "text": "#f3f4f6"
+    },
+    "previewUrl": "/previews/multi-step-onboarding/index.html",
+    "stats": {
+      "likes": 1780,
+      "views": "24.6k",
+      "vibecoders": "3.8k"
+    },
+    "aiPrompt": {
+      "standard": "Create a 3-step SaaS onboarding wizard modal. Step 1: Account setup (email, password with strength meter). Step 2: Role selection (Founder, Developer, Designer, Marketer cards). Step 3: Workspace setup (name and custom subdomain). Include step progress breadcrumbs at top.",
+      "cursorPrompt": "Build a multi-step onboarding wizard in React with step navigation, form validation, and role selector cards.",
+      "v0Prompt": "SaaS onboarding modal with 3 steps, progress bar, role cards, and workspace name input.",
+      "claudePrompt": "Implement a clean multi-step registration flow with animated progress and role cards."
+    },
+    "code": {
+      "react": "export default function OnboardingWizard() { return <div className=\"bg-[#0a0b10] text-white min-h-screen p-8\">Onboarding Wizard</div>; }",
+      "html": "<!-- Onboarding Wizard HTML -->"
+    }
+  },
+  {
+    "id": "23",
+    "slug": "saas-feature-matrix",
+    "title": "Comprehensive SaaS Comparison Matrix",
+    "tagline": "Sticky column headers, feature category accordions, and interactive plan highlight switches",
+    "description": "The definitive enterprise comparison table. Features sticky header columns that stay locked during long vertical scrolling, expandable feature categories, tooltip explanations for complex capabilities, and plan filter highlights.",
+    "category": "pricing-conversion",
+    "style": "Enterprise Data Matrix",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Comparison Table",
+      "Pricing Matrix",
+      "Enterprise",
+      "Sticky Headers",
+      "Feature Table"
+    ],
+    "features": [
+      "Sticky header row with tier names and CTA buttons locked on scroll",
+      "Expandable category rows (Core Features, Security, Support, Integrations)",
+      "Interactive tooltips explaining technical feature lines",
+      "Checkmark and cross badges with custom color indicators",
+      "Plan highlight toggle to dim non-selected tiers for fast comparison"
+    ],
+    "colorPalette": {
+      "name": "Enterprise Slate & Blue",
+      "bg": "#0a0d14",
+      "accent": "#3b82f6",
+      "text": "#ededed"
+    },
+    "previewUrl": "/previews/saas-feature-matrix/index.html",
+    "stats": {
+      "likes": 1620,
+      "views": "22.3k",
+      "vibecoders": "3.4k"
+    },
+    "aiPrompt": {
+      "standard": "Build a detailed SaaS feature comparison table with 4 columns: Features, Free, Pro, Enterprise. Group features into categories (Analytics, Security, Team, Integrations). Use sticky table header, green checkmarks for included features, and tooltip icons for explanations.",
+      "cursorPrompt": "Create a responsive feature comparison matrix in React and Tailwind CSS with sticky headers and collapsible categories.",
+      "v0Prompt": "SaaS plan comparison table with sticky headers, feature categories, checkmark badges, and tier CTAs.",
+      "claudePrompt": "Design an enterprise pricing comparison matrix with sticky headers and tooltip details."
+    },
+    "code": {
+      "react": "export default function FeatureMatrix() { return <div className=\"bg-[#0a0d14] text-white min-h-screen p-8\">Feature Matrix</div>; }",
+      "html": "<!-- Feature Matrix HTML -->"
+    }
+  },
+  {
+    "id": "24",
+    "slug": "creator-substack-blog",
+    "title": "Substack & Ghost Creator Blog",
+    "tagline": "High-readability serif publication with email capture newsletter banner and author bio card",
+    "description": "An editorial reading canvas modeled after Substack and Ghost. Features serif typography for long-form reading, reading time indicator, floating share and bookmark ribbon, inline pull-quotes, and newsletter subscribe box.",
+    "category": "portfolios-personal",
+    "style": "Editorial Serif & Clean Dark",
+    "difficulty": "Beginner",
+    "tags": [
+      "Substack",
+      "Ghost",
+      "Blog",
+      "Newsletter",
+      "Editorial"
+    ],
+    "features": [
+      "High-readability serif article body with optimized line-height and max-w-prose",
+      "Top reading progress bar indicator across the viewport",
+      "Floating left ribbon with like count, comment drawer, and bookmark button",
+      "In-article newsletter capture card with instant subscribe button",
+      "Author bio card with follow button and publication stats"
+    ],
+    "colorPalette": {
+      "name": "Warm Obsidian & Paper Gold",
+      "bg": "#111115",
+      "accent": "#f59e0b",
+      "text": "#f0f0f2"
+    },
+    "previewUrl": "/previews/creator-substack-blog/index.html",
+    "stats": {
+      "likes": 1810,
+      "views": "25.0k",
+      "vibecoders": "4.0k"
+    },
+    "aiPrompt": {
+      "standard": "Design an editorial blog article page inspired by Substack with a dark warm theme (#111115). Include an author avatar, publish date, reading time ('5 min read'), large article headline, rich article typography with blockquotes and code blocks, and an inline newsletter subscription box.",
+      "cursorPrompt": "Build a Substack-style article and newsletter page with clean typography and floating social reaction bar in Tailwind CSS and React.",
+      "v0Prompt": "Substack article reading page with newsletter subscription banner, author profile, and reading progress bar.",
+      "claudePrompt": "Implement an editorial reading experience for longform articles and newsletter capture."
+    },
+    "code": {
+      "react": "export default function SubstackBlog() { return <div className=\"bg-[#111115] text-white min-h-screen p-8\">Substack Blog</div>; }",
+      "html": "<!-- Substack Blog HTML -->"
+    }
+  },
+  {
+    "id": "25",
+    "slug": "physics-404-interactive",
+    "title": "Interactive Floating Physics 404",
+    "tagline": "Playable physics-based 404 error experience with floating bouncing cubes and search fallback",
+    "description": "A memorable 404 error page. Features floating interactive physics objects that react to cursor gravity, witty developer error messages, quick-search fallback bar, and smooth navigation escape buttons.",
+    "category": "apps-tools",
+    "style": "Playful Physics & Neon",
+    "difficulty": "Intermediate",
+    "tags": [
+      "404 Page",
+      "Interactive",
+      "Physics",
+      "Error Page",
+      "Micro-Interactions"
+    ],
+    "features": [
+      "Floating neon 404 numeral blocks that react on hover",
+      "Witty developer humor error log (`Error 404: Coordinate lost in hyperspace`)",
+      "Instant search fallback input with quick shortcut pills",
+      "Suggested popular links grid (Home, Gallery, Pricing, Docs)",
+      "Dark ambient starry space background with pulsing glow"
+    ],
+    "colorPalette": {
+      "name": "Deep Cosmic & Neon Purple",
+      "bg": "#07080f",
+      "accent": "#a855f7",
+      "text": "#ffffff"
+    },
+    "previewUrl": "/previews/physics-404-interactive/index.html",
+    "stats": {
+      "likes": 2150,
+      "views": "32.0k",
+      "vibecoders": "5.3k"
+    },
+    "aiPrompt": {
+      "standard": "Build a creative interactive 404 error page with a cosmic dark background (#07080f). Centerpiece is a glowing 3D-styled '404' badge with floating orbital elements. Include a headline 'Lost in the Vibeverse', search bar to find pages, popular navigation shortcuts, and a 'Take Me Home' primary button.",
+      "cursorPrompt": "Create an interactive 404 error page with playful micro-interactions and quick navigation shortcuts in React and Tailwind CSS.",
+      "v0Prompt": "Creative 404 error page with glowing graphics, witty text, search bar, and return home button.",
+      "claudePrompt": "Design an engaging 404 error experience with search fallback and ambient animations."
+    },
+    "code": {
+      "react": "export default function Physics404() { return <div className=\"bg-[#07080f] text-white min-h-screen p-8\">Physics 404</div>; }",
+      "html": "<!-- Physics 404 HTML -->"
+    }
+  }
+]

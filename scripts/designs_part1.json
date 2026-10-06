@@ -1,0 +1,97 @@
+[
+  {
+    "id": "1",
+    "slug": "linear-dark-nebula",
+    "title": "Linear Dark Nebula SaaS",
+    "tagline": "Ultra-refined dark mode hero, glowing mesh gradient, and keyboard-centric bento grid",
+    "description": "Inspired by Linear.app and Raycast, this design features an obsidian dark theme, subtle radial ambient glow, pill badges, interactive keyboard shortcuts, and a modular bento grid showcasing real-time features.",
+    "category": "saas-landings",
+    "style": "Dark Nebula / Obsidian",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Dark Mode",
+      "Mesh Gradient",
+      "Linear Style",
+      "Bento Grid",
+      "Keyboard Shortcuts"
+    ],
+    "features": [
+      "Radial mesh glow background",
+      "Glassmorphic pill badge with live pulsing beacon",
+      "Floating product dashboard with mock task Kanban",
+      "Modular 3-column bento feature grid",
+      "Interactive customer testimonial slider",
+      "Clean monospace footer"
+    ],
+    "colorPalette": {
+      "name": "Obsidian & Violet Glow",
+      "bg": "#08090d",
+      "accent": "#8b5cf6",
+      "text": "#f3f4f6"
+    },
+    "previewUrl": "/previews/linear-dark-nebula/index.html",
+    "stats": {
+      "likes": 1420,
+      "views": "18.4k",
+      "vibecoders": "3.2k"
+    },
+    "aiPrompt": {
+      "standard": "Create a modern Linear.app-inspired SaaS landing page with an obsidian dark theme (#08090d). Include a top glassmorphic navbar with logo and 'Sign In' CTA. In the hero, add a subtle glowing purple/indigo radial background gradient, an animated pill badge 'v2.0 is live', a bold 72px headline with gradient text fill, a 2-line subtitle, and two CTA buttons ('Get Started for Free' and 'Book Demo'). Below the hero, place an interactive mock Kanban dashboard with glowing borders. Follow with a 3-column Bento grid with icon cards, micro-charts, and keyboard shortcut pills (e.g. 'Cmd + K'). Finish with a social proof logo ticker and a clean 4-column footer.",
+      "cursorPrompt": "// Prompt for Cursor:\nBuild a Next.js 15 page using Tailwind CSS for a Linear-style SaaS landing.\n- Theme: bg-[#08090d] text-zinc-100 font-sans.\n- Hero: Centered layout with radial purple glow.\n- Pill badge: bg-zinc-900/80 border border-zinc-800 text-xs px-3 py-1 rounded-full with pulsing emerald dot.\n- Components: Navbar, HeroSection, AppMockup, BentoFeatures, SocialProof, and Footer.\n- Add Lucide icons (ArrowRight, Sparkles, Command, CheckCircle2, ShieldCheck).",
+      "v0Prompt": "Linear style dark mode SaaS landing page with glowing violet background accents. Bento grid layout with interactive task list, keyboard shortcuts badges, customer logos, and glowing CTA cards. Use shadcn/ui button, card, and badge primitives.",
+      "claudePrompt": "Design and implement a complete single-page website for an AI project management tool inspired by Linear.app. Use dark obsidian surfaces (#090a0f), crisp 1px borders (#27272a), glowing violet hover effects (#8b5cf6), and typography pairing of Inter and JetBrains Mono."
+    },
+    "code": {
+      "react": "import React from 'react';\nimport { ArrowRight, Sparkles, Command, ShieldCheck, Zap, Layers } from 'lucide-react';\n\nexport default function LinearDarkNebula() {\n  return (\n    <div className=\"min-h-screen bg-[#08090d] text-zinc-100 font-sans\">\n      {/* Navbar */}\n      <nav className=\"sticky top-0 z-50 border-b border-zinc-800/60 bg-[#08090d]/80 backdrop-blur-md px-6 py-4 flex items-center justify-between max-w-7xl mx-auto\">\n        <div className=\"flex items-center space-x-3\">\n          <div className=\"w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-500/20\">V</div>\n          <span className=\"font-semibold text-lg tracking-tight\">Nebula.io</span>\n        </div>\n        <div className=\"hidden md:flex items-center space-x-8 text-sm text-zinc-400\">\n          <a href=\"#features\" className=\"hover:text-white transition\">Features</a>\n          <a href=\"#bento\" className=\"hover:text-white transition\">Architecture</a>\n          <a href=\"#pricing\" className=\"hover:text-white transition\">Pricing</a>\n        </div>\n        <button className=\"text-sm bg-zinc-100 hover:bg-white text-zinc-950 font-medium px-4 py-2 rounded-full transition\">Get Started</button>\n      </nav>\n      {/* Hero */}\n      <section className=\"relative pt-24 pb-20 px-6 max-w-5xl mx-auto text-center\">\n        <div className=\"inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-800 text-xs text-zinc-300 mb-8\">\n          <span className=\"w-2 h-2 rounded-full bg-emerald-400 animate-pulse\"></span>\n          <span>Linear Nebula 2.0 is now live</span>\n          <ArrowRight className=\"w-3 h-3 text-zinc-500\" />\n        </div>\n        <h1 className=\"text-5xl md:text-7xl font-bold tracking-tight text-white max-w-4xl mx-auto\">\n          The purposeful tool for <span className=\"bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-indigo-300 to-cyan-300\">high-velocity</span> software teams.\n        </h1>\n        <p className=\"mt-6 text-lg text-zinc-400 max-w-2xl mx-auto\">Streamline issue tracking, sprint cycles, and automated roadmaps with blazing-fast keyboard commands.</p>\n      </section>\n    </div>\n  );\n}",
+      "html": "<!-- Linear Dark Nebula HTML -->\n<div class=\"bg-[#08090d] text-zinc-100 min-h-screen font-sans\">\n  <header class=\"p-6 border-b border-zinc-800 flex justify-between items-center\">\n    <div class=\"text-xl font-bold text-purple-400\">Nebula.io</div>\n    <button class=\"bg-white text-black px-4 py-2 rounded-full font-medium text-sm\">Sign In</button>\n  </header>\n  <main class=\"py-20 px-6 text-center max-w-4xl mx-auto\">\n    <h1 class=\"text-6xl font-bold tracking-tight\">Built for high velocity teams</h1>\n    <p class=\"text-zinc-400 mt-4 text-lg\">Next generation task tracking.</p>\n  </main>\n</div>",
+      "vue": "<template>\n  <div class=\"min-h-screen bg-[#08090d] text-zinc-100\">\n    <h1 class=\"text-5xl font-bold text-center py-20\">Linear Dark Nebula</h1>\n  </div>\n</template>"
+    }
+  },
+  {
+    "id": "2",
+    "slug": "stripe-glow-tiers",
+    "title": "Stripe Glow Tiers & Pricing",
+    "tagline": "Luminescent pricing cards with monthly/yearly billing toggle and interactive feature matrix",
+    "description": "An elegant, high-conversion pricing page inspired by Stripe and Supabase. Includes annual billing discount badge, highlighted 'Most Popular' tier with neon gradient border, ROI calculator, and FAQ accordion.",
+    "category": "pricing-conversion",
+    "style": "Luminescent Neon & Glass",
+    "difficulty": "Beginner",
+    "tags": [
+      "Pricing",
+      "Stripe Style",
+      "Glow Card",
+      "Toggle Switch",
+      "FAQ Accordion"
+    ],
+    "features": [
+      "Billed annually / monthly switch with 'Save 20%' badge",
+      "Luminescent highlighted tier with glowing border",
+      "Comprehensive feature comparison checklist",
+      "Interactive monthly active users (MAU) slider",
+      "Expandable FAQ accordion section",
+      "Enterprise custom quote CTA banner"
+    ],
+    "colorPalette": {
+      "name": "Stripe Violet & Cyan",
+      "bg": "#0b0f19",
+      "accent": "#6366f1",
+      "text": "#ffffff"
+    },
+    "previewUrl": "/previews/stripe-glow-tiers/index.html",
+    "stats": {
+      "likes": 1890,
+      "views": "24.1k",
+      "vibecoders": "4.8k"
+    },
+    "aiPrompt": {
+      "standard": "Build a high-conversion SaaS pricing page with 3 tiers: Starter ($19/mo), Pro ($49/mo - marked as Most Popular with glowing indigo gradient border), and Enterprise (Custom). Include an annual vs. monthly billing toggle that applies a 20% discount. Under the cards, add a collapsible FAQ section and a feature comparison table with checkmarks.",
+      "cursorPrompt": "Create a Tailwind CSS pricing component with 3 pricing cards on a dark slate background (#0b0f19). Use glowing gradient borders on the middle card (from-indigo-500 via-purple-500 to-pink-500). Add state for billingPeriod (monthly/yearly) with animated toggle.",
+      "v0Prompt": "Stripe style pricing page with glowing border cards, annual discount toggle pill, checkmark feature list, and enterprise banner. Dark mode with cyan and violet accents.",
+      "claudePrompt": "Generate a complete pricing page with billing toggle, interactive tier cards, detailed feature comparison table, and FAQ accordion using Tailwind CSS and React."
+    },
+    "code": {
+      "react": "import React, { useState } from 'react';\nimport { Check, Sparkles, ArrowRight } from 'lucide-react';\n\nexport default function StripeGlowPricing() {\n  const [annual, setAnnual] = useState(true);\n  return (\n    <div className=\"min-h-screen bg-[#0b0f19] text-white py-20 px-6\">\n      <div className=\"max-w-6xl mx-auto text-center\">\n        <h2 className=\"text-4xl md:text-5xl font-bold tracking-tight\">Predictable pricing for ambitious teams</h2>\n        <p className=\"mt-4 text-zinc-400\">Scale without surprise overages. 14-day free trial on all plans.</p>\n      </div>\n    </div>\n  );\n}",
+      "html": "<!-- Stripe Glow Pricing HTML -->\n<div class=\"bg-[#0b0f19] text-white min-h-screen p-8\">\n  <h1 class=\"text-4xl font-bold text-center\">Predictable Pricing</h1>\n</div>"
+    }
+  }
+]

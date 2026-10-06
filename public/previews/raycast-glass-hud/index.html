@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommandX Desktop HUD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0c0d12',
+                        accent: '#ff6363',
+                        surface: 'rgba(15, 17, 23, 0.85)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Inter', sans-serif; }
+        body { 
+            font-family: var(--font-primary); 
+            background-color: #0c0d12; 
+            color: #ffffff; 
+            overflow: hidden; /* Hide scrollbars for desktop feel */
+        }
+        
+        /* Desktop Background Simulation */
+        .desktop-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(135deg, #1a1c29 0%, #0c0d12 100%);
+            z-index: 0;
+        }
+        
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Glassmorphic Palette */
+        .command-palette {
+            background: var(--surface);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom Scrollbar for palette */
+        .palette-scroll::-webkit-scrollbar { width: 4px; }
+        .palette-scroll::-webkit-scrollbar-track { background: transparent; }
+        .palette-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        
+        .kbd-shortcut {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            font-family: monospace;
+        }
+
+        /* Mac Dock Simulation */
+        .mac-dock {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="antialiased flex items-center justify-center min-h-screen">
+    
+    <!-- Background environment -->
+    <div class="desktop-bg"></div>
+    <div class="noise-overlay"></div>
+    
+    <!-- Decorative background elements -->
+    <div class="absolute top-20 left-20 w-64 h-64 bg-accent/10 rounded-full blur-3xl z-0"></div>
+    <div class="absolute bottom-40 right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl z-0"></div>
+
+    <!-- Main Command Palette -->
+    <div class="command-palette w-full max-w-2xl rounded-2xl flex flex-col z-20 relative overflow-hidden mt-[-10vh]">
+        
+        <!-- Search Input Header -->
+        <div class="p-4 border-b border-white/10 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
+            <input type="text" 
+                   class="bg-transparent w-full outline-none text-xl placeholder-gray-500 text-white font-medium" 
+                   placeholder="Search commands, apps, and more..."
+                   value="Desi">
+        </div>
+
+        <!-- Scrollable List -->
+        <div class="h-[400px] overflow-y-auto palette-scroll p-2">
+            
+            <!-- Section: Suggested -->
+            <div class="mb-4">
+                <div class="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Suggested</div>
+                
+                <!-- Active Item -->
+                <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-accent/20 border border-accent/30 cursor-pointer mb-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center shadow-lg">
+                            <i data-lucide="pen-tool" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <span class="font-medium text-white">Design Resources</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-400">Folder</span>
+                        <div class="kbd-shortcut">↵</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer mb-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center border border-white/10">
+                            <i data-lucide="calendar" class="w-4 h-4 text-gray-300"></i>
+                        </div>
+                        <span class="font-medium text-gray-300">Join "Design Sync" Meeting</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-500">in 5 mins</span>
+                        <div class="kbd-shortcut">⌘J</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Applications -->
+            <div class="mb-4">
+                <div class="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Applications</div>
+                
+                <div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer mb-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center">
+                            <i data-lucide="figma" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <span class="font-medium text-gray-300">Figma</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="kbd-shortcut">⌘1</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer mb-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-blue-600 flex items-center justify-center">
+                            <i data-lucide="message-square" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <span class="font-medium text-gray-300">Discord</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: AI Actions -->
+            <div class="mb-2">
+                <div class="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">AI Actions</div>
+                
+                <div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer mb-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center border border-white/10">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-accent"></i>
+                        </div>
+                        <span class="font-medium text-gray-300">Ask CommandX AI...</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="kbd-shortcut">⇥ Tab</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer mb-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center border border-white/10">
+                            <i data-lucide="languages" class="w-4 h-4 text-gray-300"></i>
+                        </div>
+                        <span class="font-medium text-gray-300">Translate Text</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Action Bar -->
+        <div class="p-3 border-t border-white/10 bg-black/20 flex items-center justify-between text-xs text-gray-400">
+            <div class="flex items-center gap-1.5 bg-white/10 px-2 py-1 rounded text-white font-medium">
+                <i data-lucide="folder-open" class="w-3.5 h-3.5"></i> Open
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-1.5">
+                    <span>Select</span>
+                    <div class="kbd-shortcut">↵</div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span>Actions</span>
+                    <div class="kbd-shortcut">⌘K</div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span>Close</span>
+                    <div class="kbd-shortcut">esc</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Simulated Mac Dock -->
+    <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 mac-dock px-3 py-2 rounded-2xl flex items-center gap-3 z-10">
+        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 transition-transform origin-bottom relative">
+            <i data-lucide="layout-grid" class="w-6 h-6 text-blue-500"></i>
+            <div class="absolute -bottom-1 w-1 h-1 bg-white/50 rounded-full"></div>
+        </div>
+        <div class="w-12 h-12 bg-[#1a1a1a] rounded-xl flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 transition-transform origin-bottom border border-white/10 relative">
+            <i data-lucide="terminal" class="w-6 h-6 text-white"></i>
+            <div class="absolute -bottom-1 w-1 h-1 bg-white/80 rounded-full"></div>
+        </div>
+        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 transition-transform origin-bottom relative">
+            <i data-lucide="mail" class="w-6 h-6 text-white"></i>
+        </div>
+        <div class="w-px h-8 bg-white/20 mx-1"></div>
+        <div class="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl flex items-center justify-center shadow-sm cursor-pointer hover:scale-110 transition-transform origin-bottom border border-white/10 relative">
+            <div class="w-6 h-6 rounded-full border-2 border-accent"></div>
+            <div class="absolute -bottom-1 w-1 h-1 bg-white/80 rounded-full"></div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                document.body.style.fontFamily = '"' + font + '", sans-serif';
+                // Avoid replacing monospace fonts inside kbd shortcuts
+                document.querySelectorAll('h1,h2,h3,h4,h5,span:not(.kbd-shortcut)').forEach(el => {
+                    el.style.fontFamily = '"' + font + '", sans-serif';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

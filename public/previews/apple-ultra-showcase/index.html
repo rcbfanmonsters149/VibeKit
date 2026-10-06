@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Spatial Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#050507',
+                        accent: '#2997ff',
+                        surface: '#1d1d1f',
+                        text: '#f5f5f7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Inter', sans-serif; }
+        body { 
+            font-family: var(--font-primary); 
+            background-color: #050507; 
+            color: #f5f5f7; 
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        
+        .nav-blur {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text {
+            font-size: clamp(3rem, 10vw, 90px);
+            letter-spacing: -0.015em;
+        }
+        
+        .headset-silhouette {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            border-radius: 140px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 50%, rgba(0,0,0,0.8) 100%);
+            box-shadow: 
+                inset 0 1px 1px rgba(255,255,255,0.4),
+                inset 0 -40px 40px rgba(0,0,0,0.8),
+                0 40px 80px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.05);
+        }
+
+        .headset-lens {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            right: 5%;
+            height: 60%;
+            border-radius: 100px;
+            background: linear-gradient(180deg, #111 0%, #000 100%);
+            box-shadow: inset 0 10px 20px rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+        
+        .lens-reflection {
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+            transform: rotate(-15deg);
+            border-radius: 50%;
+        }
+
+        .glass-panel {
+            background: rgba(29, 29, 31, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 h-12 flex items-center justify-between text-xs font-medium">
+            <a href="#" class="text-white font-bold tracking-widest text-sm"><i data-lucide="aperture" class="w-4 h-4 inline-block mr-1"></i> AURA</a>
+            <div class="hidden md:flex space-x-8 text-gray-300">
+                <a href="#" class="hover:text-white transition-colors">Overview</a>
+                <a href="#" class="hover:text-white transition-colors">Design</a>
+                <a href="#" class="hover:text-white transition-colors">Technology</a>
+                <a href="#" class="hover:text-white transition-colors">Specs</a>
+            </div>
+            <a href="#" class="bg-white text-black px-3 py-1 rounded-full hover:bg-gray-200 transition-colors">Buy</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-4 text-center min-h-[90vh] flex flex-col items-center justify-center">
+        <h2 class="text-accent font-semibold tracking-wide text-lg mb-4">Aura Spatial Pro</h2>
+        <h1 class="hero-text font-bold gradient-text mb-6 leading-none">
+            Welcome to<br>spatial computing.
+        </h1>
+        <p class="text-2xl text-gray-400 font-medium max-w-2xl mx-auto mb-16">
+            The most advanced personal electronic device ever created. Blend digital content seamlessly with your physical space.
+        </p>
+
+        <!-- Product Silhouette -->
+        <div class="w-full px-4 mb-20">
+            <div class="headset-silhouette">
+                <div class="headset-lens">
+                    <div class="lens-reflection"></div>
+                    <!-- Eye glow effect inside lens -->
+                    <div class="absolute top-1/2 left-1/4 w-32 h-16 bg-blue-500/20 rounded-full blur-2xl transform -translate-y-1/2"></div>
+                    <div class="absolute top-1/2 right-1/4 w-32 h-16 bg-purple-500/20 rounded-full blur-2xl transform -translate-y-1/2"></div>
+                </div>
+                <!-- Frame details -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-40 h-2 rounded-full bg-white/10"></div>
+            </div>
+        </div>
+
+        <!-- Color Selector -->
+        <div class="flex flex-col items-center gap-4 mb-10">
+            <p class="text-sm font-medium text-gray-400">Available in three finishes</p>
+            <div class="flex gap-6">
+                <button class="flex flex-col items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-[#1c1c1e] border-2 border-white/30 group-hover:border-white shadow-inner transition-colors"></div>
+                    <span class="text-xs font-medium text-gray-300">Space Black</span>
+                </button>
+                <button class="flex flex-col items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-[#e5e5ea] border-2 border-transparent group-hover:border-white/50 shadow-inner transition-colors"></div>
+                    <span class="text-xs font-medium text-gray-500">Silver</span>
+                </button>
+                <button class="flex flex-col items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-[#b2a59a] border-2 border-transparent group-hover:border-white/50 shadow-inner transition-colors"></div>
+                    <span class="text-xs font-medium text-gray-500">Titanium</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs Glass Bar -->
+    <section class="max-w-5xl mx-auto px-6 -mt-10 relative z-10 mb-32">
+        <div class="glass-panel p-8 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10">
+            <div class="text-center px-4">
+                <h4 class="text-4xl font-bold mb-2">12</h4>
+                <p class="text-sm text-gray-400 font-medium">high-res cameras</p>
+            </div>
+            <div class="text-center px-4">
+                <h4 class="text-4xl font-bold mb-2">M4</h4>
+                <p class="text-sm text-gray-400 font-medium">Ultra dual-chip</p>
+            </div>
+            <div class="text-center px-4">
+                <h4 class="text-4xl font-bold mb-2">4K</h4>
+                <p class="text-sm text-gray-400 font-medium">micro-OLED per eye</p>
+            </div>
+            <div class="text-center px-4">
+                <h4 class="text-4xl font-bold mb-2">2TB</h4>
+                <p class="text-sm text-gray-400 font-medium">maximum storage</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="glass-panel p-10 h-[500px] flex flex-col relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-8">
+                    <i data-lucide="layers" class="w-8 h-8 text-gray-400 group-hover:text-white transition-colors"></i>
+                </div>
+                <div class="mt-auto relative z-10">
+                    <h3 class="text-2xl font-bold mb-3">Infinite canvas.</h3>
+                    <p class="text-gray-400 font-medium">Apps scale to any size, anywhere in your room. Your workspace is no longer limited by a display.</p>
+                </div>
+                <!-- Abstract visual -->
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-32 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm -rotate-6"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-32 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm rotate-6 translate-x-10 translate-y-10"></div>
+            </div>
+
+            <div class="glass-panel p-10 h-[500px] flex flex-col relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-8">
+                    <i data-lucide="eye" class="w-8 h-8 text-gray-400 group-hover:text-white transition-colors"></i>
+                </div>
+                <div class="mt-auto relative z-10">
+                    <h3 class="text-2xl font-bold mb-3">Immersive viewing.</h3>
+                    <p class="text-gray-400 font-medium">Transform any room into your own personal theater with spatial audio and 100-foot virtual screens.</p>
+                </div>
+                <!-- Abstract visual -->
+                <div class="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
+                    <div class="w-full h-1/2 bg-gradient-to-t from-black to-transparent absolute bottom-0 z-10"></div>
+                    <div class="w-64 h-32 mx-auto mt-10 rounded-t-full bg-gradient-to-b from-purple-500/40 to-transparent blur-xl"></div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-10 h-[500px] flex flex-col relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-8">
+                    <i data-lucide="battery-charging" class="w-8 h-8 text-gray-400 group-hover:text-white transition-colors"></i>
+                </div>
+                <div class="mt-auto relative z-10">
+                    <h3 class="text-2xl font-bold mb-3">External power.</h3>
+                    <p class="text-gray-400 font-medium">The sleek aluminum battery pack slips into your pocket for up to 4 hours of general use.</p>
+                </div>
+                <!-- Abstract visual -->
+                <div class="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div class="w-20 h-32 rounded-xl bg-gradient-to-br from-gray-700 to-gray-900 border border-gray-600 shadow-2xl relative">
+                        <div class="absolute top-0 right-4 w-1 h-8 bg-gray-500 rounded-b-full"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-32 text-center px-4">
+        <h2 class="text-4xl md:text-5xl font-bold mb-8">Experience Aura Spatial Pro.</h2>
+        <p class="text-xl text-gray-400 mb-10">From $3,499 or $291.58/mo. for 12 mo.*</p>
+        <button class="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-200 transition-colors">
+            Order now
+        </button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-[#000] text-xs text-gray-400 py-10">
+        <div class="max-w-5xl mx-auto px-6">
+            <p class="mb-4 pb-4 border-b border-white/10">* Monthly pricing is available when you select Apple Card Monthly Installments (ACMI) as payment type at checkout at Apple, and is subject to credit approval and credit limit.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 pt-4">
+                <div>
+                    <h4 class="text-gray-200 font-semibold mb-3">Shop and Learn</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-200">Mac</a></li>
+                        <li><a href="#" class="hover:text-gray-200">iPad</a></li>
+                        <li><a href="#" class="hover:text-gray-200">iPhone</a></li>
+                        <li><a href="#" class="hover:text-gray-200">Aura</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-200 font-semibold mb-3">Account</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-200">Manage Your ID</a></li>
+                        <li><a href="#" class="hover:text-gray-200">Aura Store Account</a></li>
+                        <li><a href="#" class="hover:text-gray-200">iCloud.com</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-200 font-semibold mb-3">For Business</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-200">Aura and Business</a></li>
+                        <li><a href="#" class="hover:text-gray-200">Shop for Business</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-200 font-semibold mb-3">About Aura</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-200">Newsroom</a></li>
+                        <li><a href="#" class="hover:text-gray-200">Careers</a></li>
+                        <li><a href="#" class="hover:text-gray-200">Investors</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between pt-6 border-t border-white/10">
+                <p>Copyright © 2026 Aura Inc. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-gray-200">Privacy Policy</a>
+                    <span class="border-l border-gray-600"></span>
+                    <a href="#" class="hover:text-gray-200">Terms of Use</a>
+                    <span class="border-l border-gray-600"></span>
+                    <a href="#" class="hover:text-gray-200">Sales and Refunds</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                document.body.style.fontFamily = '"' + font + '", sans-serif';
+                document.querySelectorAll('h1,h2,h3,h4,h5,.font-heading').forEach(el => {
+                    el.style.fontFamily = '"' + font + '", sans-serif';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

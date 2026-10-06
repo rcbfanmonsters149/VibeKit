@@ -1,0 +1,370 @@
+[
+  {
+    "id": "9",
+    "slug": "bento-modular-grid",
+    "title": "Bento Modular Grid Architecture",
+    "tagline": "Apple and Vercel style modular bento grid showcasing features, live mini-charts, and interactive widgets",
+    "description": "A showcase of the industry-standard Bento Grid design pattern. Features multi-span cards with live sparklines, world map latency dots, team avatar stacks, and glowing hover borders.",
+    "category": "bento-features",
+    "style": "Modular Bento Grid",
+    "difficulty": "Beginner",
+    "tags": [
+      "Bento Grid",
+      "Apple Style",
+      "Feature Grid",
+      "Interactive Cards",
+      "UI Pattern"
+    ],
+    "features": [
+      "Adaptive CSS grid layout with 1x1, 2x1, and 2x2 modular cards",
+      "Interactive live metrics sparkline card",
+      "Global low-latency edge map visualizer card",
+      "Customer testimonial quote with animated avatar stack",
+      "Hover-activated glowing gradient outlines on all cards"
+    ],
+    "colorPalette": {
+      "name": "Deep Slate & Indigo",
+      "bg": "#090b10",
+      "accent": "#818cf8",
+      "text": "#ffffff"
+    },
+    "previewUrl": "/previews/bento-modular-grid/index.html",
+    "stats": {
+      "likes": 2740,
+      "views": "41.6k",
+      "vibecoders": "7.1k"
+    },
+    "aiPrompt": {
+      "standard": "Build a modern Apple-style Bento Grid section with 5 distinct feature cards: 1) Large 2x2 hero card showing an interactive dashboard widget, 2) 2x1 card showing global latency map, 3) 1x1 security badge card, 4) 1x1 speed benchmark card (99.9% uptime), 5) 2x1 developer API code snippet card. Use dark glass cards with 1px borders.",
+      "cursorPrompt": "Create a responsive Bento Grid component in React using Tailwind CSS grid classes (col-span-1, col-span-2, row-span-2). Add subtle hover border gradients.",
+      "v0Prompt": "Bento grid feature showcase with 5 modular cards, charts, code snippets, and glowing hover states.",
+      "claudePrompt": "Implement a modern bento grid layout with varied card spans, live widget data, and sleek dark mode styling."
+    },
+    "code": {
+      "react": "export default function BentoGrid() { return <div className=\"bg-[#090b10] text-white min-h-screen p-8\">Bento Grid</div>; }",
+      "html": "<!-- Bento Grid HTML -->"
+    }
+  },
+  {
+    "id": "10",
+    "slug": "notion-clean-workspace",
+    "title": "Notion Minimalist Workspace",
+    "tagline": "Clean, distraction-free document editor with floating slash menu (`/`) and drag-drop block placeholders",
+    "description": "A pristine, minimalist workspace UI modeled after Notion and Craft. Includes customizable page banner with emoji icon, breadcrumb navigation, typography toggles, and slash-command block inserter.",
+    "category": "apps-tools",
+    "style": "Minimalist Document Workspace",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Notion Style",
+      "Minimalist",
+      "Editor",
+      "Slash Menu",
+      "Productivity"
+    ],
+    "features": [
+      "Customizable page header banner with emoji selector",
+      "Slash command trigger menu (`/heading`, `/todo`, `/table`, `/callout`)",
+      "Interactive to-do checklist with strikethrough animations",
+      "Collapsible toggle block dropdowns",
+      "Right sidebar table of contents overview"
+    ],
+    "colorPalette": {
+      "name": "Notion Monolith Dark",
+      "bg": "#191919",
+      "accent": "#2eaadc",
+      "text": "#e3e3e3"
+    },
+    "previewUrl": "/previews/notion-clean-workspace/index.html",
+    "stats": {
+      "likes": 1530,
+      "views": "19.3k",
+      "vibecoders": "3.1k"
+    },
+    "aiPrompt": {
+      "standard": "Create a Notion-style document workspace interface with a dark theme (#191919). Include a left collapsible sidebar with workspace pages, a top breadcrumb bar, a page title with emoji icon, clean typography, interactive to-do checkboxes, callout blocks with icons, and a floating slash command popover menu.",
+      "cursorPrompt": "Build a Notion-style document page in React and Tailwind CSS with interactive to-dos, callout boxes, and slash-command helper menu.",
+      "v0Prompt": "Notion clone workspace UI with sidebar, editable page title, to-do list, callout boxes, and slash command popup.",
+      "claudePrompt": "Design and implement a clean Notion-inspired workspace document viewer with rich blocks and interactive widgets."
+    },
+    "code": {
+      "react": "export default function NotionWorkspace() { return <div className=\"bg-[#191919] text-white min-h-screen p-8\">Notion Workspace</div>; }",
+      "html": "<!-- Notion Workspace HTML -->"
+    }
+  },
+  {
+    "id": "11",
+    "slug": "arc-gradient-browser",
+    "title": "Arc Floating Sidebar & App Dock",
+    "tagline": "Arc Browser style vertical tab dock with customizable workspace spaces and gradient pill navigation",
+    "description": "The beloved Arc Browser layout recreated for web applications. Features a collapsible left sidebar, pinned app icons with notification badges, split-view layout toggle, and smooth gradient background spaces.",
+    "category": "apps-tools",
+    "style": "Gradient Glassmorphism",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Arc Browser",
+      "Vertical Tabs",
+      "Dock",
+      "Modern App",
+      "Glassmorphism"
+    ],
+    "features": [
+      "Collapsible vertical sidebar with pinned app icons",
+      "Workspace space switcher pills (Work, Personal, Dev)",
+      "Split-screen dual view tab layout",
+      "Floating URL/Search command pill at the top",
+      "Customizable ambient gradient background mesh"
+    ],
+    "colorPalette": {
+      "name": "Arc Sunset Gradient",
+      "bg": "#0f0e17",
+      "accent": "#ff8906",
+      "text": "#fffffe"
+    },
+    "previewUrl": "/previews/arc-gradient-browser/index.html",
+    "stats": {
+      "likes": 1720,
+      "views": "22.5k",
+      "vibecoders": "3.7k"
+    },
+    "aiPrompt": {
+      "standard": "Design an Arc Browser-style web application shell. Include a left vertical sidebar with pinned icons (GitHub, Figma, Notion, Slack), spaces pill tabs at the bottom, a floating search/URL pill at the top, and a split-view main content canvas with vibrant ambient mesh gradients.",
+      "cursorPrompt": "Build an Arc browser UI shell using React and Tailwind CSS with a vertical tab dock, workspace spaces selector, and split-screen web frame.",
+      "v0Prompt": "Arc Browser style interface with vertical sidebar, pinned app icons, space switcher, and split web canvas.",
+      "claudePrompt": "Create a modern desktop-style app shell inspired by Arc Browser with vertical navigation and ambient themes."
+    },
+    "code": {
+      "react": "export default function ArcBrowser() { return <div className=\"bg-[#0f0e17] text-white min-h-screen p-8\">Arc Browser Dock</div>; }",
+      "html": "<!-- Arc Browser HTML -->"
+    }
+  },
+  {
+    "id": "12",
+    "slug": "descript-video-creator",
+    "title": "Descript & Loom Video Hub",
+    "tagline": "Video playback studio with synchronized transcript highlighting and interactive audio waveform seek",
+    "description": "An intuitive video editor and recording dashboard inspired by Descript and Loom. Includes interactive video player, word-by-word synced transcript editor, timeline track with waveforms, and AI video clip generator.",
+    "category": "ai-workspaces",
+    "style": "Creator Studio / Dark Purple",
+    "difficulty": "Advanced",
+    "tags": [
+      "Video Editor",
+      "Descript",
+      "Waveform",
+      "Transcript Sync",
+      "Creator Tools"
+    ],
+    "features": [
+      "Synced transcript with word-level click-to-seek video playback",
+      "Interactive audio waveform track scrubber",
+      "One-click 'Remove Filler Words' AI action badge",
+      "Video export resolution and aspect ratio modal (16:9, 9:16, 1:1)",
+      "Comments and team feedback timestamp markers"
+    ],
+    "colorPalette": {
+      "name": "Descript Indigo Studio",
+      "bg": "#101015",
+      "accent": "#6366f1",
+      "text": "#f4f4f5"
+    },
+    "previewUrl": "/previews/descript-video-creator/index.html",
+    "stats": {
+      "likes": 1610,
+      "views": "21.0k",
+      "vibecoders": "3.3k"
+    },
+    "aiPrompt": {
+      "standard": "Build a video editing creator studio layout inspired by Descript. The top left is an interactive video player with playback controls. The top right is a synchronized transcript document where clicking any sentence seeks the video. The bottom panel is an audio waveform timeline with chapter markers.",
+      "cursorPrompt": "Create a video editing interface with video player, transcript text editor, and timeline scrubber using React and Tailwind CSS.",
+      "v0Prompt": "Descript style video editor with transcript sync, video player, and audio waveform timeline.",
+      "claudePrompt": "Implement a video creator studio interface with word-level transcript seek and timeline track."
+    },
+    "code": {
+      "react": "export default function DescriptVideo() { return <div className=\"bg-[#101015] text-white min-h-screen p-8\">Descript Video Studio</div>; }",
+      "html": "<!-- Descript Video HTML -->"
+    }
+  },
+  {
+    "id": "13",
+    "slug": "midjourney-art-feed",
+    "title": "Midjourney AI Art Feed",
+    "tagline": "Infinite masonry image feed with prompt inspection, aspect ratio pills, and upscale action buttons",
+    "description": "A stunning visual gallery modeled after Midjourney and Leonardo AI. Features a responsive masonry image grid, one-click prompt inspector overlay, aspect ratio toggles (16:9, 1:1, 9:16), and generation parameter badges.",
+    "category": "ai-workspaces",
+    "style": "Visual Masonry & Neon",
+    "difficulty": "Beginner",
+    "tags": [
+      "Midjourney",
+      "AI Art",
+      "Masonry Grid",
+      "Prompt Inspector",
+      "Image Feed"
+    ],
+    "features": [
+      "Dynamic masonry grid layout for varying image proportions",
+      "Hover overlay with full AI prompt, model version, and seed",
+      "One-click 'Copy Full Prompt' and 'Remix' buttons",
+      "Aspect ratio and style filter chips (Photorealistic, Anime, Cyberpunk, 3D)",
+      "Image detail modal with variations and upscale triggers"
+    ],
+    "colorPalette": {
+      "name": "Cyber Magenta & Dark Charcoal",
+      "bg": "#0c0d10",
+      "accent": "#ec4899",
+      "text": "#f9fafb"
+    },
+    "previewUrl": "/previews/midjourney-art-feed/index.html",
+    "stats": {
+      "likes": 2890,
+      "views": "45.2k",
+      "vibecoders": "8.2k"
+    },
+    "aiPrompt": {
+      "standard": "Create a Midjourney-style AI image generation gallery with a dark masonry grid. Each card displays an AI-generated artwork with a hover overlay showing the generation prompt, aspect ratio tag, upscale buttons (U1, U2, U3, U4), and variation buttons (V1, V2, V3, V4).",
+      "cursorPrompt": "Build a responsive masonry image gallery with hover prompt inspection and filter chips using Tailwind CSS and React.",
+      "v0Prompt": "Midjourney art feed with masonry cards, prompt inspector, aspect ratio filters, and upscale buttons.",
+      "claudePrompt": "Design an AI prompt and image showcase gallery with dynamic masonry layout and metadata overlays."
+    },
+    "code": {
+      "react": "export default function MidjourneyFeed() { return <div className=\"bg-[#0c0d10] text-white min-h-screen p-8\">Midjourney Feed</div>; }",
+      "html": "<!-- Midjourney Feed HTML -->"
+    }
+  },
+  {
+    "id": "14",
+    "slug": "cal-modern-scheduler",
+    "title": "Cal.com Modern Scheduler",
+    "tagline": "Timezone-aware date picker, slot selector, and frictionless meeting confirmation flow",
+    "description": "A frictionless scheduling experience modeled after Cal.com and Calendly. Features an interactive month calendar, dynamic time slot column with timezone detection, avatar bio header, and booking form modal.",
+    "category": "apps-tools",
+    "style": "Clean Minimalist Booking",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Cal.com",
+      "Calendar",
+      "Scheduler",
+      "Booking Flow",
+      "Timezone"
+    ],
+    "features": [
+      "Interactive monthly calendar grid with available day indicators",
+      "Real-time timezone detection dropdown",
+      "Dynamic time slot list with 15min / 30min / 60min duration toggles",
+      "Host profile avatar with meeting description and Google Meet badge",
+      "Smooth confirmation modal with calendar invite download"
+    ],
+    "colorPalette": {
+      "name": "Slate & Emerald Booking",
+      "bg": "#0f1117",
+      "accent": "#10b981",
+      "text": "#ffffff"
+    },
+    "previewUrl": "/previews/cal-modern-scheduler/index.html",
+    "stats": {
+      "likes": 1480,
+      "views": "18.7k",
+      "vibecoders": "2.9k"
+    },
+    "aiPrompt": {
+      "standard": "Build a Cal.com-style meeting booking card. Left side has host avatar, name, meeting title ('30 Min Strategy Call'), and duration. Middle is an interactive month calendar picker. Right side lists available time slots for the selected day with a 'Next' booking button.",
+      "cursorPrompt": "Create a modern scheduling UI with calendar date picker, time slot selector, and timezone toggle in React with Tailwind CSS.",
+      "v0Prompt": "Cal.com meeting scheduler interface with calendar grid, time slots column, host details, and booking modal.",
+      "claudePrompt": "Implement a clean meeting scheduling widget with date picking, time slot selection, and confirmation flow."
+    },
+    "code": {
+      "react": "export default function CalScheduler() { return <div className=\"bg-[#0f1117] text-white min-h-screen p-8\">Cal.com Scheduler</div>; }",
+      "html": "<!-- Cal Scheduler HTML -->"
+    }
+  },
+  {
+    "id": "15",
+    "slug": "cyberpunk-dev-terminal",
+    "title": "Cyberpunk Developer Terminal",
+    "tagline": "Interactive ASCII header, functional bash commands, and retro phosphor scanlines",
+    "description": "An authentic hacker terminal portfolio. Features a retro CRT scanline overlay, interactive bash prompt with commands (`help`, `projects`, `skills`, `contact`, `clear`), live typing effect, and ASCII art header.",
+    "category": "portfolios-personal",
+    "style": "Cyberpunk Terminal / Matrix Green",
+    "difficulty": "Intermediate",
+    "tags": [
+      "Cyberpunk",
+      "Terminal",
+      "Portfolio",
+      "CLI",
+      "ASCII Art"
+    ],
+    "features": [
+      "Interactive command line input with history and auto-complete",
+      "Built-in command parser (`help`, `whoami`, `projects`, `skills`, `sudo`)",
+      "CRT scanline and flicker effect toggle",
+      "Live typing animation on startup",
+      "Clickable output links to GitHub repositories"
+    ],
+    "colorPalette": {
+      "name": "Matrix Phosphor Green",
+      "bg": "#050805",
+      "accent": "#22c55e",
+      "text": "#4ade80"
+    },
+    "previewUrl": "/previews/cyberpunk-dev-terminal/index.html",
+    "stats": {
+      "likes": 2310,
+      "views": "35.1k",
+      "vibecoders": "6.2k"
+    },
+    "aiPrompt": {
+      "standard": "Build a retro Cyberpunk terminal portfolio in dark green (#050805) with JetBrains Mono font. Include an ASCII banner art, a functional terminal prompt `user@vibekit:~$ ` where typing commands like `help`, `projects`, `skills`, `contact` prints styled outputs with status dots.",
+      "cursorPrompt": "Create an interactive CLI terminal portfolio in React with command history, typing effects, and retro phosphor green styling.",
+      "v0Prompt": "Cyberpunk terminal portfolio with ASCII logo, functional command input, project list, and CRT scanline effects.",
+      "claudePrompt": "Implement an interactive developer terminal website with command parser, responsive CLI layout, and retro aesthetics."
+    },
+    "code": {
+      "react": "export default function CyberpunkTerminal() { return <div className=\"bg-[#050805] text-[#4ade80] min-h-screen p-8 font-mono\">Cyberpunk Terminal</div>; }",
+      "html": "<!-- Cyberpunk Terminal HTML -->"
+    }
+  },
+  {
+    "id": "16",
+    "slug": "luxury-fashion-lookbook",
+    "title": "Editorial High-Fashion Lookbook",
+    "tagline": "Asymmetric magazine grid, sticky filter drawer, and high-contrast editorial serif typography",
+    "description": "A high-fashion luxury e-commerce experience. Features editorial typography, split sticky sidebar with collection filters, asymmetrical product photography grid, and interactive quick-look slideout drawer.",
+    "category": "portfolios-personal",
+    "style": "Editorial Luxury & Serif",
+    "difficulty": "Beginner",
+    "tags": [
+      "E-commerce",
+      "Editorial",
+      "Fashion",
+      "Typography",
+      "Lookbook"
+    ],
+    "features": [
+      "Asymmetrical magazine-style product grid with hover zoom",
+      "Sticky left editorial index with category counts",
+      "Interactive quick-add drawer with size and color selectors",
+      "Oversized serif editorial headlines (Cinzel / Playfair Display)",
+      "Seamless sticky add-to-bag banner on scroll"
+    ],
+    "colorPalette": {
+      "name": "Monochrome Cream & Charcoal",
+      "bg": "#0f0f11",
+      "accent": "#e2d9c8",
+      "text": "#f5f5f5"
+    },
+    "previewUrl": "/previews/luxury-fashion-lookbook/index.html",
+    "stats": {
+      "likes": 1390,
+      "views": "17.2k",
+      "vibecoders": "2.8k"
+    },
+    "aiPrompt": {
+      "standard": "Create an editorial luxury fashion e-commerce lookbook. Use deep obsidian background (#0f0f11), elegant serif headers (Playfair Display / Cinzel), asymmetrical product cards with image hover zoom, price tags, and an interactive slide-over cart drawer.",
+      "cursorPrompt": "Build a high-fashion editorial lookbook using React and Tailwind CSS with asymmetrical grid layouts and quick-view modals.",
+      "v0Prompt": "Editorial fashion store lookbook with large typography, product grid, size selector, and slideout cart.",
+      "claudePrompt": "Design a luxury fashion lookbook website with editorial typography and responsive product showcase."
+    },
+    "code": {
+      "react": "export default function FashionLookbook() { return <div className=\"bg-[#0f0f11] text-white min-h-screen p-8\">Fashion Lookbook</div>; }",
+      "html": "<!-- Fashion Lookbook HTML -->"
+    }
+  }
+]

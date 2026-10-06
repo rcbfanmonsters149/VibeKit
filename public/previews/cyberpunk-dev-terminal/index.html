@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetSec Cyber Defense Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#050805',
+                        accent: '#22c55e',
+                        text: '#4ade80'
+                    },
+                    fontFamily: {
+                        sans: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'JetBrains Mono', monospace; }
+        body { font-family: var(--font-primary); background-color: #050805; color: #4ade80; }
+        
+        /* CRT Effects */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        .flicker {
+            animation: flicker 0.15s infinite;
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 0.95; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+
+        .glow { text-shadow: 0 0 5px rgba(74, 222, 128, 0.5); }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #050805; border-left: 1px solid #14532d; }
+        ::-webkit-scrollbar-thumb { background: #166534; }
+        ::-webkit-scrollbar-thumb:hover { background: #22c55e; }
+        
+        pre { margin: 0; }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="h-screen w-screen overflow-hidden flex flex-col p-4 sm:p-6 text-sm sm:text-base relative flicker glow">
+    <!-- Overlay Effects -->
+    <div class="scanlines"></div>
+    <div class="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.9)] pointer-events-none z-50"></div>
+
+    <!-- Main Container -->
+    <div class="flex-1 flex flex-col border border-green-900 rounded-sm p-4 relative z-10 bg-black/40 overflow-hidden">
+        
+        <!-- Header / ASCII Art -->
+        <header class="mb-6 shrink-0 text-green-500">
+<pre class="leading-tight text-xs sm:text-sm md:text-base font-bold">
+███╗   ██╗███████╗████████╗███████╗███████╗ ██████╗
+████╗  ██║██╔════╝╚══██╔══╝██╔════╝██╔════╝██╔════╝
+██╔██╗ ██║█████╗     ██║   ███████╗█████╗  ██║
+██║╚██╗██║██╔══╝     ██║   ╚════██║██╔══╝  ██║
+██║ ╚████║███████╗   ██║   ███████║███████╗╚██████╗
+╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚══════╝╚══════╝ ╚═════╝
+</pre>
+            <div class="mt-2 text-green-700 border-b border-green-900 pb-2">COMMAND & CONTROL INTERFACE v4.2.1 // AUTH: REQUIRED</div>
+        </header>
+
+        <!-- Main Terminal Area -->
+        <main class="flex-1 overflow-y-auto mb-4 flex flex-col gap-1 pr-2">
+            <div class="text-green-600">[BOOT] NetSec Defense Core v4.2.1 initialized...</div>
+            <div class="text-green-600">[OK] Kernel modules loaded successfully.</div>
+            <div class="text-green-600">[OK] Firewall active — 847 rules loaded</div>
+            <div class="text-green-600">[OK] IDS/IPS monitoring 12 network segments</div>
+            <div class="text-yellow-500">[WARN] 3 suspicious connections flagged on eth0</div>
+            <div class="text-green-600">[OK] Establishing secure uplink... DONE.</div>
+            <br>
+            
+            <div class="flex gap-2">
+                <span class="text-green-400 font-bold">operator@netsec:~$</span>
+                <span class="text-green-200">scan --network 10.0.0.0/24</span>
+            </div>
+            
+            <div class="my-2 border border-green-900 bg-green-950/20 p-2">
+                <table class="w-full text-left border-collapse">
+                    <tr class="border-b border-green-900 text-green-600">
+                        <th class="py-1">IP ADDRESS</th><th>HOSTNAME</th><th>STATUS</th><th>LATENCY</th>
+                    </tr>
+                    <tr><td class="py-1">10.0.0.1</td><td>gateway-router</td><td><span class="text-green-500">UP</span></td><td>1.2ms</td></tr>
+                    <tr><td class="py-1">10.0.0.42</td><td>app-server-01</td><td><span class="text-green-500">UP</span></td><td>0.8ms</td></tr>
+                    <tr><td class="py-1 text-red-400">10.0.0.88</td><td class="text-red-400">UNKNOWN</td><td><span class="text-red-500 blink">ALERT</span></td><td>12.4ms</td></tr>
+                    <tr><td class="py-1">10.0.0.105</td><td>db-master</td><td><span class="text-green-500">UP</span></td><td>0.5ms</td></tr>
+                </table>
+            </div>
+            
+            <div class="flex gap-2">
+                <span class="text-green-400 font-bold">operator@netsec:~$</span>
+                <span class="text-green-200">status</span>
+            </div>
+            
+            <div class="my-2 text-green-300">
+                SYSTEM HEALTH:<br>
+                CPU:  [████████░░░░░░░░░░░░] 34%<br>
+                MEM:  [███████████████░░░░░] 67% (16.2GB / 24GB)<br>
+                NET:  Tx: 14.2 Mbps / Rx: 8.4 Mbps<br>
+                Threats blocked (24h): 14,293
+            </div>
+
+            <div class="flex gap-2">
+                <span class="text-green-400 font-bold">operator@netsec:~$</span>
+                <span class="text-green-200">nodes</span>
+            </div>
+            <div class="my-2 text-green-500">
+                • Node Alpha   (EU-WEST): SECURE<br>
+                • Node Beta    (US-EAST): SECURE<br>
+                <span class="text-yellow-500">• Node Gamma   (AP-SOUTHEAST): HIGH LOAD</span><br>
+                • Node Delta   (US-WEST): SECURE
+            </div>
+
+            <!-- Active Prompt -->
+            <div class="flex gap-2 mt-4">
+                <span class="text-green-400 font-bold">operator@netsec:~$</span>
+                <span class="inline-block w-2.5 h-5 bg-green-500 blink align-middle"></span>
+            </div>
+        </main>
+
+        <!-- Bottom Split Panel -->
+        <footer class="h-40 border-t border-green-900 pt-4 flex gap-4 shrink-0">
+            <!-- Traffic Monitor -->
+            <div class="flex-1 border border-green-900 bg-black/60 p-2 flex flex-col">
+                <div class="text-xs text-green-700 mb-2 font-bold tracking-widest border-b border-green-900 pb-1">LIVE TRAFFIC MONITOR</div>
+                <div class="flex-1 overflow-hidden flex flex-col justify-end text-xs space-y-1 text-green-600">
+                    <div class="flex justify-between"><span>TCP  192.168.1.104:443 -> 10.0.0.42:5432</span><span>[ALLOW]</span></div>
+                    <div class="flex justify-between"><span>UDP  8.8.8.8:53 -> 10.0.0.1:49152</span><span>[ALLOW]</span></div>
+                    <div class="flex justify-between text-red-500"><span>TCP  45.33.22.11:80 -> 10.0.0.88:22</span><span>[DROP]</span></div>
+                    <div class="flex justify-between"><span>TCP  192.168.1.5:443 -> 10.0.0.42:443</span><span>[ALLOW]</span></div>
+                    <div class="flex justify-between"><span>ICMP 10.0.0.1 -> 10.0.0.105</span><span>[ALLOW]</span></div>
+                </div>
+            </div>
+            
+            <!-- Threat Level -->
+            <div class="w-48 border border-green-900 bg-black/60 p-2 flex flex-col items-center justify-center relative overflow-hidden">
+                <div class="absolute top-2 left-2 text-xs text-green-700 font-bold">THREAT LEVEL</div>
+                
+                <!-- Radar animation css -->
+                <div class="w-20 h-20 border border-green-800 rounded-full relative mt-4">
+                    <div class="absolute top-1/2 left-0 right-0 h-px bg-green-900/50"></div>
+                    <div class="absolute top-0 bottom-0 left-1/2 w-px bg-green-900/50"></div>
+                    <div class="absolute inset-0 bg-green-500/20 rounded-full" style="clip-path: polygon(50% 50%, 100% 0, 100% 50%); animation: spin 4s linear infinite; transform-origin: center;"></div>
+                </div>
+                <div class="mt-2 text-xl font-bold text-green-400 tracking-widest">LOW</div>
+                
+                <style>
+                    @keyframes spin { 100% { transform: rotate(360deg); } }
+                </style>
+            </div>
+        </footer>
+        
+    </div>
+
+    <script>
+        lucide.createIcons();
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", monospace');
+            }
+        });
+    </script>
+</body>
+</html>

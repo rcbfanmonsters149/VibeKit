@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina AI Art & Generative Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0c0d10',
+                        accent: '#ec4899',
+                        text: '#f9fafb'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Space Grotesk', sans-serif; }
+        body { font-family: var(--font-primary); background-color: #0c0d10; color: #f9fafb; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+        .masonry { column-count: 1; column-gap: 1.5rem; }
+        @media (min-width: 640px) { .masonry { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry { column-count: 3; } }
+        @media (min-width: 1280px) { .masonry { column-count: 4; } }
+        .masonry-item { break-inside: avoid; margin-bottom: 1.5rem; position: relative; overflow: hidden; border-radius: 1rem; }
+        .art-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Top Bar -->
+    <header class="sticky top-0 z-50 bg-[#0c0d10]/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+                        <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">Lumina</span>
+                </div>
+                
+                <div class="flex-1 max-w-2xl hidden md:flex">
+                    <div class="relative w-full">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
+                        </div>
+                        <input type="text" class="block w-full pl-10 pr-3 py-2 border border-white/10 rounded-full leading-5 bg-white/5 text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-white/10 focus:border-pink-500 sm:text-sm transition-colors" placeholder="Search prompts, styles, or creators...">
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button class="bg-white/10 hover:bg-white/20 p-2 rounded-full transition"><i data-lucide="bell" class="w-5 h-5"></i></button>
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 border-2 border-white/20 cursor-pointer"></div>
+                    <button class="hidden sm:flex bg-accent hover:bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Generate
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="flex items-center gap-4 py-3 overflow-x-auto no-scrollbar">
+                <div class="flex items-center gap-2 pr-4 border-r border-white/10 shrink-0">
+                    <button class="px-3 py-1.5 rounded-full text-sm font-medium bg-white/10 text-white hover:bg-white/20 transition flex items-center gap-1"><i data-lucide="sliders-horizontal" class="w-4 h-4"></i> Filters</button>
+                </div>
+                <div class="flex gap-2 shrink-0">
+                    <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-accent/20 text-accent border border-accent/50">All Styles</button>
+                    <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 transition">Photorealistic</button>
+                    <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 transition">Anime</button>
+                    <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 transition">Cyberpunk</button>
+                    <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 transition">3D Render</button>
+                    <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 transition">Abstract</button>
+                </div>
+                <div class="flex-1"></div>
+                <div class="flex gap-2 shrink-0 border-l border-white/10 pl-4">
+                    <button class="p-1.5 rounded bg-white/10 text-white"><div class="w-4 h-3 border border-current rounded-sm"></div></button>
+                    <button class="p-1.5 rounded hover:bg-white/10 text-gray-400"><div class="w-3 h-4 border border-current rounded-sm"></div></button>
+                    <button class="p-1.5 rounded hover:bg-white/10 text-gray-400"><div class="w-3 h-3 border border-current rounded-sm"></div></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+        <div class="masonry" id="gallery">
+            <!-- Items injected via JS for variety -->
+        </div>
+    </main>
+
+    <footer class="border-t border-white/10 py-8 text-center text-gray-500 text-sm mt-auto">
+        <p>847,293 artworks generated this week • Lumina AI v5.2</p>
+    </footer>
+
+    <script>
+        const gallery = document.getElementById('gallery');
+        const gradients = [
+            'from-purple-500 to-indigo-600',
+            'from-pink-500 to-rose-500',
+            'from-emerald-400 to-cyan-500',
+            'from-amber-500 to-orange-600',
+            'from-blue-600 to-violet-600',
+            'from-fuchsia-600 to-pink-600',
+            'from-teal-400 to-emerald-500',
+            'from-red-500 to-orange-500',
+            'from-slate-700 to-slate-900',
+            'from-indigo-400 to-cyan-400',
+            'from-rose-400 to-orange-300',
+            'from-violet-500 to-purple-500'
+        ];
+        const heights = ['h-64', 'h-80', 'h-96', 'h-[28rem]', 'h-[32rem]'];
+        const prompts = [
+            "A cyberpunk cityscape at twilight, neon lights reflecting on wet streets, 8k resolution, cinematic lighting",
+            "Ethereal portrait of a forest spirit, glowing moss, volumetric fog, digital painting artstation",
+            "Minimalist architecture, brutalist concrete structure with lush greenery, soft sunlight",
+            "Macro photography of an intricate clockwork insect, brass and glass, incredibly detailed",
+            "Astronaut floating in a surreal galaxy made of liquid colors, dreamy atmosphere",
+            "Cozy cabin interior, rainy day outside window, warm fireplace glow, lofi aesthetic"
+        ];
+
+        for(let i=0; i<16; i++) {
+            const grad = gradients[i % gradients.length];
+            const h = heights[Math.floor(Math.random() * heights.length)];
+            const prompt = prompts[Math.floor(Math.random() * prompts.length)];
+            
+            const el = document.createElement('div');
+            el.className = `masonry-item ${h} group cursor-pointer`;
+            el.innerHTML = `
+                <div class="absolute inset-0 bg-gradient-to-br ${grad} opacity-80 group-hover:scale-105 transition-transform duration-700"></div>
+                <div class="absolute inset-0 art-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
+                    <div class="flex justify-end gap-2 transform -translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <button class="p-2 bg-white/20 hover:bg-white/30 backdrop-blur rounded-full text-white" title="Copy Prompt"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                        <button class="p-2 bg-white/20 hover:bg-white/30 backdrop-blur rounded-full text-white" title="Remix"><i data-lucide="wand-2" class="w-4 h-4"></i></button>
+                    </div>
+                    
+                    <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <p class="text-sm font-medium text-white mb-2 line-clamp-3">${prompt}</p>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-black/50 text-gray-300 border border-white/10">Lumina v5.2</span>
+                            <span class="text-[10px] text-gray-400">Seed: ${Math.floor(Math.random()*900000+100000)}</span>
+                        </div>
+                        <div class="flex gap-1">
+                            <button class="flex-1 py-1 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded border border-white/10">U1</button>
+                            <button class="flex-1 py-1 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded border border-white/10">U2</button>
+                            <button class="flex-1 py-1 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded border border-white/10">U3</button>
+                            <button class="flex-1 py-1 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded border border-white/10">U4</button>
+                        </div>
+                        <div class="flex gap-1 mt-1">
+                            <button class="flex-1 py-1 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded border border-white/10">V1</button>
+                            <button class="flex-1 py-1 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded border border-white/10">V2</button>
+                            <button class="flex-1 py-1 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded border border-white/10">V3</button>
+                            <button class="flex-1 py-1 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded border border-white/10">V4</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            gallery.appendChild(el);
+        }
+    </script>
+    <script>
+        setTimeout(() => { lucide.createIcons(); }, 100);
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+            }
+        });
+    </script>
+</body>
+</html>

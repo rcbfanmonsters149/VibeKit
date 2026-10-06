@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgeTelemetry Cloud Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#000000',
+                        foreground: '#ededed',
+                        accent: '#0070f3',
+                        accents1: '#111111',
+                        accents2: '#333333',
+                        accents3: '#444444',
+                        accents4: '#666666',
+                        accents5: '#888888',
+                        success: '#0070f3',
+                        error: '#e00'
+                    },
+                    fontFamily: {
+                        sans: ['var(--font-primary)'],
+                        mono: ['Geist Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Geist', sans-serif; }
+        body { 
+            font-family: var(--font-primary); 
+            background-color: #000000; 
+            color: #ededed; 
+        }
+        
+        .geist-mono { font-family: 'Geist Mono', monospace; }
+        
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; border: 2px solid #000; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #666; }
+
+        .vercel-card {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 6px;
+            transition: border-color 0.15s ease;
+        }
+        .vercel-card:hover {
+            border-color: #666;
+        }
+        
+        .sparkline {
+            fill: none;
+            stroke: #0070f3;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .dot-pulsate {
+            animation: pulsate 2s infinite ease-in-out;
+        }
+
+        @keyframes pulsate {
+            0% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 112, 243, 0.7); }
+            70% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 10px rgba(0, 112, 243, 0); }
+            100% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 112, 243, 0); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#0070f3] selection:text-white">
+    <!-- Top Bar -->
+    <header class="border-b border-accents2 bg-background sticky top-0 z-50">
+        <div class="px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-8 h-8 bg-white text-black flex items-center justify-center font-bold rounded-full">
+                    <svg viewBox="0 0 76 65" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#000000"/></svg>
+                </div>
+                <span class="text-accents4">/</span>
+                <div class="flex items-center gap-2 cursor-pointer hover:bg-accents1 px-2 py-1 rounded transition-colors">
+                    <div class="w-5 h-5 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full"></div>
+                    <span class="font-medium text-sm">acme-corp</span>
+                </div>
+                <span class="text-accents4">/</span>
+                <button class="flex items-center gap-2 hover:bg-accents1 px-2 py-1 rounded transition-colors">
+                    <span class="font-medium text-sm">my-saas-app</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-accents5"></i>
+                </button>
+                
+                <div class="ml-4 flex items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-full border border-[#0070f3] text-[#0070f3] bg-[#0070f3]/10 text-xs font-medium flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-[#0070f3] dot-pulsate"></span>
+                        Production
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full border border-accents2 text-accents5 text-xs font-medium cursor-pointer hover:text-foreground transition-colors">
+                        Preview
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full border border-accents2 text-accents5 text-xs font-medium cursor-pointer hover:text-foreground transition-colors">
+                        Development
+                    </span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button class="text-accents5 hover:text-foreground"><i data-lucide="bell" class="w-5 h-5"></i></button>
+                <button class="text-accents5 hover:text-foreground"><i data-lucide="search" class="w-5 h-5"></i></button>
+                <img src="https://i.pravatar.cc/150?img=11" alt="User" class="w-8 h-8 rounded-full border border-accents2">
+            </div>
+        </div>
+        
+        <!-- Nav Tabs -->
+        <div class="px-6 flex items-center gap-6 text-sm overflow-x-auto">
+            <a href="#" class="py-3 text-accents5 hover:text-foreground transition-colors whitespace-nowrap">Project</a>
+            <a href="#" class="py-3 text-accents5 hover:text-foreground transition-colors whitespace-nowrap">Deployments</a>
+            <a href="#" class="py-3 border-b-2 border-foreground text-foreground font-medium whitespace-nowrap">Analytics</a>
+            <a href="#" class="py-3 text-accents5 hover:text-foreground transition-colors whitespace-nowrap">Speed Insights</a>
+            <a href="#" class="py-3 text-accents5 hover:text-foreground transition-colors whitespace-nowrap">Logs</a>
+            <a href="#" class="py-3 text-accents5 hover:text-foreground transition-colors whitespace-nowrap">Settings</a>
+        </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-6 py-8">
+        
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-semibold tracking-tight">Analytics Overview</h1>
+            <div class="flex items-center gap-2 border border-accents2 rounded-md bg-background text-sm">
+                <button class="px-3 py-1.5 border-r border-accents2 hover:bg-accents1">24h</button>
+                <button class="px-3 py-1.5 border-r border-accents2 bg-accents1 text-white">7d</button>
+                <button class="px-3 py-1.5 hover:bg-accents1">30d</button>
+            </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <!-- Total Requests -->
+            <div class="vercel-card p-5">
+                <h3 class="text-accents5 text-sm font-medium mb-1 flex items-center gap-2">Total Requests <i data-lucide="info" class="w-3.5 h-3.5"></i></h3>
+                <div class="flex items-baseline gap-2 mb-4">
+                    <span class="text-3xl font-semibold">2.4M</span>
+                    <span class="text-green-500 text-sm font-medium flex items-center"><i data-lucide="arrow-up-right" class="w-3 h-3 mr-0.5"></i> 12%</span>
+                </div>
+                <div class="h-12 w-full mt-2">
+                    <svg viewBox="0 0 100 30" class="w-full h-full preserve-aspect-ratio-none">
+                        <path d="M0 25 L10 20 L20 22 L30 15 L40 18 L50 8 L60 12 L70 5 L80 10 L90 2 L100 8" class="sparkline" />
+                        <path d="M0 25 L10 20 L20 22 L30 15 L40 18 L50 8 L60 12 L70 5 L80 10 L90 2 L100 8 L100 30 L0 30 Z" fill="url(#gradient)" opacity="0.2" />
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#0070f3" />
+                                <stop offset="100%" stop-color="#0070f3" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Edge Latency -->
+            <div class="vercel-card p-5">
+                <h3 class="text-accents5 text-sm font-medium mb-1">P99 Edge Latency</h3>
+                <div class="flex items-baseline gap-2 mb-4">
+                    <span class="text-3xl font-semibold">14ms</span>
+                    <span class="text-green-500 text-sm font-medium flex items-center"><i data-lucide="arrow-down-right" class="w-3 h-3 mr-0.5"></i> 3ms</span>
+                </div>
+                <div class="flex items-center gap-2 h-12">
+                    <div class="flex-1 h-2 bg-accents2 rounded-full overflow-hidden">
+                        <div class="w-1/4 h-full bg-[#0070f3]"></div>
+                    </div>
+                    <span class="text-xs text-accents5 geist-mono">Fast</span>
+                </div>
+            </div>
+
+            <!-- Bandwidth -->
+            <div class="vercel-card p-5">
+                <h3 class="text-accents5 text-sm font-medium mb-1">Bandwidth</h3>
+                <div class="flex items-baseline gap-2 mb-4">
+                    <span class="text-3xl font-semibold">847 GB</span>
+                </div>
+                <div class="h-12 flex flex-col justify-end">
+                    <div class="flex justify-between text-xs mb-1">
+                        <span class="text-accents5">Usage</span>
+                        <span class="geist-mono">84.7%</span>
+                    </div>
+                    <div class="w-full h-1.5 bg-accents2 rounded-full overflow-hidden">
+                        <div class="w-[84.7%] h-full bg-orange-500"></div>
+                    </div>
+                    <div class="text-right text-[10px] text-accents5 mt-1 geist-mono">Limit: 1 TB</div>
+                </div>
+            </div>
+
+            <!-- Uptime -->
+            <div class="vercel-card p-5">
+                <h3 class="text-accents5 text-sm font-medium mb-1">Uptime (30d)</h3>
+                <div class="flex items-baseline gap-2 mb-4">
+                    <span class="text-3xl font-semibold text-green-500">99.98%</span>
+                </div>
+                <div class="h-12 flex items-end gap-1 w-full justify-between pb-1">
+                    <!-- Status bars -->
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-yellow-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                    <div class="w-[3%] h-4 bg-green-500 rounded-sm"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layout for Table and Logs -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Deployment Table -->
+            <div class="lg:col-span-2 vercel-card overflow-hidden">
+                <div class="p-4 border-b border-accents2 flex justify-between items-center bg-[#0a0a0a]">
+                    <h2 class="font-medium">Recent Deployments</h2>
+                    <button class="text-sm border border-accents2 px-3 py-1 rounded bg-background hover:bg-accents1 transition-colors">View All</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="text-accents5 bg-background border-b border-accents2">
+                            <tr>
+                                <th class="px-4 py-3 font-normal w-10">State</th>
+                                <th class="px-4 py-3 font-normal">Commit</th>
+                                <th class="px-4 py-3 font-normal hidden sm:table-cell">Message</th>
+                                <th class="px-4 py-3 font-normal text-right">Age</th>
+                                <th class="px-4 py-3 font-normal text-right hidden md:table-cell">Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-accents2 geist-mono text-[13px]">
+                            <tr class="hover:bg-accents1/50 transition-colors cursor-pointer">
+                                <td class="px-4 py-3"><div class="w-2.5 h-2.5 rounded-full bg-[#0070f3] dot-pulsate"></div></td>
+                                <td class="px-4 py-3 flex items-center gap-2">
+                                    <i data-lucide="git-branch" class="w-3.5 h-3.5 text-accents5"></i> main <span class="text-accents5 text-xs">d8f1a2c</span>
+                                </td>
+                                <td class="px-4 py-3 hidden sm:table-cell text-foreground font-sans truncate max-w-[200px]">Update dashboard metrics</td>
+                                <td class="px-4 py-3 text-right text-accents5">2m</td>
+                                <td class="px-4 py-3 text-right text-accents5 hidden md:table-cell">1m 12s</td>
+                            </tr>
+                            <tr class="hover:bg-accents1/50 transition-colors cursor-pointer">
+                                <td class="px-4 py-3"><div class="w-2 h-2 rounded-full bg-accents5"></div></td>
+                                <td class="px-4 py-3 flex items-center gap-2">
+                                    <i data-lucide="git-branch" class="w-3.5 h-3.5 text-accents5"></i> feat/auth <span class="text-accents5 text-xs">a3b4e5f</span>
+                                </td>
+                                <td class="px-4 py-3 hidden sm:table-cell text-foreground font-sans truncate max-w-[200px]">Add NextAuth integration</td>
+                                <td class="px-4 py-3 text-right text-accents5">1h</td>
+                                <td class="px-4 py-3 text-right text-accents5 hidden md:table-cell">2m 04s</td>
+                            </tr>
+                            <tr class="hover:bg-accents1/50 transition-colors cursor-pointer">
+                                <td class="px-4 py-3"><div class="w-2 h-2 rounded-full bg-accents5"></div></td>
+                                <td class="px-4 py-3 flex items-center gap-2">
+                                    <i data-lucide="git-branch" class="w-3.5 h-3.5 text-accents5"></i> main <span class="text-accents5 text-xs">f7e8d9c</span>
+                                </td>
+                                <td class="px-4 py-3 hidden sm:table-cell text-foreground font-sans truncate max-w-[200px]">Fix navigation layout shift</td>
+                                <td class="px-4 py-3 text-right text-accents5">4h</td>
+                                <td class="px-4 py-3 text-right text-accents5 hidden md:table-cell">1m 45s</td>
+                            </tr>
+                            <tr class="hover:bg-accents1/50 transition-colors cursor-pointer">
+                                <td class="px-4 py-3"><div class="w-2 h-2 rounded-full bg-red-500"></div></td>
+                                <td class="px-4 py-3 flex items-center gap-2">
+                                    <i data-lucide="git-branch" class="w-3.5 h-3.5 text-accents5"></i> fix/api <span class="text-accents5 text-xs">c2b1a0f</span>
+                                </td>
+                                <td class="px-4 py-3 hidden sm:table-cell text-foreground font-sans truncate max-w-[200px]">Hotfix stripe webhook</td>
+                                <td class="px-4 py-3 text-right text-accents5">1d</td>
+                                <td class="px-4 py-3 text-right text-accents5 hidden md:table-cell">45s</td>
+                            </tr>
+                            <tr class="hover:bg-accents1/50 transition-colors cursor-pointer">
+                                <td class="px-4 py-3"><div class="w-2 h-2 rounded-full bg-accents5"></div></td>
+                                <td class="px-4 py-3 flex items-center gap-2">
+                                    <i data-lucide="git-branch" class="w-3.5 h-3.5 text-accents5"></i> main <span class="text-accents5 text-xs">e5d4c3b</span>
+                                </td>
+                                <td class="px-4 py-3 hidden sm:table-cell text-foreground font-sans truncate max-w-[200px]">Initial release v2.0</td>
+                                <td class="px-4 py-3 text-right text-accents5">2d</td>
+                                <td class="px-4 py-3 text-right text-accents5 hidden md:table-cell">3m 10s</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Edge Function Logs -->
+            <div class="vercel-card flex flex-col">
+                <div class="p-4 border-b border-accents2 flex justify-between items-center bg-[#0a0a0a]">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                        <h2 class="font-medium">Live Edge Logs</h2>
+                    </div>
+                    <i data-lucide="pause" class="w-4 h-4 text-accents5 cursor-pointer hover:text-white"></i>
+                </div>
+                <div class="bg-black p-4 flex-1 geist-mono text-[11px] overflow-y-auto max-h-[300px] leading-relaxed flex flex-col-reverse">
+                    <div>
+                        <div class="mb-2"><span class="text-accents5">14:05:54.123</span> <span class="text-blue-400">INFO</span> [GET] /api/metrics - Status: 200 - 12ms</div>
+                        <div class="mb-2"><span class="text-accents5">14:05:52.845</span> <span class="text-blue-400">INFO</span> [POST] /api/track - Status: 201 - 45ms</div>
+                        <div class="mb-2"><span class="text-accents5">14:05:48.001</span> <span class="text-yellow-500">WARN</span> Edge cache miss for path: /images/hero.webp</div>
+                        <div class="mb-2"><span class="text-accents5">14:05:47.332</span> <span class="text-blue-400">INFO</span> [GET] /dashboard - Status: 200 - 8ms</div>
+                        <div class="mb-2"><span class="text-accents5">14:05:42.910</span> <span class="text-red-500">ERROR</span> Failed to fetch from database URL</div>
+                        <div class="mb-2"><span class="text-accents5">14:05:42.100</span> <span class="text-blue-400">INFO</span> [GET] /api/user/profile - Status: 500 - 120ms</div>
+                        <div class="mb-2"><span class="text-accents5">14:05:35.555</span> <span class="text-blue-400">INFO</span> [GET] / - Status: 200 - 5ms</div>
+                        <div class="mb-2"><span class="text-accents5">14:05:30.111</span> <span class="text-blue-400">INFO</span> Cold start initialized in iad1</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-accents2 mt-12 py-8 bg-[#0a0a0a]">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm geist-mono">
+            <div class="flex items-center gap-2 text-accents5">
+                <svg viewBox="0 0 76 65" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#888888"/></svg>
+                <span>© 2026 EdgeTelemetry Inc.</span>
+            </div>
+            
+            <div class="flex items-center gap-6 text-accents5">
+                <a href="#" class="hover:text-foreground transition-colors">Status: All systems normal</a>
+                <a href="#" class="hover:text-foreground transition-colors">Command Line</a>
+                <a href="#" class="hover:text-foreground transition-colors">Security</a>
+                <a href="#" class="hover:text-foreground transition-colors">Terms</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="w-4 h-4 bg-accents2 rounded-full flex items-center justify-center cursor-pointer hover:bg-accents4 transition-colors"><i data-lucide="moon" class="w-2.5 h-2.5 text-white"></i></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                // Don't override mono fonts
+                document.querySelectorAll('body, h1, h2, h3, h4, span.font-sans, td.font-sans').forEach(el => {
+                    if (!el.classList.contains('geist-mono')) {
+                        el.style.fontFamily = '"' + font + '", sans-serif';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Cloud - Capability Matrix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0d14',
+                        accent: '#3b82f6',
+                        text: '#ededed'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Inter', sans-serif; }
+        body { font-family: var(--font-primary); background-color: #0a0d14; color: #ededed; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(10, 13, 20, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24">
+    <!-- Header -->
+    <header class="py-16 text-center px-4 max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
+            <i data-lucide="zap" class="w-4 h-4"></i> New Pricing Tiers
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Compare Plans & Features</h1>
+        <p class="text-lg text-white/60">Find the perfect plan for your team's needs.</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 md:px-8">
+        <!-- Table Container -->
+        <div class="w-full overflow-x-auto pb-8">
+            <table class="w-full min-w-[800px] border-collapse text-left">
+                <!-- Sticky Header row: Plans -->
+                <thead class="sticky-header">
+                    <tr>
+                        <th class="w-1/4 p-6 align-bottom border-b border-white/10">
+                            <span class="text-xl font-bold">Features</span>
+                        </th>
+                        <!-- Free Tier -->
+                        <th class="w-1/4 p-6 border-b border-white/10">
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-xl font-bold">Free</h3>
+                                <div class="flex items-baseline gap-1 mb-2">
+                                    <span class="text-3xl font-bold">$0</span>
+                                    <span class="text-white/50 text-sm">/mo</span>
+                                </div>
+                                <button class="w-full py-2.5 rounded-lg border border-white/20 hover:bg-white/5 font-medium transition-colors">Get Started</button>
+                            </div>
+                        </th>
+                        <!-- Pro Tier -->
+                        <th class="w-1/4 p-6 border-b border-white/10 relative">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]">Most Popular</div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-xl font-bold text-accent">Pro</h3>
+                                <div class="flex items-baseline gap-1 mb-2">
+                                    <span class="text-3xl font-bold">$49</span>
+                                    <span class="text-white/50 text-sm">/mo</span>
+                                </div>
+                                <button class="w-full py-2.5 rounded-lg bg-accent hover:bg-blue-400 text-white font-medium transition-colors shadow-lg shadow-blue-500/20">Start Free Trial</button>
+                            </div>
+                        </th>
+                        <!-- Enterprise Tier -->
+                        <th class="w-1/4 p-6 border-b border-white/10">
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-xl font-bold">Enterprise</h3>
+                                <div class="flex items-baseline gap-1 mb-2 h-[42px] items-center">
+                                    <span class="text-lg font-medium text-white/80">Custom pricing</span>
+                                </div>
+                                <button class="w-full py-2.5 rounded-lg border border-white/20 hover:bg-white/5 font-medium transition-colors">Contact Sales</button>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <!-- Category 1: Core Features -->
+                    <tr class="bg-white/5 border-y border-white/10">
+                        <td colspan="4" class="p-4 font-semibold text-white/90">
+                            <div class="flex items-center gap-2 cursor-pointer">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                Core Features
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">Projects</td>
+                        <td class="p-4 font-medium">3</td>
+                        <td class="p-4 font-medium">Unlimited</td>
+                        <td class="p-4 font-medium">Unlimited</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">Team Members</td>
+                        <td class="p-4 font-medium">5</td>
+                        <td class="p-4 font-medium">50</td>
+                        <td class="p-4 font-medium">Unlimited</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">Storage</td>
+                        <td class="p-4 font-medium">1GB</td>
+                        <td class="p-4 font-medium">100GB</td>
+                        <td class="p-4 font-medium">Unlimited</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70 flex items-center gap-1">API Access <i data-lucide="info" class="w-3.5 h-3.5 text-white/40 cursor-help"></i></td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                    </tr>
+
+                    <!-- Category 2: Security -->
+                    <tr class="bg-white/5 border-y border-white/10">
+                        <td colspan="4" class="p-4 font-semibold text-white/90">
+                            <div class="flex items-center gap-2 cursor-pointer">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                Security
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">SSO/SAML</td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">2FA</td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">Audit Logs</td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70 flex items-center gap-1">SOC 2 Report <i data-lucide="info" class="w-3.5 h-3.5 text-white/40 cursor-help"></i></td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                    </tr>
+
+                    <!-- Category 3: Support -->
+                    <tr class="bg-white/5 border-y border-white/10">
+                        <td colspan="4" class="p-4 font-semibold text-white/90">
+                            <div class="flex items-center gap-2 cursor-pointer">
+                                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                Support
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">Community</td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">Email Support</td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4 font-medium">Standard</td>
+                        <td class="p-4 font-medium">Priority 24/7</td>
+                    </tr>
+                    <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                        <td class="p-4 pl-10 text-white/70">Dedicated CSM</td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4"><i data-lucide="x" class="w-5 h-5 text-red-400"></i></td>
+                        <td class="p-4"><i data-lucide="check" class="w-5 h-5 text-green-400"></i></td>
+                    </tr>
+
+                    <!-- Category 4: Integrations (Collapsed) -->
+                    <tr class="border-y border-white/10 cursor-pointer hover:bg-white/5 transition-colors">
+                        <td colspan="4" class="p-4 font-semibold text-white/70">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                Integrations
+                                <span class="text-xs font-normal text-white/40 ml-2">8 features hidden</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Enterprise CTA -->
+        <div class="mt-16 bg-gradient-to-r from-blue-900/40 to-indigo-900/40 border border-accent/20 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <h3 class="text-2xl font-bold mb-2">Need something custom?</h3>
+                <p class="text-white/60">We offer custom volume pricing, special compliance needs, and dedicated infrastructure.</p>
+            </div>
+            <button class="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-colors whitespace-nowrap">
+                Talk to Sales
+            </button>
+        </div>
+
+        <!-- FAQ -->
+        <div class="mt-24 max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="border border-white/10 rounded-lg p-6 bg-white/5">
+                    <h4 class="font-semibold text-lg mb-2 flex justify-between items-center cursor-pointer">
+                        Can I switch plans later?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-white/50"></i>
+                    </h4>
+                    <p class="text-white/60 mt-2">Absolutely. You can upgrade or downgrade your plan at any time. Prorated charges or credits will be applied automatically.</p>
+                </div>
+                <div class="border border-white/10 rounded-lg p-6 hover:bg-white/5 transition-colors cursor-pointer flex justify-between items-center">
+                    <h4 class="font-semibold text-lg">What payment methods do you accept?</h4>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-white/50"></i>
+                </div>
+                <div class="border border-white/10 rounded-lg p-6 hover:bg-white/5 transition-colors cursor-pointer flex justify-between items-center">
+                    <h4 class="font-semibold text-lg">Do you offer discounts for non-profits?</h4>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-white/50"></i>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                document.body.style.fontFamily = '"' + font + '", sans-serif';
+                document.querySelectorAll('h1,h2,h3,h4,h5,.font-heading').forEach(el => {
+                    el.style.fontFamily = '"' + font + '", sans-serif';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

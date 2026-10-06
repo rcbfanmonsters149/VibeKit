@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Cloud Issue Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#08090d',
+                        accent: '#8b5cf6',
+                        'accent-hover': '#7c3aed',
+                        surface: '#11131a',
+                        'surface-hover': '#1a1d27',
+                        border: '#1f2233'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Inter', sans-serif; }
+        body { 
+            font-family: var(--font-primary); 
+            background-color: #08090d; 
+            color: #f3f4f6; 
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #08090d; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+        
+        .hero-glow {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(8,9,13,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(17, 19, 26, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .kanban-column {
+            min-height: 500px;
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 glass-card border-b border-border">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2 text-xl font-bold tracking-tight">
+                    <i data-lucide="triangle" class="w-6 h-6 text-accent fill-accent"></i>
+                    Nebula
+                </a>
+                <div class="hidden md:flex items-center gap-6 text-sm text-gray-400 font-medium">
+                    <a href="#" class="hover:text-white transition-colors">Features</a>
+                    <a href="#" class="hover:text-white transition-colors">Methodology</a>
+                    <a href="#" class="hover:text-white transition-colors">Customers</a>
+                    <a href="#" class="hover:text-white transition-colors">Changelog</a>
+                    <a href="#" class="hover:text-white transition-colors">Pricing</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors hidden md:block">Log in</a>
+                <button class="bg-white text-black px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors">
+                    Sign up
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-glow"></div>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-24 px-6 relative max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-8">
+            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+            v3.0 Just Shipped
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+        </div>
+        
+        <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500 max-w-4xl mx-auto leading-tight">
+            The purposeful tool for high-velocity teams
+        </h1>
+        
+        <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+            Meet the new standard for modern software development. Streamline issues, sprints, and product roadmaps.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button class="bg-accent hover:bg-accent-hover text-white px-8 py-3 rounded-full font-medium transition-colors w-full sm:w-auto shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                Get started for free
+            </button>
+            <button class="glass-card hover:bg-surface-hover text-white px-8 py-3 rounded-full font-medium transition-colors w-full sm:w-auto flex items-center justify-center gap-2">
+                <i data-lucide="play-circle" class="w-5 h-5"></i>
+                Book a demo
+            </button>
+        </div>
+    </section>
+
+    <!-- Mock Kanban Board -->
+    <section class="max-w-7xl mx-auto px-6 mb-32 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-background z-10 pointer-events-none mt-64"></div>
+        <div class="glass-card rounded-2xl p-2 border border-border shadow-2xl overflow-hidden">
+            <!-- Mac style window header -->
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-border bg-surface/50">
+                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                <div class="ml-4 flex items-center gap-2 text-sm text-gray-400 font-medium">
+                    <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                    Frontend Team / Sprint 14
+                </div>
+            </div>
+            
+            <!-- Board Columns -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-surface/30 kanban-column">
+                
+                <!-- Backlog -->
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-medium flex items-center gap-2"><i data-lucide="circle-dashed" class="w-4 h-4 text-gray-500"></i> Backlog <span class="text-gray-500 text-sm">2</span></h3>
+                        <i data-lucide="plus" class="w-4 h-4 text-gray-500"></i>
+                    </div>
+                    
+                    <div class="bg-surface border border-border rounded-lg p-4 hover:border-gray-600 transition-colors cursor-pointer group">
+                        <div class="flex items-start justify-between mb-2">
+                            <span class="text-xs font-medium text-gray-500">NEB-142</span>
+                            <div class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold border border-blue-500/30">JD</div>
+                        </div>
+                        <p class="text-sm font-medium mb-4 group-hover:text-accent transition-colors">Implement dark mode toggle in navbar</p>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-1 bg-surface-hover px-2 py-1 rounded text-xs text-gray-400 border border-border"><i data-lucide="flag" class="w-3 h-3 text-yellow-500 fill-yellow-500/20"></i> Medium</div>
+                            <div class="flex items-center gap-1 bg-surface-hover px-2 py-1 rounded text-xs text-gray-400 border border-border">Design</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface border border-border rounded-lg p-4 hover:border-gray-600 transition-colors cursor-pointer group">
+                        <div class="flex items-start justify-between mb-2">
+                            <span class="text-xs font-medium text-gray-500">NEB-145</span>
+                            <div class="w-5 h-5 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-bold border border-purple-500/30">AK</div>
+                        </div>
+                        <p class="text-sm font-medium mb-4 group-hover:text-accent transition-colors">Fix memory leak in websocket connection</p>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-1 bg-surface-hover px-2 py-1 rounded text-xs text-gray-400 border border-border"><i data-lucide="flag" class="w-3 h-3 text-red-500 fill-red-500/20"></i> High</div>
+                            <div class="flex items-center gap-1 bg-surface-hover px-2 py-1 rounded text-xs text-gray-400 border border-border">Backend</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- In Progress -->
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-medium flex items-center gap-2 text-blue-400"><i data-lucide="circle-dot" class="w-4 h-4"></i> In Progress <span class="text-gray-500 text-sm">1</span></h3>
+                        <i data-lucide="plus" class="w-4 h-4 text-gray-500"></i>
+                    </div>
+                    
+                    <div class="bg-surface border border-blue-500/30 rounded-lg p-4 shadow-[0_0_15px_rgba(59,130,246,0.1)] cursor-pointer group">
+                        <div class="flex items-start justify-between mb-2">
+                            <span class="text-xs font-medium text-blue-400">NEB-139</span>
+                            <div class="w-5 h-5 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-xs font-bold border border-green-500/30">SM</div>
+                        </div>
+                        <p class="text-sm font-medium mb-4 group-hover:text-accent transition-colors">Refactor React Context to Zustand</p>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-1 bg-surface-hover px-2 py-1 rounded text-xs text-gray-400 border border-border"><i data-lucide="flag" class="w-3 h-3 text-red-500 fill-red-500/20"></i> High</div>
+                            <div class="flex items-center gap-1 bg-surface-hover px-2 py-1 rounded text-xs text-gray-400 border border-border">Tech Debt</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Done -->
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-medium flex items-center gap-2 text-accent"><i data-lucide="check-circle-2" class="w-4 h-4"></i> Done <span class="text-gray-500 text-sm">3</span></h3>
+                        <i data-lucide="plus" class="w-4 h-4 text-gray-500"></i>
+                    </div>
+                    
+                    <div class="bg-surface/50 border border-border rounded-lg p-4 opacity-70 cursor-pointer group hover:opacity-100 transition-opacity">
+                        <div class="flex items-start justify-between mb-2">
+                            <span class="text-xs font-medium text-gray-500 line-through">NEB-130</span>
+                            <div class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold border border-blue-500/30">JD</div>
+                        </div>
+                        <p class="text-sm font-medium mb-4 text-gray-400 line-through">Update pricing page copy</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Features Section -->
+    <section class="max-w-7xl mx-auto px-6 py-24 border-t border-border">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Built for speed and precision</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Every pixel and interaction is optimized for performance, helping your team ship faster than ever.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Feature 1 -->
+            <div class="col-span-1 md:col-span-2 glass-card rounded-2xl p-8 border border-border relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <h3 class="text-2xl font-bold mb-2">Keyboard-first design</h3>
+                <p class="text-gray-400 mb-8 max-w-md">Navigate, create issues, and manage your entire workspace without ever leaving your keyboard.</p>
+                <div class="flex flex-wrap gap-3">
+                    <div class="flex items-center gap-2 bg-surface px-4 py-2 rounded-lg border border-border text-sm">
+                        <span class="text-gray-400">Search</span>
+                        <div class="flex gap-1"><kbd class="bg-surface-hover px-1.5 py-0.5 rounded text-xs border border-gray-700">⌘</kbd><kbd class="bg-surface-hover px-1.5 py-0.5 rounded text-xs border border-gray-700">K</kbd></div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-surface px-4 py-2 rounded-lg border border-border text-sm">
+                        <span class="text-gray-400">New Issue</span>
+                        <div class="flex gap-1"><kbd class="bg-surface-hover px-1.5 py-0.5 rounded text-xs border border-gray-700">C</kbd></div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-surface px-4 py-2 rounded-lg border border-border text-sm">
+                        <span class="text-gray-400">Assign to me</span>
+                        <div class="flex gap-1"><kbd class="bg-surface-hover px-1.5 py-0.5 rounded text-xs border border-gray-700">I</kbd></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-span-1 glass-card rounded-2xl p-8 border border-border relative overflow-hidden group">
+                <h3 class="text-2xl font-bold mb-2">Automated Sprints</h3>
+                <p class="text-gray-400 mb-8">Cycles that run themselves.</p>
+                <div class="h-24 flex items-end gap-2">
+                    <div class="w-full bg-accent/20 rounded-t-sm h-[40%] group-hover:bg-accent/40 transition-colors"></div>
+                    <div class="w-full bg-accent/40 rounded-t-sm h-[60%] group-hover:bg-accent/60 transition-colors"></div>
+                    <div class="w-full bg-accent/60 rounded-t-sm h-[30%] group-hover:bg-accent/80 transition-colors"></div>
+                    <div class="w-full bg-accent rounded-t-sm h-[90%] shadow-[0_0_15px_rgba(139,92,246,0.5)]"></div>
+                    <div class="w-full bg-accent/20 rounded-t-sm h-[20%] group-hover:bg-accent/40 transition-colors"></div>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-span-1 glass-card rounded-2xl p-8 border border-border">
+                <i data-lucide="git-pull-request" class="w-8 h-8 text-accent mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Seamless Integrations</h3>
+                <p class="text-gray-400 text-sm mb-6">Connects directly with GitHub, GitLab, and Slack.</p>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-full bg-surface-hover border border-border flex items-center justify-center"><i data-lucide="github" class="w-5 h-5"></i></div>
+                    <div class="w-10 h-10 rounded-full bg-surface-hover border border-border flex items-center justify-center"><i data-lucide="slack" class="w-5 h-5"></i></div>
+                    <div class="w-10 h-10 rounded-full bg-surface-hover border border-border flex items-center justify-center"><i data-lucide="figma" class="w-5 h-5"></i></div>
+                </div>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="col-span-1 md:col-span-2 glass-card rounded-2xl p-8 border border-border flex items-center justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Real-time collaboration</h3>
+                    <p class="text-gray-400 max-w-sm">Updates push instantly across your team without refreshing the page.</p>
+                </div>
+                <div class="hidden sm:flex -space-x-4">
+                    <img src="https://i.pravatar.cc/100?img=1" alt="Avatar" class="w-12 h-12 rounded-full border-2 border-background">
+                    <img src="https://i.pravatar.cc/100?img=2" alt="Avatar" class="w-12 h-12 rounded-full border-2 border-background">
+                    <img src="https://i.pravatar.cc/100?img=3" alt="Avatar" class="w-12 h-12 rounded-full border-2 border-background">
+                    <div class="w-12 h-12 rounded-full border-2 border-background bg-accent flex items-center justify-center text-sm font-bold">+5</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-20 border-t border-border bg-surface/30">
+        <p class="text-center text-sm text-gray-500 font-medium mb-8">POWERING ENGINEERING TEAMS AT</p>
+        <div class="flex flex-wrap justify-center items-center gap-12 max-w-5xl mx-auto opacity-50 grayscale">
+            <div class="flex items-center gap-2 text-xl font-bold"><i data-lucide="box" class="w-6 h-6"></i> Acme Corp</div>
+            <div class="flex items-center gap-2 text-xl font-bold"><i data-lucide="triangle" class="w-6 h-6"></i> Vercel</div>
+            <div class="flex items-center gap-2 text-xl font-bold"><i data-lucide="hexagon" class="w-6 h-6"></i> Retool</div>
+            <div class="flex items-center gap-2 text-xl font-bold"><i data-lucide="circle" class="w-6 h-6"></i> Raycast</div>
+            <div class="flex items-center gap-2 text-xl font-bold"><i data-lucide="wind" class="w-6 h-6"></i> Tailwind</div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16">Don't just take our word for it</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 rounded-xl border border-border">
+                <div class="flex text-yellow-500 mb-4">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-gray-300 mb-6">"Nebula has completely transformed how our engineering team operates. The speed is unmatched, and the UI is a joy to use daily."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                    <div>
+                        <p class="font-medium text-sm">Sarah Jenkins</p>
+                        <p class="text-xs text-gray-500">CTO @ TechFlow</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card p-6 rounded-xl border border-border">
+                <div class="flex text-yellow-500 mb-4">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-gray-300 mb-6">"Finally an issue tracker that gets out of the way. Keyboard shortcuts make triage take minutes instead of hours."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                    <div>
+                        <p class="font-medium text-sm">Marcus Wei</p>
+                        <p class="text-xs text-gray-500">Lead Engineer @ StartupInc</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl border border-border">
+                <div class="flex text-yellow-500 mb-4">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-gray-300 mb-6">"The automated cycles feature alone is worth the switch. Nebula keeps our entire product team aligned effortlessly."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                    <div>
+                        <p class="font-medium text-sm">Elena Rodriguez</p>
+                        <p class="text-xs text-gray-500">Product Manager @ Innovate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 border-t border-border">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to accelerate your team?</h2>
+            <p class="text-xl text-gray-400 mb-10">Join thousands of companies building better software with Nebula.</p>
+            <button class="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-full font-bold transition-colors text-lg shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                Start your free trial
+            </button>
+            <p class="text-sm text-gray-500 mt-4">No credit card required. 14-day free trial.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-border py-12 bg-surface/50 font-mono text-sm">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center gap-2 font-bold font-sans text-white mb-6">
+                    <i data-lucide="triangle" class="w-5 h-5 text-accent fill-accent"></i>
+                    Nebula
+                </div>
+                <p class="text-gray-500">Designed in California.<br>Built for the world.</p>
+            </div>
+            
+            <div class="flex flex-col gap-3 text-gray-400">
+                <h4 class="text-white font-sans font-medium mb-2">Product</h4>
+                <a href="#" class="hover:text-accent transition-colors">Features</a>
+                <a href="#" class="hover:text-accent transition-colors">Integrations</a>
+                <a href="#" class="hover:text-accent transition-colors">Pricing</a>
+                <a href="#" class="hover:text-accent transition-colors">Changelog</a>
+            </div>
+
+            <div class="flex flex-col gap-3 text-gray-400">
+                <h4 class="text-white font-sans font-medium mb-2">Resources</h4>
+                <a href="#" class="hover:text-accent transition-colors">Documentation</a>
+                <a href="#" class="hover:text-accent transition-colors">API Reference</a>
+                <a href="#" class="hover:text-accent transition-colors">Blog</a>
+                <a href="#" class="hover:text-accent transition-colors">Community</a>
+            </div>
+
+            <div class="flex flex-col gap-3 text-gray-400">
+                <h4 class="text-white font-sans font-medium mb-2">Company</h4>
+                <a href="#" class="hover:text-accent transition-colors">About</a>
+                <a href="#" class="hover:text-accent transition-colors">Careers</a>
+                <a href="#" class="hover:text-accent transition-colors">Legal</a>
+                <a href="#" class="hover:text-accent transition-colors">Contact</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-border text-gray-600 flex justify-between items-center">
+            <p>© 2026 Nebula Inc. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-gray-300"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                <a href="#" class="hover:text-gray-300"><i data-lucide="github" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                document.body.style.fontFamily = '"' + font + '", sans-serif';
+                document.querySelectorAll('h1,h2,h3,h4,h5,.font-heading').forEach(el => {
+                    el.style.fontFamily = '"' + font + '", sans-serif';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

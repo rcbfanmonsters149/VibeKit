@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudScale - Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0b10',
+                        accent: '#6366f1',
+                        text: '#f3f4f6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'Inter', sans-serif; }
+        body { font-family: var(--font-primary); background-color: #0a0b10; color: #f3f4f6; }
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden flex flex-col">
+    <!-- Background Gradient -->
+    <div class="fixed inset-0 z-0 flex items-center justify-center pointer-events-none">
+        <div class="w-[800px] h-[800px] bg-accent/20 rounded-full blur-[120px] opacity-30"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 w-full py-8 flex justify-center items-center">
+        <div class="flex items-center gap-2 text-xl font-bold tracking-tight">
+            <i data-lucide="cloud" class="w-6 h-6 text-accent"></i>
+            <span>CloudScale</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-1 flex flex-col items-center px-4 w-full max-w-2xl mx-auto mb-12">
+        <!-- Progress Indicator -->
+        <div class="w-full flex items-center justify-between max-w-sm mx-auto mb-8 relative">
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-white/10 z-0"></div>
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1/2 h-[2px] bg-accent z-0 transition-all duration-500"></div>
+            
+            <!-- Step 1 -->
+            <div class="relative z-10 flex flex-col items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                </div>
+                <span class="text-xs font-medium text-white/80 absolute -bottom-6 whitespace-nowrap">Account</span>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="relative z-10 flex flex-col items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-background border-2 border-accent flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.2)] ring-4 ring-background">
+                    <div class="w-2.5 h-2.5 rounded-full bg-accent"></div>
+                </div>
+                <span class="text-xs font-medium text-accent absolute -bottom-6 whitespace-nowrap">Your Role</span>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="relative z-10 flex flex-col items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-background border-2 border-white/20 flex items-center justify-center ring-4 ring-background">
+                </div>
+                <span class="text-xs font-medium text-white/40 absolute -bottom-6 whitespace-nowrap">Workspace</span>
+            </div>
+        </div>
+
+        <!-- Center Card -->
+        <div class="w-full bg-glass rounded-2xl p-8 md:p-10 shadow-2xl mt-4">
+            <div class="text-center mb-8">
+                <h1 class="text-2xl md:text-3xl font-bold mb-2">What best describes your role?</h1>
+                <p class="text-white/60">This helps us customize your CloudScale experience.</p>
+            </div>
+
+            <!-- Role Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <!-- Role 1 -->
+                <button class="text-left p-5 rounded-xl border border-white/10 hover:border-white/30 bg-white/5 hover:bg-white/10 transition-all group flex flex-col gap-2">
+                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <span class="text-xl">🚀</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white">Founder / CEO</h3>
+                        <p class="text-sm text-white/50 mt-1 leading-snug">Building the next big thing</p>
+                    </div>
+                </button>
+                
+                <!-- Role 2 (Selected) -->
+                <button class="text-left p-5 rounded-xl border-2 border-accent bg-accent/5 transition-all flex flex-col gap-2 relative shadow-[0_0_20px_rgba(99,102,241,0.15)]">
+                    <div class="absolute top-4 right-4 w-5 h-5 rounded-full bg-accent flex items-center justify-center">
+                        <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                    </div>
+                    <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
+                        <span class="text-xl">💻</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white">Engineer</h3>
+                        <p class="text-sm text-white/70 mt-1 leading-snug">Writing code and shipping features</p>
+                    </div>
+                </button>
+                
+                <!-- Role 3 -->
+                <button class="text-left p-5 rounded-xl border border-white/10 hover:border-white/30 bg-white/5 hover:bg-white/10 transition-all group flex flex-col gap-2">
+                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <span class="text-xl">🎨</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white">Designer</h3>
+                        <p class="text-sm text-white/50 mt-1 leading-snug">Crafting beautiful user experiences</p>
+                    </div>
+                </button>
+                
+                <!-- Role 4 -->
+                <button class="text-left p-5 rounded-xl border border-white/10 hover:border-white/30 bg-white/5 hover:bg-white/10 transition-all group flex flex-col gap-2">
+                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <span class="text-xl">📊</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white">Product Manager</h3>
+                        <p class="text-sm text-white/50 mt-1 leading-snug">Driving strategy and roadmap</p>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <button class="px-6 py-2.5 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors">
+                    Back
+                </button>
+                <button class="px-6 py-2.5 rounded-lg text-sm font-medium bg-accent hover:bg-indigo-400 text-white transition-colors shadow-lg shadow-indigo-500/20 flex items-center gap-2">
+                    Continue
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+            
+            <!-- Social Sign-on -->
+            <div class="mt-8">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-px bg-white/10 flex-1"></div>
+                    <span class="text-xs text-white/40 font-medium">Or continue with</span>
+                    <div class="h-px bg-white/10 flex-1"></div>
+                </div>
+                <div class="flex justify-center gap-3">
+                    <button class="p-3 rounded-lg border border-white/10 hover:bg-white/5 transition-colors flex items-center justify-center bg-white/5 w-16">
+                        <i data-lucide="chrome" class="w-5 h-5 text-white/80"></i>
+                    </button>
+                    <button class="p-3 rounded-lg border border-white/10 hover:bg-white/5 transition-colors flex items-center justify-center bg-white/5 w-16">
+                        <i data-lucide="github" class="w-5 h-5 text-white/80"></i>
+                    </button>
+                    <button class="p-3 rounded-lg border border-white/10 hover:bg-white/5 transition-colors flex items-center justify-center bg-white/5 w-16">
+                        <i data-lucide="key" class="w-5 h-5 text-white/80"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <p class="text-sm text-white/40 mb-2">Step 2 of 3</p>
+            <a href="#" class="text-sm text-accent hover:text-indigo-400 transition-colors font-medium">Already have an account? Sign in</a>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                document.body.style.fontFamily = '"' + font + '", sans-serif';
+                document.querySelectorAll('h1,h2,h3,h4,h5,.font-heading').forEach(el => {
+                    el.style.fontFamily = '"' + font + '", sans-serif';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

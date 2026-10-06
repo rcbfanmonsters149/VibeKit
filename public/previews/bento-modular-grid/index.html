@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prism Modular Design System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#090b10',
+                        surface: '#12151f',
+                        border: '#1e2333',
+                        accent: '#818cf8', // indigo-400
+                        textMain: '#ffffff',
+                        textMuted: '#94a3b8',
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --font-primary: 'DM Sans', sans-serif; }
+        body { font-family: var(--font-primary); background-color: #090b10; color: #ffffff; }
+        
+        .bento-card {
+            background-color: #12151f;
+            border: 1px solid #1e2333;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover {
+            border-color: rgba(129, 140, 248, 0.5);
+            box-shadow: 0 0 20px rgba(129, 140, 248, 0.1);
+        }
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(129, 140, 248, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .bento-card:hover::before { opacity: 1; }
+        
+        /* Bar chart animations */
+        @keyframes pulse-height {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.7); }
+        }
+        .bar-anim { transform-origin: bottom; animation: pulse-height 2s ease-in-out infinite alternate; }
+        .bar-anim:nth-child(2) { animation-delay: -0.5s; }
+        .bar-anim:nth-child(3) { animation-delay: -1s; }
+        .bar-anim:nth-child(4) { animation-delay: -1.5s; }
+        .bar-anim:nth-child(5) { animation-delay: -0.2s; }
+        
+        /* Dot animation */
+        @keyframes ping-slow {
+            75%, 100% { transform: scale(2); opacity: 0; }
+        }
+        .dot-ping::after {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 50%;
+            background-color: inherit;
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-20 px-6 sm:px-12 md:px-24 max-w-7xl mx-auto">
+    <!-- Header -->
+    <header class="text-center mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-sm font-medium mb-4">
+            <i data-lucide="box" class="w-4 h-4"></i> Prism V2 is live
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight">Built for the <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">modern stack</span></h1>
+        <p class="text-textMuted text-lg max-w-2xl mx-auto">A composable, modular architecture that scales with your application. Drop in the components you need, customize them, and ship faster.</p>
+    </header>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[240px]">
+        
+        <!-- Card A: Real-time Analytics (2x2) -->
+        <div class="bento-card md:col-span-2 md:row-span-2 flex flex-col">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold mb-1">Real-Time Analytics</h3>
+                <p class="text-textMuted text-sm">Monitor your data as it flows through the system.</p>
+            </div>
+            
+            <div class="flex-1 bg-[#0d0f17] rounded-xl border border-border p-6 flex flex-col justify-end relative overflow-hidden mt-2">
+                <div class="absolute top-4 left-4">
+                    <div class="text-sm text-textMuted">Live Events</div>
+                    <div class="text-3xl font-bold font-mono">14,892<span class="text-sm text-textMuted font-sans">/sec</span></div>
+                </div>
+                
+                <div class="flex items-end justify-between gap-2 h-32 mt-12">
+                    <div class="w-full bg-indigo-500/20 rounded-t-md bar-anim" style="height: 40%"></div>
+                    <div class="w-full bg-indigo-500/40 rounded-t-md bar-anim" style="height: 70%"></div>
+                    <div class="w-full bg-indigo-500/60 rounded-t-md bar-anim" style="height: 50%"></div>
+                    <div class="w-full bg-indigo-500/80 rounded-t-md bar-anim" style="height: 90%"></div>
+                    <div class="w-full bg-indigo-500 rounded-t-md bar-anim" style="height: 60%"></div>
+                    <div class="w-full bg-indigo-400 rounded-t-md bar-anim" style="height: 85%"></div>
+                    <div class="w-full bg-cyan-400 rounded-t-md bar-anim" style="height: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card B: Global Edge Network (2x1) -->
+        <div class="bento-card md:col-span-2 flex flex-col relative">
+            <div class="z-10">
+                <h3 class="text-lg font-bold mb-1">Global Edge Network</h3>
+                <p class="text-textMuted text-sm">Deployed in 35+ regions worldwide.</p>
+            </div>
+            
+            <!-- Simplified Map abstract -->
+            <div class="absolute inset-0 mt-16 opacity-40 pointer-events-none">
+                <!-- SF -->
+                <div class="absolute top-[40%] left-[20%]">
+                    <div class="w-2 h-2 bg-cyan-400 rounded-full dot-ping relative"></div>
+                    <div class="absolute top-3 -left-2 text-[10px] font-mono text-cyan-400">12ms</div>
+                </div>
+                <!-- NYC -->
+                <div class="absolute top-[35%] left-[30%]">
+                    <div class="w-2 h-2 bg-indigo-400 rounded-full dot-ping relative"></div>
+                    <div class="absolute top-3 -left-2 text-[10px] font-mono text-indigo-400">8ms</div>
+                </div>
+                <!-- London -->
+                <div class="absolute top-[25%] left-[50%]">
+                    <div class="w-2 h-2 bg-purple-400 rounded-full dot-ping relative"></div>
+                    <div class="absolute top-3 -left-2 text-[10px] font-mono text-purple-400">23ms</div>
+                </div>
+                <!-- Tokyo -->
+                <div class="absolute top-[30%] left-[85%]">
+                    <div class="w-2 h-2 bg-pink-400 rounded-full dot-ping relative"></div>
+                    <div class="absolute top-3 -left-4 text-[10px] font-mono text-pink-400">18ms</div>
+                </div>
+                <!-- Sydney -->
+                <div class="absolute top-[75%] left-[90%]">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full dot-ping relative"></div>
+                    <div class="absolute top-3 -left-4 text-[10px] font-mono text-blue-400">31ms</div>
+                </div>
+                
+                <!-- Connecting lines -->
+                <svg class="w-full h-full" style="stroke: rgba(148, 163, 184, 0.2); stroke-width: 1; fill: none; stroke-dasharray: 4;">
+                    <path d="M 20% 40% Q 25% 30% 30% 35%"></path>
+                    <path d="M 30% 35% Q 40% 10% 50% 25%"></path>
+                    <path d="M 50% 25% Q 70% 10% 85% 30%"></path>
+                    <path d="M 85% 30% Q 90% 50% 90% 75%"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Card C: Uptime (1x1) -->
+        <div class="bento-card flex flex-col justify-between items-center text-center">
+            <h3 class="text-sm font-medium text-textMuted w-full text-left">Reliability</h3>
+            <div class="flex-1 flex flex-col items-center justify-center w-full">
+                <div class="text-4xl lg:text-5xl font-bold font-mono text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-emerald-600">99.99%</div>
+                <div class="flex items-center gap-2 mt-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-sm text-textMuted">All systems operational</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card D: Security (1x1) -->
+        <div class="bento-card flex flex-col justify-between">
+            <h3 class="text-sm font-medium text-textMuted">Compliance</h3>
+            <div class="flex-1 flex flex-col items-center justify-center gap-4">
+                <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                    <i data-lucide="shield-check" class="w-8 h-8"></i>
+                </div>
+                <div class="px-3 py-1 bg-surface border border-border rounded-full text-sm font-semibold tracking-wider">
+                    SOC 2 TYPE II
+                </div>
+            </div>
+        </div>
+
+        <!-- Card E: Developer Experience (2x1) -->
+        <div class="bento-card md:col-span-2 flex flex-col justify-between">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <h3 class="text-lg font-bold">Developer Experience</h3>
+                    <p class="text-textMuted text-sm">Type-safe APIs right out of the box.</p>
+                </div>
+                <i data-lucide="terminal" class="w-5 h-5 text-textMuted"></i>
+            </div>
+            
+            <div class="bg-[#0d0f17] rounded-lg p-4 font-mono text-xs overflow-hidden border border-border">
+<pre><span class="text-pink-400">const</span> data = <span class="text-pink-400">await</span> prism.<span class="text-indigo-300">query</span>({
+  <span class="text-textMuted">collection:</span> <span class="text-green-300">'events'</span>,
+  <span class="text-textMuted">where:</span> { type: <span class="text-green-300">'click'</span>, status: <span class="text-green-300">'active'</span> },
+  <span class="text-textMuted">orderBy:</span> { createdAt: <span class="text-green-300">'desc'</span> },
+  <span class="text-textMuted">limit:</span> <span class="text-purple-400">100</span>
+});</pre>
+            </div>
+        </div>
+
+        <!-- Card F: Community (2x1) -->
+        <div class="bento-card md:col-span-2 flex flex-col justify-center items-center text-center p-8 bg-gradient-to-br from-surface to-indigo-950/20">
+            <div class="flex -space-x-4 mb-6">
+                <img class="w-14 h-14 rounded-full border-2 border-surface object-cover" src="https://i.pravatar.cc/150?u=11" alt="">
+                <img class="w-14 h-14 rounded-full border-2 border-surface object-cover" src="https://i.pravatar.cc/150?u=12" alt="">
+                <img class="w-14 h-14 rounded-full border-2 border-surface object-cover z-10 scale-110" src="https://i.pravatar.cc/150?u=13" alt="">
+                <img class="w-14 h-14 rounded-full border-2 border-surface object-cover" src="https://i.pravatar.cc/150?u=14" alt="">
+                <div class="w-14 h-14 rounded-full border-2 border-surface bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">
+                    +2k
+                </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Join a growing ecosystem</h3>
+            <p class="text-textMuted text-sm">Backed by over 2,400 open source contributors.</p>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center">
+        <button class="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+            Start Building for Free
+        </button>
+        <p class="text-textMuted text-sm mt-4">No credit card required. Free tier included.</p>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'CHANGE_FONT') {
+                const font = e.data.font;
+                document.documentElement.style.setProperty('--font-primary', '"' + font + '", sans-serif');
+                document.body.style.fontFamily = '"' + font + '", sans-serif';
+            }
+        });
+    </script>
+</body>
+</html>

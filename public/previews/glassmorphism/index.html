@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseOS — Glassmorphism</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-grid {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+  </style>
+</head>
+<body class="bg-[#0a071b] text-white selection:bg-fuchsia-500/40 min-h-screen relative overflow-x-hidden">
+  <!-- Geometric Grid Canvas Underlay for authentic glass refraction -->
+  <div class="fixed inset-0 pointer-events-none glass-grid"></div>
+
+  <!-- Glowing Prismatic Aurora Orbs -->
+  <div class="fixed -top-32 -left-20 w-[550px] h-[550px] bg-gradient-to-br from-fuchsia-600/45 via-pink-500/35 to-purple-800/20 rounded-full blur-[110px] pointer-events-none"></div>
+  <div class="fixed top-1/4 -right-24 w-[520px] h-[520px] bg-gradient-to-bl from-cyan-400/40 via-teal-400/25 to-indigo-700/20 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="fixed top-2/3 left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-purple-600/35 via-indigo-600/30 to-pink-500/30 rounded-full blur-[130px] pointer-events-none"></div>
+  <div class="fixed -bottom-24 right-1/4 w-[480px] h-[480px] bg-gradient-to-t from-pink-600/35 via-rose-500/25 to-amber-400/20 rounded-full blur-[110px] pointer-events-none"></div>
+
+  <!-- Ambient Glass Rings -->
+  <div class="fixed top-24 right-1/3 w-72 h-72 rounded-full border border-white/10 pointer-events-none opacity-40"></div>
+
+  <header class="sticky top-0 z-30 border-b border-white/20 backdrop-blur-2xl bg-white/[0.07] shadow-[inset_0_-1px_0_rgba(255,255,255,0.1),0_4px_30px_rgba(0,0,0,0.3)]">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl backdrop-blur-2xl bg-gradient-to-br from-white/30 via-white/10 to-transparent border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_4px_16px_rgba(236,72,153,0.35)] flex items-center justify-center text-fuchsia-200">✦</div>
+        <span class="font-semibold text-base tracking-tight text-white drop-shadow">PulseOS</span>
+        <span class="text-[11px] font-mono text-fuchsia-100 px-2.5 py-0.5 rounded-full backdrop-blur-2xl bg-fuchsia-500/20 border border-fuchsia-300/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_0_15px_rgba(236,72,153,0.3)]">v2.4 Ready</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-xs text-white/80 font-medium drop-shadow">
+        <a href="#" class="hover:text-white transition-colors">Overview</a><a href="#" class="hover:text-white transition-colors">Features</a><a href="#" class="hover:text-white transition-colors">Solutions</a><a href="#" class="hover:text-white transition-colors">Pricing</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button class="text-xs text-white/80 hover:text-white px-3 py-1.5 font-medium drop-shadow-sm">Sign In</button>
+        <button class="text-xs backdrop-blur-2xl bg-gradient-to-r from-fuchsia-500/85 via-pink-500/85 to-cyan-500/85 hover:brightness-110 border border-white/50 text-white px-4 py-2 rounded-xl font-semibold shadow-[inset_0_1px_2px_rgba(255,255,255,0.7),0_0_25px_rgba(236,72,153,0.5)] transition">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-16 space-y-16 relative z-10">
+    <section class="relative p-10 sm:p-14 rounded-3xl backdrop-blur-3xl bg-gradient-to-br from-white/[0.13] via-white/[0.06] to-white/[0.02] border border-white/25 border-t-white/50 border-l-white/35 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),inset_0_-1px_1px_rgba(255,255,255,0.1),0_20px_50px_rgba(0,0,0,0.45)] text-center space-y-6 overflow-hidden">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full backdrop-blur-2xl bg-white/15 border border-white/35 border-t-white/60 text-xs text-fuchsia-100 shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_4px_16px_rgba(236,72,153,0.25)]">
+        <span class="w-2 h-2 rounded-full bg-cyan-300 animate-pulse shadow-[0_0_10px_#67e8f9]"></span>
+        <span>Next-Generation Platform</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.14] bg-gradient-to-r from-white via-pink-100 to-cyan-200 bg-clip-text text-transparent drop-shadow">Supercharge your engineering workflow with real-time telemetry</h1>
+      <p class="text-base text-white/80 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow">Monitor performance, automate deployments, and collaborate with your team without leaving your terminal.</p>
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <button class="backdrop-blur-3xl bg-gradient-to-r from-fuchsia-500/90 via-pink-500/90 to-cyan-500/90 hover:brightness-110 text-white text-xs sm:text-sm font-semibold px-7 py-3.5 rounded-2xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_8px_32px_rgba(236,72,153,0.5)] border border-white/50 transition transform hover:scale-105">Start 14-Day Free Trial →</button>
+        <button class="backdrop-blur-2xl bg-white/[0.10] hover:bg-white/[0.18] border border-white/30 border-t-white/50 text-white text-xs sm:text-sm font-medium px-6 py-3.5 rounded-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_4px_20px_rgba(0,0,0,0.2)] transition">▶ Schedule Product Demo</button>
+      </div>
+      <p class="text-xs text-white/60 pt-2 font-mono drop-shadow-sm">No credit card required • Instant 2-minute setup • 99.99% uptime SLA</p>
+    </section>
+
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      
+        <div class="p-5 rounded-2xl backdrop-blur-2xl bg-gradient-to-br from-white/[0.12] to-white/[0.03] border border-white/20 border-t-white/45 border-l-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_10px_30px_rgba(0,0,0,0.25)] space-y-1.5 hover:bg-white/[0.16] transition">
+          <div class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-200 via-fuchsia-100 to-cyan-200 bg-clip-text text-transparent drop-shadow-sm">99.99%</div>
+          <div class="text-xs text-white/80 font-medium drop-shadow-sm">System Availability</div>
+          <div class="text-[11px] text-cyan-200 font-mono drop-shadow-sm">+0.04% this month</div>
+        </div>
+      
+        <div class="p-5 rounded-2xl backdrop-blur-2xl bg-gradient-to-br from-white/[0.12] to-white/[0.03] border border-white/20 border-t-white/45 border-l-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_10px_30px_rgba(0,0,0,0.25)] space-y-1.5 hover:bg-white/[0.16] transition">
+          <div class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-200 via-fuchsia-100 to-cyan-200 bg-clip-text text-transparent drop-shadow-sm">14ms</div>
+          <div class="text-xs text-white/80 font-medium drop-shadow-sm">Median Edge Latency</div>
+          <div class="text-[11px] text-cyan-200 font-mono drop-shadow-sm">-3.2ms faster</div>
+        </div>
+      
+        <div class="p-5 rounded-2xl backdrop-blur-2xl bg-gradient-to-br from-white/[0.12] to-white/[0.03] border border-white/20 border-t-white/45 border-l-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_10px_30px_rgba(0,0,0,0.25)] space-y-1.5 hover:bg-white/[0.16] transition">
+          <div class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-200 via-fuchsia-100 to-cyan-200 bg-clip-text text-transparent drop-shadow-sm">142k+</div>
+          <div class="text-xs text-white/80 font-medium drop-shadow-sm">Active Deployments</div>
+          <div class="text-[11px] text-cyan-200 font-mono drop-shadow-sm">+12k this week</div>
+        </div>
+      
+        <div class="p-5 rounded-2xl backdrop-blur-2xl bg-gradient-to-br from-white/[0.12] to-white/[0.03] border border-white/20 border-t-white/45 border-l-white/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_10px_30px_rgba(0,0,0,0.25)] space-y-1.5 hover:bg-white/[0.16] transition">
+          <div class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-200 via-fuchsia-100 to-cyan-200 bg-clip-text text-transparent drop-shadow-sm">4.9 / 5</div>
+          <div class="text-xs text-white/80 font-medium drop-shadow-sm">Developer Satisfaction</div>
+          <div class="text-[11px] text-cyan-200 font-mono drop-shadow-sm">from 1,840 reviews</div>
+        </div>
+      
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+        <div class="p-6 rounded-2xl backdrop-blur-3xl bg-gradient-to-br from-white/[0.11] via-white/[0.05] to-white/[0.02] border border-white/20 border-t-white/45 border-l-white/30 hover:border-white/45 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_12px_36px_rgba(0,0,0,0.3)] transition flex flex-col justify-between group relative overflow-hidden">
+          <div class="space-y-4 relative z-10">
+            <div class="w-11 h-11 rounded-xl backdrop-blur-2xl bg-white/[0.18] border border-white/40 border-t-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_16px_rgba(0,0,0,0.2)] flex items-center justify-center text-cyan-200 text-base">✦</div>
+            <div>
+              <span class="text-[10px] font-mono text-cyan-200 tracking-wider uppercase block mb-1 drop-shadow-sm">Edge Compute</span>
+              <h3 class="text-base font-semibold text-white tracking-tight drop-shadow-sm">Instant Global Replication</h3>
+            </div>
+            <p class="text-xs text-white/75 leading-relaxed font-normal drop-shadow-sm">Distribute your microservices to over 300 edge nodes with sub-millisecond cold starts and automatic caching.</p>
+          </div>
+          <div class="pt-6 relative z-10">
+            <span class="text-xs font-semibold text-pink-200 group-hover:text-cyan-200 cursor-pointer drop-shadow-sm">Explore Architecture →</span>
+          </div>
+        </div>
+      
+        <div class="p-6 rounded-2xl backdrop-blur-3xl bg-gradient-to-br from-white/[0.11] via-white/[0.05] to-white/[0.02] border border-white/20 border-t-white/45 border-l-white/30 hover:border-white/45 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_12px_36px_rgba(0,0,0,0.3)] transition flex flex-col justify-between group relative overflow-hidden">
+          <div class="space-y-4 relative z-10">
+            <div class="w-11 h-11 rounded-xl backdrop-blur-2xl bg-white/[0.18] border border-white/40 border-t-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_16px_rgba(0,0,0,0.2)] flex items-center justify-center text-cyan-200 text-base">✦</div>
+            <div>
+              <span class="text-[10px] font-mono text-cyan-200 tracking-wider uppercase block mb-1 drop-shadow-sm">Enterprise Security</span>
+              <h3 class="text-base font-semibold text-white tracking-tight drop-shadow-sm">Automated Compliance Guardrails</h3>
+            </div>
+            <p class="text-xs text-white/75 leading-relaxed font-normal drop-shadow-sm">Continuous vulnerability scanning, SOC-2 Type II audit logging, and automated branch permissions right out of the box.</p>
+          </div>
+          <div class="pt-6 relative z-10">
+            <span class="text-xs font-semibold text-pink-200 group-hover:text-cyan-200 cursor-pointer drop-shadow-sm">Read Security Spec →</span>
+          </div>
+        </div>
+      
+        <div class="p-6 rounded-2xl backdrop-blur-3xl bg-gradient-to-br from-white/[0.11] via-white/[0.05] to-white/[0.02] border border-white/20 border-t-white/45 border-l-white/30 hover:border-white/45 shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_12px_36px_rgba(0,0,0,0.3)] transition flex flex-col justify-between group relative overflow-hidden">
+          <div class="space-y-4 relative z-10">
+            <div class="w-11 h-11 rounded-xl backdrop-blur-2xl bg-white/[0.18] border border-white/40 border-t-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_16px_rgba(0,0,0,0.2)] flex items-center justify-center text-cyan-200 text-base">✦</div>
+            <div>
+              <span class="text-[10px] font-mono text-cyan-200 tracking-wider uppercase block mb-1 drop-shadow-sm">Developer CLI</span>
+              <h3 class="text-base font-semibold text-white tracking-tight drop-shadow-sm">Keyboard-Driven Orchestration</h3>
+            </div>
+            <p class="text-xs text-white/75 leading-relaxed font-normal drop-shadow-sm">Execute complex infrastructure changes with interactive command palette fuzzy search and git hooks.</p>
+          </div>
+          <div class="pt-6 relative z-10">
+            <span class="text-xs font-semibold text-pink-200 group-hover:text-cyan-200 cursor-pointer drop-shadow-sm">View CLI Reference →</span>
+          </div>
+        </div>
+      
+    </section>
+
+    <section class="p-8 sm:p-10 rounded-3xl backdrop-blur-3xl bg-gradient-to-br from-white/[0.12] via-white/[0.06] to-white/[0.02] border border-white/25 border-t-white/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_16px_40px_rgba(0,0,0,0.35)] max-w-3xl mx-auto text-center space-y-4">
+      <div class="text-amber-300 text-xs font-mono drop-shadow">★★★★★ 5.0 Rating</div>
+      <blockquote class="text-base sm:text-lg text-white font-light italic leading-relaxed drop-shadow">"PulseOS cut our deployment pipeline times by 65%. It is by far the most polished developer tool our team has ever used."</blockquote>
+      <div class="pt-1">
+        <div class="text-xs font-semibold text-white drop-shadow-sm">Elena Rostova</div>
+        <div class="text-xs text-white/70 font-mono text-[11px] drop-shadow-sm">VP of Infrastructure, Veloce Labs</div>
+      </div>
+    </section>
+
+    <section class="rounded-3xl backdrop-blur-3xl bg-gradient-to-b from-white/[0.14] via-white/[0.06] to-white/[0.02] border border-white/30 border-t-white/60 p-8 sm:p-10 text-center max-w-xl mx-auto space-y-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_16px_45px_rgba(0,0,0,0.4)]">
+      <h3 class="text-xl font-semibold text-white tracking-tight drop-shadow">Ready to accelerate your delivery cycle?</h3>
+      <p class="text-xs text-white/70 drop-shadow-sm">Join thousands of top tier engineering teams shipping faster every day.</p>
+      <form class="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto pt-2" onsubmit="event.preventDefault(); alert('Access requested!');">
+        <input type="email" placeholder="Enter your work email address..." class="flex-1 px-4 py-2.5 text-xs rounded-xl backdrop-blur-2xl bg-white/[0.12] border border-white/35 border-t-white/50 focus:outline-none focus:border-cyan-300 text-white placeholder:text-white/50" required>
+        <button type="submit" class="backdrop-blur-2xl bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white text-xs px-5 py-2.5 rounded-xl font-semibold border border-white/50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_0_25px_rgba(236,72,153,0.5)]">Request Early Access</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/20 mt-20 py-8 backdrop-blur-2xl bg-white/[0.05]">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/65">
+      <div class="flex items-center gap-3">
+        <span>© 2026 PulseOS Inc. All rights reserved.</span>
+        <span class="inline-flex items-center gap-1.5 text-[11px] font-mono text-cyan-200 backdrop-blur-2xl bg-cyan-500/20 px-2.5 py-0.5 rounded-full border border-cyan-300/40 shadow-[0_0_12px_rgba(6,182,212,0.3)]">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-300"></span>All Systems Operational
+        </span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-white">Documentation</a>
+        <a href="#" class="hover:text-white">API Status</a>
+        <a href="#" class="hover:text-white">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
