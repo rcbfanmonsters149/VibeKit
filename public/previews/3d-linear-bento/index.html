@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Obsidian 3D Bento — VibeKit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .preserve-3d { transform-style: preserve-3d; }
+  </style>
+</head>
+<body class="bg-[#08090d] text-zinc-100 min-h-screen flex flex-col justify-between selection:bg-purple-600 selection:text-white select-none">
+
+  <!-- Header -->
+  <header class="p-6 flex items-center justify-between border-b border-white/10 bg-black/40 backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <div class="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_8px_#a855f7]"></div>
+      <span class="font-bold text-sm tracking-tight text-white">Linear Spatial Bento</span>
+      <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">3D Z-DEPTH</span>
+    </div>
+    <a href="/" class="text-xs px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 transition">
+      &larr; Return to VibeKit
+    </a>
+  </header>
+
+  <!-- Main Bento 3D Stage -->
+  <main class="flex-1 flex flex-col items-center justify-center p-6 relative">
+    
+    <div class="text-center mb-8 space-y-2">
+      <span class="text-xs font-mono text-purple-400 uppercase tracking-widest">MULTI-DEPTH PARALLAX</span>
+      <h1 class="text-3xl sm:text-5xl font-black text-white">Staggered Z-Space Bento</h1>
+      <p class="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto">
+        Move your cursor across the grid. Each card is positioned at a different Z-elevation, producing physical depth separation.
+      </p>
+    </div>
+
+    <!-- 3D Bento Container -->
+    <div 
+      id="bento-container"
+      class="max-w-3xl w-full grid grid-cols-1 sm:grid-cols-3 gap-4 preserve-3d transition-transform duration-75 p-6 rounded-3xl bg-white/5 border border-white/10 shadow-2xl"
+      style="perspective: 1000px;"
+    >
+      <!-- Card 1 (Z: +25px) -->
+      <div 
+        style="transform: translateZ(25px);" 
+        class="sm:col-span-2 p-6 rounded-2xl bg-zinc-900/90 border border-white/10 space-y-4 shadow-xl"
+      >
+        <div class="flex justify-between items-center">
+          <span class="text-[10px] font-mono text-indigo-400 uppercase font-bold">Layer 1: Z +25px</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Active Telemetry</span>
+        </div>
+        <h3 class="text-xl font-bold text-white">Engineering Intelligence Engine</h3>
+        <p class="text-xs text-zinc-400 leading-relaxed">
+          Real-time metrics calculated with zero synthetic lag. High-velocity developer platforms built with obsidian surfaces.
+        </p>
+        <div class="flex items-center gap-3 pt-2">
+          <span class="text-2xl font-black font-mono text-purple-400">99.98%</span>
+          <span class="text-xs text-zinc-500">Global Uptime</span>
+        </div>
+      </div>
+
+      <!-- Card 2 (Z: +60px) Highest Popout -->
+      <div 
+        style="transform: translateZ(60px);" 
+        class="p-6 rounded-2xl bg-gradient-to-br from-purple-900/80 to-indigo-950/80 border border-purple-400/40 flex flex-col justify-between shadow-2xl space-y-4"
+      >
+        <div>
+          <span class="text-[10px] font-mono text-purple-300 font-bold uppercase">Layer 2: Z +60px</span>
+          <h4 class="text-lg font-black text-white mt-2">Maximum Elevation</h4>
+          <p class="text-xs text-purple-200 mt-1">This card floats nearest to you in 3D perspective space.</p>
+        </div>
+        <button class="w-full py-2.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-black font-bold text-xs transition shadow-lg shadow-purple-500/30">
+          Inspect Foreground
+        </button>
+      </div>
+
+      <!-- Card 3 (Z: +35px) -->
+      <div 
+        style="transform: translateZ(35px);" 
+        class="sm:col-span-3 p-5 rounded-2xl bg-zinc-900/80 border border-white/10 flex items-center justify-between shadow-xl"
+      >
+        <div>
+          <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold">Layer 3: Z +35px</span>
+          <h4 class="text-sm font-bold text-white mt-1">Subtle Midground Parallax</h4>
+          <p class="text-xs text-zinc-400">Cards glide at differential speeds matching optical perspective.</p>
+        </div>
+        <span class="text-xs font-mono px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-zinc-300">
+          CSS translateZ
+        </span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="p-6 text-center text-xs text-zinc-500 border-t border-zinc-900">
+    VibeKit Multi-Depth 3D Bento • React & Tailwind Spatial Layouts
+  </footer>
+
+  <script>
+    const bento = document.getElementById('bento-container');
+    window.addEventListener('mousemove', (e) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth) * 2 - 1;
+      const y = (e.clientY / innerHeight) * 2 - 1;
+
+      const rotX = (-y * 18).toFixed(1);
+      const rotY = (x * 18).toFixed(1);
+
+      bento.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    });
+  </script>
+</body>
+</html>

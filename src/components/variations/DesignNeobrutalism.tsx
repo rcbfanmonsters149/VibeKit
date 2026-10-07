@@ -33,7 +33,7 @@ export default function DesignNeobrutalism() {
             </div>
             <span className="font-black text-base sm:text-xl tracking-tight text-black truncate">{content.brand.name}</span>
             <span className="hidden sm:inline-block text-xs font-black uppercase text-black px-2.5 py-0.5 rounded-md bg-white border-2 border-black shadow-[2px_2px_0px_0px_#000]">
-              {content.brand.badge}
+              {content.brand.versionBadge}
             </span>
           </div>
 

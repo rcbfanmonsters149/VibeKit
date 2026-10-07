@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { 
   Sparkles, Layers, Rocket, Grid, Terminal, Palette, 
-  ExternalLink, ArrowUpRight, Zap, ArrowLeft 
+  ExternalLink, ArrowUpRight, Zap, ArrowLeft, Box 
 } from 'lucide-react';
 
 export type FeatureTab = 'studio' | 'templates' | 'prompts';
@@ -98,12 +98,27 @@ export default function GlobalHubHeader({ activeTab, onSelectTab }: GlobalHubHea
       {/* Right: Relocated Tools & Quick Links */}
       <div className="hidden lg:flex items-center gap-2.5 shrink-0 ml-4">
         <Link
+          href="/studio-3d"
+          className="px-2.5 py-1 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-xs font-bold text-cyan-300 transition flex items-center gap-1.5 shadow-sm"
+        >
+          <Box className="w-3.5 h-3.5 text-cyan-400" />
+          <span>3D Studio</span>
+          <span className="text-[9px] px-1 py-0.2 rounded bg-cyan-400 text-black font-black uppercase">3D</span>
+        </Link>
+
+        <Link
+          href="/gallery-3d"
+          className="text-xs text-zinc-400 hover:text-white font-medium flex items-center gap-1 transition px-2 py-1 rounded-lg hover:bg-white/5"
+        >
+          <span>3D Gallery</span>
+        </Link>
+
+        <Link
           href="/canvas"
           className="px-2.5 py-1 rounded-lg bg-yellow-400/10 hover:bg-yellow-400/20 border border-yellow-400/30 text-xs font-semibold text-yellow-300 transition flex items-center gap-1.5"
         >
           <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-          <span>Wireframe Canvas</span>
-          <span className="text-[9px] px-1 py-0.2 rounded bg-yellow-400 text-black font-black uppercase">New</span>
+          <span>Canvas</span>
         </Link>
 
         <Link

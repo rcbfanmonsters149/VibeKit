@@ -42,16 +42,16 @@ ${block.specialNotes ? `- **Special Visual Polish**: ${block.specialNotes}` : ''
     toolHeader = `Create a complete responsive ${framework} page based on the following wireframe architecture.`;
   }
 
-  // 4. Full Structured Master Prompt
+  const pal = palette as { bg: string; accent: string; text: string; surface?: string; border?: string };
   const compiledPrompt = `${toolHeader}
 
 ## DESIGN SYSTEM & STYLE DNA: "${styleName.toUpperCase()}"
 - **Aesthetic Vibe**: ${selectedDesign.tagline}
-- **Background Color**: \`${palette.bg}\`
-- **Surface / Card Color**: \`${palette.surface || 'rgba(255,255,255,0.05)'}\`
-- **Accent Highlight**: \`${palette.accent}\`
-- **Primary Text**: \`${palette.text}\`
-- **Border Treatment**: \`${palette.border || '1px solid rgba(255,255,255,0.1)'}\`
+- **Background Color**: \`${pal.bg}\`
+- **Surface / Card Color**: \`${pal.surface || 'rgba(255,255,255,0.05)'}\`
+- **Accent Highlight**: \`${pal.accent}\`
+- **Primary Text**: \`${pal.text}\`
+- **Border Treatment**: \`${pal.border || '1px solid rgba(255,255,255,0.1)'}\`
 - **Typography Pairing**: \`${selectedDesign.defaultFont || 'Inter'}, system-ui, sans-serif\`
 - **Key Design Signatures**:
 ${selectedDesign.features.map(f => `  * ${f}`).join('\n')}

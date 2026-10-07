@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Sparkles, ArrowRight, Menu, X, Rocket, Terminal, Flame } from 'lucide-react';
+import { Sparkles, ArrowRight, Menu, X, Rocket, Terminal, Flame, Box } from 'lucide-react';
 
 export default function LandingNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,39 +34,42 @@ export default function LandingNavbar() {
         <nav className="hidden lg:flex items-center gap-6 text-xs font-black uppercase tracking-wider text-black">
           <Link href="/canvas" className="hover:text-purple-600 transition flex items-center gap-1 text-purple-700">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Wireframe Canvas</span>
+            <span>Canvas</span>
             <span className="px-1.5 py-0.2 text-[9px] bg-[#facc15] text-black border border-black rounded shadow-[1px_1px_0px_#000]">
               New
             </span>
           </Link>
-          <a href="#features" className="hover:text-purple-600 transition">
-            Features
+          <a href="#explore-2d" className="hover:text-purple-600 transition">
+            2D Designs
+          </a>
+          <Link href="/studio-3d" className="hover:text-cyan-600 transition flex items-center gap-1 text-cyan-600 font-black">
+            <span>3D Studio</span>
+            <span className="px-1.5 py-0.2 text-[8px] bg-[#38bdf8] text-black border border-black rounded shadow-[1px_1px_0px_#000]">
+              New
+            </span>
+          </Link>
+          <Link href="/gallery-3d" className="hover:text-purple-600 transition">
+            3D Gallery
+          </Link>
+          <a href="#explore-2d" className="hover:text-purple-600 transition">
+            2D Designs
           </a>
           <a href="#styles" className="hover:text-purple-600 transition">
             12 Styles
           </a>
-          <a href="#future-features" className="hover:text-purple-600 transition flex items-center gap-1">
-            <span>Roadmap</span>
-            <span className="px-1.5 py-0.5 text-[9px] bg-[#fb923c] text-black border border-black rounded shadow-[1px_1px_0px_#000]">
-              New
-            </span>
+          <a href="#features" className="hover:text-purple-600 transition">
+            Features
           </a>
-          <a href="#workflow" className="hover:text-purple-600 transition">
-            How It Works
-          </a>
-          <Link href="/prompts" className="hover:text-purple-600 transition">
-            AI Prompts
-          </Link>
         </nav>
 
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
           <Link
-            href="/studio?tab=templates"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border-2 border-black shadow-[3px_3px_0px_#000] text-xs font-black uppercase hover:bg-zinc-100 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition"
+            href="/studio-3d"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#38bdf8] hover:bg-[#0284c7] hover:text-white border-2 border-black shadow-[3px_3px_0px_#000] text-xs font-black uppercase active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition text-black"
           >
-            <Rocket className="w-3.5 h-3.5 text-black" />
-            <span>Templates</span>
+            <Box className="w-3.5 h-3.5" />
+            <span>3D Studio</span>
           </Link>
 
           <Link
@@ -99,12 +102,29 @@ export default function LandingNavbar() {
               <span>Wireframe-to-Prompt Canvas</span>
               <span className="text-[10px] px-1.5 py-0.2 rounded bg-black text-white font-mono">NEW</span>
             </Link>
-            <a 
-              href="#features" 
+            <Link 
+              href="/studio-3d" 
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 bg-white rounded-lg border-2 border-black shadow-[2px_2px_0px_#000]"
+              className="p-2 bg-[#38bdf8] text-black rounded-lg border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-between"
             >
-              Platform Features
+              <span>3D Studio Workbench</span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-black text-white font-mono font-bold">3D PRO</span>
+            </Link>
+            <Link 
+              href="/gallery-3d" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 bg-purple-200 text-black rounded-lg border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-between"
+            >
+              <span>3D Websites Gallery</span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-purple-700 text-white font-mono font-bold">NEW</span>
+            </Link>
+            <a 
+              href="#explore-2d" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 bg-white rounded-lg border-2 border-black shadow-[2px_2px_0px_#000] flex items-center justify-between"
+            >
+              <span>2D Designs Explorer</span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-[#facc15] text-black font-mono font-bold">2D</span>
             </a>
             <a 
               href="#styles" 

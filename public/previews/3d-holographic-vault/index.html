@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holographic 3D Web3 Card & Vault — VibeKit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .preserve-3d { transform-style: preserve-3d; }
+  </style>
+</head>
+<body class="bg-[#05070f] text-white min-h-screen flex flex-col justify-between selection:bg-pink-500 selection:text-white select-none">
+
+  <!-- Header -->
+  <header class="p-6 flex items-center justify-between border-b border-pink-500/20 bg-black/40 backdrop-blur-md">
+    <div class="flex items-center gap-2">
+      <div class="w-3 h-3 rounded-full bg-pink-500 shadow-[0_0_10px_#ec4899]"></div>
+      <span class="font-bold text-sm tracking-wide text-white">CRYPTO_VAULT_3D</span>
+    </div>
+    <a href="/" class="text-xs px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 transition">
+      &larr; Return to VibeKit
+    </a>
+  </header>
+
+  <!-- Main 3D Card Stage -->
+  <main class="flex-1 flex flex-col items-center justify-center p-6 relative">
+    
+    <div class="text-center mb-8 space-y-2">
+      <span class="text-xs font-mono text-pink-400 uppercase tracking-widest">IRIDESCENT FOIL PHYSICS</span>
+      <h1 class="text-3xl sm:text-5xl font-black">Holographic Smart Vault</h1>
+      <p class="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto">
+        Move your pointer to tilt the card. Watch the rainbow iridescent sheen rotate dynamically based on light incidence.
+      </p>
+    </div>
+
+    <!-- 3D Card Container -->
+    <div class="relative" style="perspective: 1000px;">
+      
+      <!-- Holographic Card -->
+      <div 
+        id="holo-card"
+        class="w-80 sm:w-96 h-56 rounded-3xl p-6 relative preserve-3d transition-transform duration-75 shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/20 overflow-hidden flex flex-col justify-between"
+        style="background: linear-gradient(135deg, #111827 0%, #030712 100%);"
+      >
+        <!-- Iridescent Foil Gradient Overlay -->
+        <div 
+          id="foil-layer"
+          class="absolute inset-0 pointer-events-none opacity-40 transition-opacity duration-150"
+          style="background: linear-gradient(115deg, rgba(236, 72, 153, 0.4), rgba(6, 182, 212, 0.4), rgba(234, 179, 8, 0.4), rgba(168, 85, 247, 0.4));"
+        ></div>
+
+        <!-- Top Card Row (Z: 25px) -->
+        <div style="transform: translateZ(25px);" class="flex justify-between items-center z-10">
+          <span class="font-mono text-xs font-bold text-pink-300">QUANTUM LEDGER</span>
+          <span class="text-xs font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20">ETHEREUM L2</span>
+        </div>
+
+        <!-- Middle 3D Hardware EMV Chip (Z: 50px) -->
+        <div style="transform: translateZ(50px);" class="z-10 flex items-center justify-between">
+          <div class="w-12 h-9 rounded-lg bg-gradient-to-tr from-amber-300 to-amber-500 border border-amber-200 shadow-md flex items-center justify-center">
+            <div class="w-8 h-5 border border-amber-700/60 rounded"></div>
+          </div>
+          <span class="font-mono text-sm tracking-widest text-zinc-300">**** 4920</span>
+        </div>
+
+        <!-- Bottom Card Row (Z: 35px) -->
+        <div style="transform: translateZ(35px);" class="flex justify-between items-end z-10">
+          <div>
+            <span class="text-[9px] font-mono text-zinc-400 block uppercase">VAULT HOLDER</span>
+            <span class="font-bold text-xs text-white">SATOSHI NAKAMOTO</span>
+          </div>
+          <div class="text-right">
+            <span class="text-[9px] font-mono text-zinc-400 block uppercase">BALANCE</span>
+            <span class="font-mono text-sm font-bold text-emerald-400">142.85 ETH</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="p-6 text-center text-xs text-zinc-500 border-t border-zinc-900 font-mono">
+    VibeKit Web3 3D Foil • Dynamic Angle Shader
+  </footer>
+
+  <script>
+    const card = document.getElementById('holo-card');
+    const foil = document.getElementById('foil-layer');
+
+    window.addEventListener('mousemove', (e) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth) * 2 - 1;
+      const y = (e.clientY / innerHeight) * 2 - 1;
+
+      const rotX = (-y * 22).toFixed(1);
+      const rotY = (x * 22).toFixed(1);
+
+      card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+
+      // Calculate light incidence angle
+      const angle = Math.round(Math.atan2(y, x) * (180 / Math.PI) + 180);
+      foil.style.background = `linear-gradient(${angle}deg, rgba(236, 72, 153, 0.5), rgba(6, 182, 212, 0.5), rgba(234, 179, 8, 0.5), rgba(168, 85, 247, 0.5))`;
+    });
+  </script>
+</body>
+</html>

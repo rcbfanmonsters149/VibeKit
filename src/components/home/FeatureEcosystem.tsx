@@ -104,6 +104,32 @@ export default function FeatureEcosystem() {
       actionHref: '/palettes',
       highlights: ['WCAG contrast validation', 'Tailwind theme extensions', 'CSS custom properties']
     },
+    {
+      id: 'explore-2d',
+      title: '2D Design Dimension Explorer',
+      tagline: 'Swiss Bauhaus, Tactical Neobrutalism & Vector Grids',
+      description: 'Explore two-dimensional layout paradigms with interactive column & baseline grid overlays, aspect ratio toggles, and pure flat frontend tokens.',
+      badge: 'NEW • LIVE',
+      badgeColor: '#facc15',
+      status: 'live',
+      icon: <Grid className="w-6 h-6 text-black stroke-[2.5]" />,
+      actionText: 'Explore 2D Layouts',
+      actionHref: '#explore-2d',
+      highlights: ['Toggleable column grid overlays', 'Swiss Bauhaus, Print & Flat Bento', '1-click 2D AI prompts']
+    },
+    {
+      id: 'explore-3d',
+      title: '3D Spatial Dimension & Moving Cursor',
+      tagline: 'Perspective Tilt, Real-time Pointer Telemetry & Web 3D',
+      description: 'Experience real-time mouse-tracking card tilts, specular glare flares, and 4 production-ready 3D website frontend samples (VisionOS, Cyberpunk Horizon, 3D Product Stage).',
+      badge: 'NEW • 3D LIVE',
+      badgeColor: '#38bdf8',
+      status: 'live',
+      icon: <Zap className="w-6 h-6 text-black stroke-[2.5]" />,
+      actionText: 'Test 3D & Cursor',
+      actionHref: '#explore-3d',
+      highlights: ['Live cursor pitch & roll telemetry', 'Dynamic specular light glare', '4 interactive 3D website samples']
+    },
 
     // Upcoming Future Features (Easily market new capabilities!)
     {

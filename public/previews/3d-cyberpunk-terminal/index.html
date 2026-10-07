@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberpunk 3D Terminal & Horizon — VibeKit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes gridScroll {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 40px; }
+    }
+    .grid-ground {
+      transform: perspective(350px) rotateX(68deg);
+      transform-origin: bottom center;
+      background-image: 
+        linear-gradient(to right, rgba(6, 182, 212, 0.4) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(6, 182, 212, 0.4) 1px, transparent 1px);
+      background-size: 32px 32px;
+      animation: gridScroll 1.5s linear infinite;
+    }
+    @keyframes cubeRotate {
+      0% { transform: rotateX(25deg) rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateX(25deg) rotateY(360deg) rotateZ(360deg); }
+    }
+    .cube-3d {
+      animation: cubeRotate 10s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-black text-cyan-300 min-h-screen overflow-x-hidden font-mono selection:bg-cyan-400 selection:text-black">
+
+  <!-- Spotlight Follower Beam -->
+  <div id="spotlight" class="fixed pointer-events-none w-96 h-96 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 z-10 transition-opacity" style="background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, rgba(217, 70, 239, 0.2) 40%, transparent 70%);"></div>
+
+  <!-- Cyberpunk Top Navigation -->
+  <header class="fixed top-0 inset-x-0 h-16 border-b border-cyan-500/40 bg-black/80 backdrop-blur-md px-6 flex items-center justify-between z-50">
+    <div class="flex items-center gap-3">
+      <div class="w-3 h-3 bg-cyan-400 animate-ping"></div>
+      <span class="font-bold text-white tracking-widest text-sm">NEO_TOKYO_3D // HORIZON</span>
+      <span class="text-[10px] bg-cyan-950 px-2 py-0.5 border border-cyan-500/50 text-cyan-400">NODE_STATUS: ACTIVE</span>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="/" class="text-xs px-3.5 py-1.5 rounded bg-cyan-500 text-black font-bold uppercase hover:bg-cyan-400 transition">
+        &larr; Exit to VibeKit
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Cyber Stage -->
+  <main class="min-h-screen flex flex-col items-center justify-center relative pt-20 px-4">
+    
+    <!-- 3D Receding Horizon Grid (Bottom Half) -->
+    <div class="absolute inset-x-0 bottom-0 h-96 pointer-events-none overflow-hidden">
+      <div class="w-full h-full grid-ground"></div>
+      <!-- Neon Horizon Laser Beam -->
+      <div class="absolute inset-x-0 top-0 h-0.5 bg-cyan-400 shadow-[0_0_20px_#22d3ee]"></div>
+      <div class="absolute inset-x-0 top-1 h-12 bg-gradient-to-b from-cyan-500/20 to-transparent"></div>
+    </div>
+
+    <!-- Foreground Content -->
+    <div class="relative z-20 max-w-2xl w-full text-center space-y-6">
+      
+      <!-- Rotating 3D Center Object -->
+      <div class="mx-auto w-32 h-32 flex items-center justify-center relative">
+        <div class="w-24 h-24 border-2 border-magenta-500/80 rounded-2xl cube-3d bg-purple-950/20 shadow-[0_0_40px_rgba(217,70,239,0.5)] flex items-center justify-center">
+          <div class="w-12 h-12 border border-cyan-400/80 rounded-lg"></div>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h1 class="text-4xl sm:text-6xl font-black text-white tracking-wider">
+          CYBERPUNK <span class="text-cyan-400">3D HUD</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto">
+          Receding perspective horizon with real-time coordinate matrix tracking and interactive mouse spotlight.
+        </p>
+      </div>
+
+      <!-- Real-Time Telemetry Data Cards -->
+      <div class="grid grid-cols-3 gap-3 max-w-lg mx-auto pt-4 text-xs text-left">
+        <div class="p-3 bg-black/80 border border-cyan-500/30 rounded">
+          <span class="text-[10px] text-zinc-500 block">CURSOR X</span>
+          <span id="coord-x" class="text-cyan-400 font-bold">0 px</span>
+        </div>
+        <div class="p-3 bg-black/80 border border-cyan-500/30 rounded">
+          <span class="text-[10px] text-zinc-500 block">CURSOR Y</span>
+          <span id="coord-y" class="text-magenta-400 font-bold">0 px</span>
+        </div>
+        <div class="p-3 bg-black/80 border border-cyan-500/30 rounded">
+          <span class="text-[10px] text-zinc-500 block">HORIZON PITCH</span>
+          <span class="text-emerald-400 font-bold">68.0&deg; FIXED</span>
+        </div>
+      </div>
+
+      <div class="pt-6">
+        <button class="px-6 py-3 bg-cyan-400 hover:bg-cyan-300 text-black font-black uppercase text-xs tracking-wider shadow-[0_0_20px_rgba(6,182,212,0.6)] transition">
+          Initiate Cyber Terminal Stream &rarr;
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    const spotlight = document.getElementById('spotlight');
+    const coordX = document.getElementById('coord-x');
+    const coordY = document.getElementById('coord-y');
+
+    window.addEventListener('mousemove', (e) => {
+      spotlight.style.left = e.clientX + 'px';
+      spotlight.style.top = e.clientY + 'px';
+      coordX.innerText = e.clientX + ' px';
+      coordY.innerText = e.clientY + ' px';
+    });
+  </script>
+</body>
+</html>

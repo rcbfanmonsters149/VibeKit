@@ -3,6 +3,8 @@ import React from 'react';
 import LandingNavbar from '@/components/home/LandingNavbar';
 import LandingHero from '@/components/home/LandingHero';
 import LiveStyleTicker from '@/components/home/LiveStyleTicker';
+import Explore2DSection from '@/components/home/Explore2DSection';
+import Explore3DSection from '@/components/home/Explore3DSection';
 import FeatureEcosystem from '@/components/home/FeatureEcosystem';
 import WorkflowSection from '@/components/home/WorkflowSection';
 import LandingFooter from '@/components/home/LandingFooter';
@@ -19,13 +21,19 @@ export default function HomePage() {
       {/* 3. 12 Visual Aesthetics Showcase Strip */}
       <LiveStyleTicker />
 
-      {/* 4. Modular Feature Ecosystem (Current Modules & Future Roadmap) */}
+      {/* 4. 2D Design Dimension Explorer */}
+      <Explore2DSection />
+
+      {/* 5. 3D Spatial Dimension & Moving Cursor Explorer */}
+      <Explore3DSection />
+
+      {/* 6. Modular Feature Ecosystem (Current Modules & Future Roadmap) */}
       <FeatureEcosystem />
 
-      {/* 5. How Vibecoders Ship 10x Faster Workflow */}
+      {/* 7. How Vibecoders Ship 10x Faster Workflow */}
       <WorkflowSection />
 
-      {/* 6. Footer & Studio Quick Links */}
+      {/* 8. Footer & Studio Quick Links */}
       <LandingFooter />
     </div>
   );

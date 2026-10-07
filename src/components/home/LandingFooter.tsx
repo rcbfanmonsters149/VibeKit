@@ -78,6 +78,16 @@ export default function LandingFooter() {
             </div>
             <ul className="space-y-2 text-xs text-zinc-400">
               <li>
+                <a href="#explore-2d" className="hover:text-white transition">
+                  2D Design Dimension
+                </a>
+              </li>
+              <li>
+                <a href="#explore-3d" className="hover:text-white transition text-cyan-400">
+                  3D Spatial & Cursor Explorer
+                </a>
+              </li>
+              <li>
                 <Link href="/studio?tab=studio" className="hover:text-white transition">
                   12-Style Comparison Studio
                 </Link>

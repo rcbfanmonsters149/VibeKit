@@ -87,3 +87,58 @@ body {
 .glow-text {
   text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
 }
+
+/* 3D Spatial Transforms & Cursor Effects */
+.perspective-800 {
+  perspective: 800px;
+}
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-1500 {
+  perspective: 1500px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.translate-z-10 {
+  transform: translateZ(40px);
+}
+.translate-z-20 {
+  transform: translateZ(80px);
+}
+.translate-z-neg-10 {
+  transform: translateZ(-40px);
+}
+
+@keyframes spin-slow-3d {
+  0% { transform: rotateX(15deg) rotateY(0deg) rotateZ(0deg); }
+  50% { transform: rotateX(25deg) rotateY(180deg) rotateZ(10deg); }
+  100% { transform: rotateX(15deg) rotateY(360deg) rotateZ(0deg); }
+}
+
+.animate-spin-3d {
+  animation: spin-slow-3d 14s linear infinite;
+}
+
+@keyframes float-3d {
+  0%, 100% { transform: translateY(0px) rotateX(4deg); }
+  50% { transform: translateY(-12px) rotateX(-4deg); }
+}
+
+.animate-float-3d {
+  animation: float-3d 4s ease-in-out infinite;
+}
+
+@keyframes grid-horizon {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 40px; }
+}
+
+.animate-grid-horizon {
+  animation: grid-horizon 2s linear infinite;
+}
+
