@@ -34,3 +34,16 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ```bash
 npm run build
 ```
+
+## 🚀 Deploy on Vercel
+
+The fastest way to deploy VibeKit is with [Vercel](https://vercel.com):
+
+1. **Push to GitHub**: Make sure your repository is pushed to GitHub.
+2. **Import into Vercel**:
+   - Go to [vercel.com/new](https://vercel.com/new).
+   - Select your `VibeKit` repository.
+   - Framework preset will automatically be detected as **Next.js**.
+   - No custom environment variables are required.
+3. **Click Deploy**: Vercel will run `npm run build` and provision your globally distributed edge deployment.
+
